@@ -2,7 +2,7 @@
 import { buttonVariants } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { cn } from "@/lib/utils"
-import { Home, Menu, Settings } from "lucide-react"
+import { Cuboid, Home, Menu, Settings } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import * as React from "react"
@@ -33,17 +33,17 @@ export default function Navbar() {
         isActive: pathname.startsWith("/settings"),
       },
       {
-        label: "Menu",
-        href: "/menu",
-        icon: Menu,
-        isActive: pathname.startsWith("/menu"),
+        label: "Dashboard",
+        href: "/dashboard",
+        icon: Cuboid,
+        isActive: pathname.startsWith("/dashboard"),
       },
     ],
     [pathname],
   )
 
   return (
-    <nav className="z-50 w-max mx-auto flex fixed top-2 left-0 right-0 items-center justify-center space-x-4 rounded-full border bg-background p-2 shadow-lg">
+    <nav className="z-50 w-max mx-auto flex fixed top-2 left-0 right-0 items-center justify-center space-x-4 rounded-full border bg-background p-2 shadow-lg transition-all duration-300">
       {navItems.map((item, index) => (
         <Tooltip key={index}>
           <TooltipTrigger asChild>

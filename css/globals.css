@@ -11,14 +11,22 @@ body,
 
 /*********************************/
 @layer base {
-  :root {
-    --radius: 1rem;
-  }
+
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+  }
+
+  :root {
+    --radius: 0.618rem;
+    --chart-1: hsl(297, 62%, 32%);
+    --chart-2: hsl(229, 62%, 32%);
+    --chart-3: hsl(0, 62%, 32%);
+    --chart-4: hsl(135, 62%, 32%);
+    --chart-5: hsl(65, 62%, 32%);
   }
 }
 
@@ -34,4 +42,16 @@ body,
 ::-webkit-scrollbar-thumb {
   background-color: hsl(var(--border));
   border-radius: 1rem;
+}
+
+/*---break---*/
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
 }
