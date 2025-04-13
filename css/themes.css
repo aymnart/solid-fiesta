@@ -1,0 +1,206 @@
+@tailwind base;
+
+@layer base {
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 6 81% 44%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 99 81% 44%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 40 82% 62%;
+    --warning-foreground: 40 82% 2%;
+
+    --info: 225 81% 44%;
+    --info-foreground: 0 0% 100%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 4 81% 17%;
+    --destructive-foreground: 4 81% 77%;
+
+    --success: 101 81% 17%;
+    --success-foreground: 101 81% 57%;
+
+    --warning: 42 81% 17%;
+    --warning-foreground: 42 81% 77%;
+
+    --info: 211 81% 17%;
+    --info-foreground: 211 81% 77%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+
+  .moonlit {
+    --background: 220 35% 13%;
+    --foreground: 120 40% 85%;
+    --muted: 220 25% 23%;
+    --muted-foreground: 220 15% 63%;
+    --popover: 220 35% 16%;
+    --popover-foreground: 120 40% 85%;
+    --card: 220 30% 19%;
+    --card-foreground: 120 40% 82%;
+    --border: 220 20% 26%;
+    --input: 220 20% 26%;
+    --primary: 120 50% 50%;
+    --primary-foreground: 120 50% 10%;
+    --secondary: 220 50% 45%;
+    --secondary-foreground: 220 50% 95%;
+    --accent: 220 50% 45%;
+    --accent-foreground: 220 50% 95%;
+    --destructive: 350 70% 55%;
+    --destructive-foreground: 350 70% 95%;
+    --success: 140 60% 40%;
+    --success-foreground: 140 60% 98%;
+    --warning: 50 80% 55%;
+    --warning-foreground: 50 80% 5%;
+    --info: 240 60% 55%;
+    --info-foreground: 240 60% 98%;
+    --ring: 120 50% 50%;
+  }
+  .obsidian-dark {
+    --background: 220 20% 8%; /* Dark slate background */
+    --foreground: 220 40% 92%; /* High contrast text */
+
+    --muted: 220 15% 18%; /* Muted elements */
+    --muted-foreground: 220 15% 55%; /* Subtle text */
+
+    --popover: 220 25% 12%; /* Popovers and modals */
+    --popover-foreground: 220 40% 90%;
+
+    --card: 220 22% 10%; /* Cards and panels */
+    --card-foreground: 220 40% 85%;
+
+    --border: 220 15% 25%; /* Subtle but visible borders */
+    --input: 220 15% 20%; /* Input fields background */
+
+    --primary: 215 85% 55%; /* Actionable blue */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 15% 25%; /* Less prominent elements */
+    --secondary-foreground: 220 40% 85%;
+
+    --accent: 350 75% 55%; /* Attention-red for flags */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 5 80% 45%; /* Delete actions */
+    --destructive-foreground: 0 0% 98%;
+
+    --success: 160 90% 32%; /* Sent/delivered */
+    --success-foreground: 160 90% 98%;
+
+    --warning: 40 90% 55%; /* Drafts/unsaved */
+    --warning-foreground: 40 90% 5%;
+
+    --info: 240 80% 52%; /* Attachments/links */
+    --info-foreground: 0 0% 98%;
+
+    --ring: 215 85% 65%; /* Focus states */
+  }
+
+  .modern-sage {
+    --background: 160 25% 97%; /* Cool paper white */
+    --foreground: 160 35% 8%;
+    --muted: 160 15% 92%;
+    --muted-foreground: 160 15% 33%;
+    --popover: 160 20% 95%;
+    --popover-foreground: 160 35% 6%;
+    --card: 160 10% 96%;
+    --card-foreground: 160 35% 4%;
+    --border: 160 10% 87%;
+    --input: 160 10% 93%;
+    --primary: 160 75% 40%; /* Nature green */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 160 15% 90%;
+    --secondary-foreground: 160 35% 18%;
+    --accent: 40 80% 55%; /* Amber for highlights */
+    --accent-foreground: 40 80% 5%;
+    --destructive: 5 85% 45%;
+    --destructive-foreground: 0 0% 98%;
+    --success: 140 70% 32%;
+    --success-foreground: 140 70% 98%;
+    --warning: 55 90% 50%;
+    --warning-foreground: 55 90% 5%;
+    --info: 200 80% 45%; /* Teal for links */
+    --info-foreground: 200 80% 98%;
+    --ring: 160 75% 50%;
+  }
+
+  .lavender-dusk {
+    --background: 305 42% 98%;
+    --foreground: 305 60% 2%;
+    --muted: 305 35% 89%;
+    --muted-foreground: 305 9% 34%;
+    --popover: 305 42% 98%;
+    --popover-foreground: 305 60% 2%;
+    --card: 305 42% 98%;
+    --card-foreground: 305 60% 2%;
+    --border: 305 14% 89%;
+    --input: 305 14% 89%;
+    --primary: 305 66% 38%;
+    --primary-foreground: 305 66% 98%;
+    --secondary: 305 1% 92%;
+    --secondary-foreground: 305 1% 32%;
+    --accent: 305 7% 84%;
+    --accent-foreground: 305 7% 24%;
+    --destructive: 14 98% 32%;
+    --destructive-foreground: 0 0% 100%;
+    --ring: 305 66% 38%;
+    --destructive: 17 84% 37%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 140 70% 32%;
+    --success-foreground: 140 70% 98%;
+    --warning: 55 90% 50%;
+    --warning-foreground: 55 90% 5%;
+    --info: 200 80% 45%; /* Teal for links */
+    --info-foreground: 200 80% 98%;
+  }
+}

@@ -1,0 +1,87 @@
+:root {
+  --gl: radial-gradient(circle 1px at 0px 0px, var(--dark) 1px, transparent 0);
+  --gd: radial-gradient(circle 1px at 0px 0px, var(--light) 1px, transparent 0);
+  --bg-0: var(--light);
+  --bg-1: var(--gl) 0px 0px / 4px 4px, var(--light);
+  --bg-2: var(--gl) 0px 0px / 4px 4px, var(--gl) 2px 2px / 4px 4px, var(--light);
+  --bg-3: var(--gl) 0px 0px / 2px 2px, var(--light);
+  --bg-4: var(--gl) 0px 0px / 2px 2px, var(--gl) 1px 1px / 2px 2px, var(--light);
+  --bg-5: var(--gd) 0px 0px / 2px 2px, var(--dark);
+  --bg-6: var(--gd) 0px 0px / 4px 4px, var(--gd) 2px 2px / 4px 4px, var(--dark);
+  --bg-7: var(--gd) 0px 0px / 4px 4px, var(--dark);
+  --bg-8: var(--dark);
+  --drop-shadow: drop-shadow(-1px -1px 0 var(--dark))
+    drop-shadow(0 -1px 0 var(--dark)) drop-shadow(1px -1px 0 var(--dark))
+    drop-shadow(1px 0 0 var(--dark)) drop-shadow(1px 1px 0 var(--dark))
+    drop-shadow(0 1px 0 var(--dark)) drop-shadow(-1px 1px 0 var(--dark))
+    drop-shadow(-1px 0 0 var(--dark));
+}
+@property --light {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: white;
+}
+
+@property --dark {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: black;
+}
+
+.cube-wrapper {
+  --size: 4.235rem;
+  margin-top: 2rem;
+  perspective: 200px;
+  perspective-origin: 50% 0%;
+  filter: var(--drop-shadow);
+}
+
+.cube {
+  height: var(--size);
+  width: var(--size);
+  position: relative;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50% calc(var(--size) * 0.5);
+  animation: rotate 10s linear infinite;
+}
+
+.face {
+  position: absolute;
+  height: var(--size);
+  width: var(--size);
+  transform-style: preserve-3d;
+  transform-origin: 50% 50% calc(var(--size) * 0.5);
+
+  &:nth-child(1) {
+    transform: rotateY(90deg);
+    background: var(--bg-2);
+  }
+  &:nth-child(2) {
+    transform: rotateY(180deg);
+    background: var(--bg-3);
+  }
+  &:nth-child(3) {
+    transform: rotateY(-90deg);
+    background: var(--bg-4);
+  }
+  &:nth-child(4) {
+    transform: rotateX(90deg);
+    background: var(--bg-5);
+  }
+  &:nth-child(5) {
+    transform: rotateX(-90deg);
+    background: var(--bg-6);
+  }
+  &:nth-child(6) {
+    background: var(--bg-7);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateY(0) rotateX(1turn) rotateZ(0);
+  }
+  to {
+    transform: rotateY(1turn) rotateX(0) rotateZ(1turn);
+  }
+}
