@@ -78,7 +78,6 @@ const Divider = ({
 
   return (
     <div
-      role="separator"
       aria-hidden={!children}
       aria-label={`${variant} divider`}
       aria-orientation={isVertical ? "vertical" : "horizontal"}

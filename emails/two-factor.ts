@@ -8,10 +8,6 @@ export const sendTwoFactorTokenEmail = async (
   email: string,
   token: string,
 ) => {
-  if (!name) {
-    name = "there"
-  }
-
   await resend.emails.send({
     from: "onboarding@resend.dev",
     to: email,
@@ -72,7 +68,7 @@ export const sendTwoFactorTokenEmail = async (
                   <td>
                     <p
                       style="font-size:16px;margin-bottom:15px;line-height:24px;margin-top:16px">
-                      Hello ${name},
+                      Hello ${name ?? "there"},
                     </p>
                     <p
                       style="font-size:16px;margin-bottom:15px;line-height:24px;margin-top:16px">

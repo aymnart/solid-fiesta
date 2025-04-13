@@ -16,11 +16,7 @@ export default function Home() {
         <h1 className={"text-6xl drop-shadow-md font-semibold text-foreground"}>Auth</h1>
         <p className="text-foreground capitalize text-lg">simple authentication service</p>
 
-        <LoginButton mode="redirect">
-          <Button className="capitalize" variant={"default"} size={"lg"}>
-            sign in
-          </Button>
-        </LoginButton>
+        <LoginButton mode="redirect">sign in</LoginButton>
         <div className="mx-auto flex  text-balance gap-4 h-96 w-[61ch] items-center justify-center">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia dolorum deleniti
           perferendis sunt perspiciatis, mollitia vel illum sapiente voluptates architecto

@@ -4,9 +4,6 @@ import { Resend } from "resend"
 const resend = new Resend(process.env.RESEND_API_KEY)
 
 export const sendVerificationEmail = async (name: string | null, email: string, token: string) => {
-  if (!name) {
-    name = "there"
-  }
   const confirmLink = `${process.env.NEXT_PUBLIC_URL}/auth/new-verification?token=${token}`
   await resend.emails.send({
     from: "onboarding@resend.dev",
@@ -67,7 +64,7 @@ export const sendVerificationEmail = async (name: string | null, email: string, 
                   <td>
                     <p
                       style="font-size:16px;margin-bottom:15px;line-height:24px;margin-top:16px">
-                      Hello ${name},
+                      Hello ${name ?? "there"},
                     </p>
                     <p
                       style="font-size:16px;margin-bottom:15px;line-height:24px;margin-top:16px">

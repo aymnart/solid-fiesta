@@ -1,6 +1,7 @@
 "use client"
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { useRouter } from "next/navigation"
+import { Button } from "../ui/button"
 import { LoginForm } from "./login-form"
 
 interface LoginButtonProps {
@@ -27,5 +28,20 @@ export const LoginButton = ({ children, mode = "redirect" }: LoginButtonProps) =
       </Dialog>
     )
   }
-  return <span onClick={onClick}>{children}</span>
+  return (
+    <Button
+      className="capitalize"
+      variant={"default"}
+      size={"lg"}
+      onClick={onClick}
+      onKeyDown={e => {
+        if (e.key === "Enter" || e.key === " ") {
+          onClick()
+        }
+      }}
+      tabIndex={0}
+    >
+      {children}
+    </Button>
+  )
 }
