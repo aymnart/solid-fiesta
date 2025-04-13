@@ -1,14 +1,9 @@
-"use client";
-import React, { useState, useTransition } from "react";
-import { CardWrapper } from "@/components/auth/card-wrapper";
-import * as z from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from "@/components/ui/input-otp";
+"use client"
+import { login } from "@/actions/auth/login"
+import { CardWrapper } from "@/components/auth/card-wrapper"
+import FormError from "@/components/general/form-error"
+import FormSuccess from "@/components/general/form-success"
+import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
@@ -16,33 +11,30 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { useSearchParams } from "next/navigation";
-import { LoginSchema } from "@/schemas/auth/login";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { EyeIcon, EyeOffIcon, Loader } from "lucide-react";
-import FormError from "@/components/general/form-error";
-import FormSuccess from "@/components/general/form-success";
-import { login } from "@/actions/auth/login";
-import Link from "next/link";
-import { authErrorMessages } from "@/lib/error-messages";
-import FormInfo from "../general/form-info";
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp"
+import { authErrorMessages } from "@/lib/error-messages"
+import { LoginSchema } from "@/schemas/auth/login"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { EyeIcon, EyeOffIcon, Loader } from "lucide-react"
+import Link from "next/link"
+import { useSearchParams } from "next/navigation"
+import React, { useState, useTransition } from "react"
+import { useForm } from "react-hook-form"
+import type * as z from "zod"
+import FormInfo from "../general/form-info"
 
 export function LoginForm() {
-  const searchParams = useSearchParams();
-  const authError = searchParams?.get("error") as
-    | keyof typeof authErrorMessages
-    | null;
+  const searchParams = useSearchParams()
+  const authError = searchParams?.get("error") as keyof typeof authErrorMessages | null
 
-  const urlError = authError
-    ? authErrorMessages[authError] || authErrorMessages.Default
-    : "";
-  const [showTwoFactor, setShowTwoFactor] = useState<boolean>(false);
-  const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [isPending, startTransition] = useTransition();
-  const [error, setError] = useState<string | undefined>("");
-  const [success, setSuccess] = useState<string | undefined>("");
+  const urlError = authError ? authErrorMessages[authError] || authErrorMessages.Default : ""
+  const [showTwoFactor, setShowTwoFactor] = useState<boolean>(false)
+  const [showPassword, setShowPassword] = useState<boolean>(false)
+  const [isPending, startTransition] = useTransition()
+  const [error, setError] = useState<string | undefined>("")
+  const [success, setSuccess] = useState<string | undefined>("")
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
     mode: "onChange",
@@ -50,46 +42,41 @@ export function LoginForm() {
       email: "",
       password: "",
     },
-  });
+  })
 
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
-    setError("");
-    setSuccess("");
+    setError("")
+    setSuccess("")
     startTransition(() => {
       login(values)
-        .then((data) => {
+        .then(data => {
           if (data?.error) {
-            form.resetField("password");
-            setError(data.error);
+            form.resetField("password")
+            setError(data.error)
           }
           if (data?.success) {
-            form.reset();
-            setSuccess(data.success);
+            form.reset()
+            setSuccess(data.success)
           }
           if (data?.twoFactor) {
-            setShowTwoFactor(true);
+            setShowTwoFactor(true)
           }
         })
-        .catch(() => setError("Something went wrong!"));
-    });
-  };
+        .catch(() => setError("Something went wrong!"))
+    })
+  }
 
   return (
     <CardWrapper
       headerLabel={showTwoFactor ? "" : "Welcome back!"}
-      headerDescription={
-        showTwoFactor ? "" : "Login using your Google or Github account."
-      }
+      headerDescription={showTwoFactor ? "" : "Login using your Google or Github account."}
       backButtonLabel={showTwoFactor ? "" : "Don't have an account? Sign up"}
       backButtonHref="/auth/register"
       className="bg-transparent"
       showSocial={!showTwoFactor}
     >
       <Form {...form}>
-        <form
-          className="flex flex-col gap-8"
-          onSubmit={form.handleSubmit(onSubmit)}
-        >
+        <form className="flex flex-col gap-8" onSubmit={form.handleSubmit(onSubmit)}>
           <div className="grid gap-6">
             {/* ---------------EMAIL------------------ */}
             {showTwoFactor && (
@@ -136,9 +123,7 @@ export function LoginForm() {
                             required
                             disabled={isPending}
                             error={form.formState.errors.email?.message}
-                            isValid={
-                              !form.formState.errors.email && !!field.value
-                            }
+                            isValid={!form.formState.errors.email && !!field.value}
                           />
                         </div>
                       </FormControl>
@@ -154,10 +139,7 @@ export function LoginForm() {
                     <FormItem>
                       <div className="flex items-center justify-between">
                         <FormLabel htmlFor="password">Password</FormLabel>
-                        <Link
-                          href="/auth/reset"
-                          className="text-xs text-primary hover:underline"
-                        >
+                        <Link href="/auth/reset" className="text-xs text-primary hover:underline">
                           Forgot password?
                         </Link>
                       </div>
@@ -174,9 +156,7 @@ export function LoginForm() {
                             disabled={isPending}
                             minLength={6}
                             error={form.formState.errors.password?.message}
-                            isValid={
-                              !form.formState.errors.password && !!field.value
-                            }
+                            isValid={!form.formState.errors.password && !!field.value}
                             className="pr-10"
                           />
                           <Button
@@ -187,10 +167,7 @@ export function LoginForm() {
                             onClick={() => setShowPassword(!showPassword)}
                           >
                             {showPassword ? (
-                              <EyeOffIcon
-                                className="h-4 w-4"
-                                aria-hidden="true"
-                              />
+                              <EyeOffIcon className="h-4 w-4" aria-hidden="true" />
                             ) : (
                               <EyeIcon className="h-4 w-4" aria-hidden="true" />
                             )}
@@ -214,11 +191,7 @@ export function LoginForm() {
             <FormInfo message="A 2FA code has been sent to your email. Please enter it below to proceed." />
           )}
 
-          <Button
-            className="w-full capitalize"
-            type="submit"
-            disabled={isPending}
-          >
+          <Button className="w-full capitalize" type="submit" disabled={isPending}>
             {isPending ? (
               <span className="flex gap-2 items-center justify-center transition-all">
                 <Loader className="animate-spin" />
@@ -232,5 +205,5 @@ export function LoginForm() {
         </form>
       </Form>
     </CardWrapper>
-  );
+  )
 }

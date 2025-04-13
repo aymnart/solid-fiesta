@@ -1,26 +1,22 @@
-"use client";
-import * as React from "react";
-import { buttonVariants } from "@/components/ui/button";
-import { Home, Menu, Settings } from "lucide-react";
-import UserButton from "./user-button";
-import Link from "next/link";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
-import { usePathname } from "next/navigation";
+"use client"
+import { buttonVariants } from "@/components/ui/button"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
+import { cn } from "@/lib/utils"
+import { Home, Menu, Settings } from "lucide-react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import * as React from "react"
+import UserButton from "./user-button"
 
 interface NavItem {
-  label: string;
-  href: string;
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-  isActive: boolean;
+  label: string
+  href: string
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
+  isActive: boolean
 }
 
 export default function Navbar() {
-  const pathname = usePathname();
+  const pathname = usePathname()
 
   const navItems: NavItem[] = React.useMemo(
     () => [
@@ -43,8 +39,8 @@ export default function Navbar() {
         isActive: pathname.startsWith("/menu"),
       },
     ],
-    [pathname]
-  );
+    [pathname],
+  )
 
   return (
     <nav className="z-50 w-max mx-auto flex fixed top-2 left-0 right-0 items-center justify-center space-x-4 rounded-full border bg-background p-2 shadow-lg">
@@ -59,7 +55,7 @@ export default function Navbar() {
                   variant: "ghost",
                   size: item.isActive ? "default" : "icon",
                 }),
-                "rounded-full"
+                "rounded-full",
               )}
             >
               {item.icon && <item.icon />}
@@ -73,5 +69,5 @@ export default function Navbar() {
 
       <UserButton />
     </nav>
-  );
+  )
 }

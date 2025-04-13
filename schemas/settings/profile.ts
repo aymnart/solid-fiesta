@@ -1,4 +1,4 @@
-import * as z from "zod";
+import * as z from "zod"
 
 export const profileFormSchema = z.object({
   name: z
@@ -20,4 +20,4 @@ export const profileFormSchema = z.object({
   language: z.string({
     required_error: "Please select a language.",
   }),
-});
+})

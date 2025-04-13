@@ -1,5 +1,5 @@
-import { Separator } from "@/components/ui/separator";
-import { ProfileForm } from "@/components/settings/profile-form";
+import { ProfileForm } from "@/components/settings/profile-form"
+import { Separator } from "@/components/ui/separator"
 
 export default function SettingsProfilePage() {
   return (
@@ -13,5 +13,5 @@ export default function SettingsProfilePage() {
       <Separator />
       <ProfileForm />
     </div>
-  );
+  )
 }

@@ -1,4 +1,6 @@
-import React from "react";
+import { logout } from "@/actions/auth/logout"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -6,17 +8,15 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Bell, CreditCard, LogOut, Sparkles, UserCircle } from "lucide-react";
-import { useCurrentUser } from "@/hooks/use-current-user";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { logout } from "@/actions/auth/logout";
-import Link from "next/link";
+} from "@/components/ui/dropdown-menu"
+import { useCurrentUser } from "@/hooks/use-current-user"
+import { Bell, CreditCard, LogOut, Sparkles, UserCircle } from "lucide-react"
+import Link from "next/link"
+import React from "react"
 
 const logOut = () => {
-  logout();
-};
+  logout()
+}
 const dropDownItems = [
   {
     icon: Sparkles,
@@ -48,19 +48,14 @@ const dropDownItems = [
     href: "",
     onClick: logOut,
   },
-];
+]
 
 export default function UserButton() {
-  const user = useCurrentUser();
+  const user = useCurrentUser()
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="rounded-full cursor-pointer"
-          asChild
-        >
+        <Button variant="ghost" size="icon" className="rounded-full cursor-pointer" asChild>
           <Avatar className="h-8 w-8 rounded-lg ">
             <AvatarImage
               src={user?.image || undefined}
@@ -92,18 +87,14 @@ export default function UserButton() {
             </Avatar>
             <div className="grid flex-1 text-left text-sm leading-tight">
               <span className="truncate font-semibold">{user?.name}</span>
-              <span className="truncate text-xs text-muted-foreground">
-                {user?.email}
-              </span>
+              <span className="truncate text-xs text-muted-foreground">{user?.email}</span>
             </div>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         {dropDownItems.map((item, index) => (
           <React.Fragment key={index}>
-            {(index === 1 || index === dropDownItems.length - 1) && (
-              <DropdownMenuSeparator />
-            )}
+            {(index === 1 || index === dropDownItems.length - 1) && <DropdownMenuSeparator />}
 
             <DropdownMenuItem asChild onClick={item.onClick}>
               <Link href={item.href}>
@@ -115,5 +106,5 @@ export default function UserButton() {
         ))}
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }

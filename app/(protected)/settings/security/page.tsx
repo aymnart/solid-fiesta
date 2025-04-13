@@ -1,18 +1,18 @@
-import { Separator } from "@/components/ui/separator";
-import { SecurityForm } from "@/components/settings/security-form";
-import { auth } from "@/auth";
-import { getIsTwoFactorEnabledById } from "@/data/user";
-import { getAccountById } from "@/data/account";
+import { auth } from "@/auth"
+import { SecurityForm } from "@/components/settings/security-form"
+import { Separator } from "@/components/ui/separator"
+import { getAccountById } from "@/data/account"
+import { getIsTwoFactorEnabledById } from "@/data/user"
 
 export default async function SecurityPage() {
-  const session = await auth();
-  const userId = session?.user?.id;
+  const session = await auth()
+  const userId = session?.user?.id
 
   if (!userId) {
-    return <p>You need to be logged in to edit settings.</p>;
+    return <p>You need to be logged in to edit settings.</p>
   }
-  const account = await getAccountById(userId, { provider: true });
-  const isTwoAuthEnabled = await getIsTwoFactorEnabledById(userId);
+  const account = await getAccountById(userId, { provider: true })
+  const isTwoAuthEnabled = await getIsTwoFactorEnabledById(userId)
 
   return (
     <div className="space-y-6">
@@ -23,10 +23,7 @@ export default async function SecurityPage() {
         </p>
       </div>
       <Separator />
-      <SecurityForm
-        provider={account?.provider}
-        two_factor={isTwoAuthEnabled}
-      />
+      <SecurityForm provider={account?.provider} two_factor={isTwoAuthEnabled} />
     </div>
-  );
+  )
 }

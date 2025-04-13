@@ -1,11 +1,11 @@
-import { Separator } from "@/components/ui/separator";
-import { Metadata } from "next";
-import { SidebarNav } from "@/components/settings/sidebar-nav";
+import { SidebarNav } from "@/components/settings/sidebar-nav"
+import { Separator } from "@/components/ui/separator"
+import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Settings",
   description: "Manage your account settings and set e-mail preferences.",
-};
+}
 
 const sidebarNavItems = [
   {
@@ -25,12 +25,12 @@ const sidebarNavItems = [
     title: "Security",
     href: "/settings/security",
   },
-];
+]
 
 export default function SettingsLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <section className="space-y-6 p-4 md:p-10 md:block">
@@ -46,5 +46,5 @@ export default function SettingsLayout({
         <div className="flex-1 lg:max-w-2xl">{children}</div>
       </div>
     </section>
-  );
+  )
 }

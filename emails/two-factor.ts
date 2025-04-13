@@ -1,14 +1,17 @@
-import { twoFactorTokenExpiryString } from "@/tokens.config";
-import { Resend } from "resend";
+import { twoFactorTokenExpiryString } from "@/tokens.config"
+import { Resend } from "resend"
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 export const sendTwoFactorTokenEmail = async (
   name: string | null,
   email: string,
-  token: string
+  token: string,
 ) => {
-  name = name ? name : "there";
+  if (!name) {
+    name = "there"
+  }
+
   await resend.emails.send({
     from: "onboarding@resend.dev",
     to: email,
@@ -170,5 +173,5 @@ export const sendTwoFactorTokenEmail = async (
   </body>
 </html>
 `,
-  });
-};
+  })
+}

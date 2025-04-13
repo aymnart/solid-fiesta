@@ -1,11 +1,11 @@
-import { SessionProvider } from "next-auth/react";
-import React from "react";
-import Navbar from "@/components/navigation/navbar";
+import Navbar from "@/components/navigation/navbar"
+import { SessionProvider } from "next-auth/react"
+import type React from "react"
 
 export default async function ProtectedLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <SessionProvider>
@@ -14,5 +14,5 @@ export default async function ProtectedLayout({
         <section className="mt-20">{children}</section>
       </main>
     </SessionProvider>
-  );
+  )
 }

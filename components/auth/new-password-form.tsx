@@ -1,9 +1,9 @@
-"use client";
-import React, { useState, useTransition } from "react";
-import { CardWrapper } from "@/components/auth/card-wrapper";
-import * as z from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+"use client"
+import { newPassword } from "@/actions/auth/new-password"
+import { CardWrapper } from "@/components/auth/card-wrapper"
+import FormError from "@/components/general/form-error"
+import FormSuccess from "@/components/general/form-success"
+import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
@@ -11,23 +11,23 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { NewPasswordSchema } from "@/schemas/auth/new-password";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import FormError from "@/components/general/form-error";
-import FormSuccess from "@/components/general/form-success";
-import { EyeIcon, EyeOffIcon, KeyRound, Loader } from "lucide-react";
-import { newPassword } from "@/actions/auth/new-password";
-import { useSearchParams } from "next/navigation";
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { NewPasswordSchema } from "@/schemas/auth/new-password"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { EyeIcon, EyeOffIcon, KeyRound, Loader } from "lucide-react"
+import { useSearchParams } from "next/navigation"
+import React, { useState, useTransition } from "react"
+import { useForm } from "react-hook-form"
+import type * as z from "zod"
 
 export function NewPasswordForm() {
-  const [showPassword, setShowPassword] = useState<boolean>(false);
-  const searchParams = useSearchParams();
-  const token = searchParams?.get("token");
-  const [isPending, startTransition] = useTransition();
-  const [error, setError] = useState<string | undefined>("");
-  const [success, setSuccess] = useState<string | undefined>("");
+  const [showPassword, setShowPassword] = useState<boolean>(false)
+  const searchParams = useSearchParams()
+  const token = searchParams?.get("token")
+  const [isPending, startTransition] = useTransition()
+  const [error, setError] = useState<string | undefined>("")
+  const [success, setSuccess] = useState<string | undefined>("")
 
   const form = useForm<z.infer<typeof NewPasswordSchema>>({
     resolver: zodResolver(NewPasswordSchema),
@@ -36,31 +36,29 @@ export function NewPasswordForm() {
       password: "",
       confirmPassword: "", // Add confirmPassword to default values
     },
-  });
+  })
 
   const onSubmit = (values: z.infer<typeof NewPasswordSchema>) => {
-    setError("");
-    setSuccess("");
+    setError("")
+    setSuccess("")
     if (values.password !== values.confirmPassword) {
       // Add password match validation
-      setError("Passwords do not match");
-      return;
+      setError("Passwords do not match")
+      return
     }
     startTransition(() => {
-      newPassword(values, token).then((data) => {
-        setError(data?.error);
-        setSuccess(
-          data?.success && data?.success + " Redirecting to login page..."
-        );
+      newPassword(values, token).then(data => {
+        setError(data?.error)
+        setSuccess(data?.success && `${data?.success} Redirecting to login page...`)
 
         if (data?.success) {
           setTimeout(() => {
-            window.location.href = "/auth/login";
-          }, 2500);
+            window.location.href = "/auth/login"
+          }, 2500)
         }
-      });
-    });
-  };
+      })
+    })
+  }
 
   return (
     <CardWrapper
@@ -92,9 +90,7 @@ export function NewPasswordForm() {
                         disabled={isPending}
                         minLength={6}
                         error={form.formState.errors.password?.message}
-                        isValid={
-                          !form.formState.errors.password && !!field.value
-                        }
+                        isValid={!form.formState.errors.password && !!field.value}
                         className="pr-10"
                       />
                       <Button
@@ -125,9 +121,7 @@ export function NewPasswordForm() {
               name="confirmPassword"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel htmlFor="confirmPassword">
-                    Confirm New Password
-                  </FormLabel>
+                  <FormLabel htmlFor="confirmPassword">Confirm New Password</FormLabel>
                   <FormControl>
                     <div className="relative">
                       <Input
@@ -140,10 +134,7 @@ export function NewPasswordForm() {
                         disabled={isPending}
                         minLength={6}
                         error={form.formState.errors.confirmPassword?.message}
-                        isValid={
-                          !form.formState.errors.confirmPassword &&
-                          !!field.value
-                        }
+                        isValid={!form.formState.errors.confirmPassword && !!field.value}
                         className="pr-10"
                       />
                     </div>
@@ -157,11 +148,7 @@ export function NewPasswordForm() {
           <FormError message={error} />
           <FormSuccess message={success} />
           {/* Submit Button */}
-          <Button
-            className="w-full capitalize"
-            type="submit"
-            disabled={isPending}
-          >
+          <Button className="w-full capitalize" type="submit" disabled={isPending}>
             {isPending ? (
               <span className="flex gap-2 items-center justify-center transition-all">
                 <Loader className="animate-spin" />
@@ -174,5 +161,5 @@ export function NewPasswordForm() {
         </form>
       </Form>
     </CardWrapper>
-  );
+  )
 }

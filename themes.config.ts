@@ -6,11 +6,11 @@ export const themes = [
   "moonlit",
   "obsidian-dark",
   "lavender-dusk",
-] as const;
+] as const
 
-export type Theme = (typeof themes)[number];
+export type Theme = (typeof themes)[number]
 
-export const defaultTheme: Theme = "dark";
+export const defaultTheme: Theme = "dark"
 
 /**
  * Determines if the provided value is a valid theme type.
@@ -23,5 +23,5 @@ export const defaultTheme: Theme = "dark";
  * @returns A boolean indicating whether the value is a valid `Theme`.
  */
 export const isThemeType = (theme: unknown): theme is Theme => {
-  return typeof theme === "string" && themes.includes(theme as Theme);
-};
+  return typeof theme === "string" && themes.includes(theme as Theme)
+}

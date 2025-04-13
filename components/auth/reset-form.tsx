@@ -1,9 +1,9 @@
-"use client";
-import React, { useState, useTransition } from "react";
-import { CardWrapper } from "@/components/auth/card-wrapper";
-import * as z from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+"use client"
+import { reset } from "@/actions/auth/reset-password"
+import { CardWrapper } from "@/components/auth/card-wrapper"
+import FormError from "@/components/general/form-error"
+import FormSuccess from "@/components/general/form-success"
+import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
@@ -11,37 +11,37 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { ResetPasswordSchema } from "@/schemas/auth/reset-password";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import FormError from "@/components/general/form-error";
-import FormSuccess from "@/components/general/form-success";
-import { Loader, ShieldCheck } from "lucide-react";
-import { reset } from "@/actions/auth/reset-password";
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { ResetPasswordSchema } from "@/schemas/auth/reset-password"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { Loader, ShieldCheck } from "lucide-react"
+import React, { useState, useTransition } from "react"
+import { useForm } from "react-hook-form"
+import type * as z from "zod"
 
 export function ResetForm() {
-  const [isPending, startTransition] = useTransition();
-  const [error, setError] = useState<string | undefined>("");
-  const [success, setSuccess] = useState<string | undefined>("");
+  const [isPending, startTransition] = useTransition()
+  const [error, setError] = useState<string | undefined>("")
+  const [success, setSuccess] = useState<string | undefined>("")
   const form = useForm<z.infer<typeof ResetPasswordSchema>>({
     resolver: zodResolver(ResetPasswordSchema),
     mode: "onChange",
     defaultValues: {
       email: "",
     },
-  });
+  })
 
   const onSubmit = (values: z.infer<typeof ResetPasswordSchema>) => {
-    setError("");
-    setSuccess("");
+    setError("")
+    setSuccess("")
     startTransition(() => {
-      reset(values).then((data) => {
-        setError(data?.error);
-        setSuccess(data?.success);
-      });
-    });
-  };
+      reset(values).then(data => {
+        setError(data?.error)
+        setSuccess(data?.success)
+      })
+    })
+  }
 
   return (
     <CardWrapper
@@ -52,10 +52,7 @@ export function ResetForm() {
       backButtonHref="/auth/login"
     >
       <Form {...form}>
-        <form
-          className={"flex flex-col gap-10"}
-          onSubmit={form.handleSubmit(onSubmit)}
-        >
+        <form className={"flex flex-col gap-10"} onSubmit={form.handleSubmit(onSubmit)}>
           <div className="grid gap-6">
             {/* ---------------EMAIL------------------ */}
             <FormField
@@ -89,11 +86,7 @@ export function ResetForm() {
           </div>
           <FormError message={error} />
           <FormSuccess message={success} />
-          <Button
-            className="w-full capitalize"
-            type="submit"
-            disabled={isPending}
-          >
+          <Button className="w-full capitalize" type="submit" disabled={isPending}>
             {isPending ? (
               <span className="flex gap-2 items-center justify-center transition-all">
                 <Loader className="animate-spin" />
@@ -105,5 +98,5 @@ export function ResetForm() {
         </form>
       </Form>
     </CardWrapper>
-  );
+  )
 }

@@ -1,6 +1,6 @@
-"use server";
-import { db } from "@/lib/db";
-import { Prisma } from "@prisma/client";
+"use server"
+import { db } from "@/lib/db"
+import type { Prisma } from "@prisma/client"
 
 /**
  * Gets a verification token by email with optimized performance
@@ -8,26 +8,24 @@ import { Prisma } from "@prisma/client";
  * @param select Optional object specifying which fields to return
  * @returns The verification token or null if not found
  */
-export const getVerificationTokenByEmail = async <
-  T extends Prisma.VerificationTokenSelect
->(
+export const getVerificationTokenByEmail = async <T extends Prisma.VerificationTokenSelect>(
   email: string,
-  select?: T
+  select?: T,
 ): Promise<Prisma.VerificationTokenGetPayload<{ select: T }> | null> => {
   if (!email) {
-    return null;
+    return null
   }
 
   try {
     return await db.verificationToken.findFirst({
       where: { email },
       select: select as T, // Explicitly cast select to T
-    });
+    })
   } catch (error) {
-    console.error("Error fetching verification token by email:", error);
-    return null;
+    console.error("Error fetching verification token by email:", error)
+    return null
   }
-};
+}
 
 /**
  * Gets a verification token by token string with optimized performance
@@ -35,23 +33,21 @@ export const getVerificationTokenByEmail = async <
  * @param select Optional object specifying which fields to return
  * @returns The verification token or null if not found
  */
-export const getVerificationTokenByToken = async <
-  T extends Prisma.VerificationTokenSelect
->(
+export const getVerificationTokenByToken = async <T extends Prisma.VerificationTokenSelect>(
   token: string,
-  select?: T
+  select?: T,
 ): Promise<Prisma.VerificationTokenGetPayload<{ select: T }> | null> => {
   if (!token) {
-    return null;
+    return null
   }
 
   try {
     return await db.verificationToken.findUnique({
       where: { token },
       select: select as T, // Explicitly cast select to T
-    });
+    })
   } catch (error) {
-    console.error("Error fetching verification token by token:", error);
-    return null;
+    console.error("Error fetching verification token by token:", error)
+    return null
   }
-};
+}

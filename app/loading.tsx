@@ -1,4 +1,4 @@
-import "@/css/cube-loader.css";
+import "@/css/cube-loader.css"
 export default function Loading() {
   return (
     <main className="flex justify-center items-center h-screen w-screen">
@@ -13,5 +13,5 @@ export default function Loading() {
         </div>
       </div>
     </main>
-  );
+  )
 }

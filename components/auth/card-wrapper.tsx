@@ -1,5 +1,5 @@
-"use client";
-import React from "react";
+"use client"
+import { Social } from "@/components/auth/social"
 import {
   Card,
   CardContent,
@@ -7,18 +7,18 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Social } from "@/components/auth/social";
-import { cn } from "@/lib/utils";
-import { Button } from "../ui/button";
-import Link from "next/link";
+} from "@/components/ui/card"
+import { cn } from "@/lib/utils"
+import Link from "next/link"
+import type React from "react"
+import { Button } from "../ui/button"
 
 interface CardWrapperProps {
-  children?: React.ReactNode;
-  headerLabel: string;
-  headerDescription?: string;
-  backButtonLabel: string;
-  backButtonHref: string;
+  children?: React.ReactNode
+  headerLabel: string
+  headerDescription?: string
+  backButtonLabel: string
+  backButtonHref: string
   backButtonVariant?:
     | "link"
     | "default"
@@ -28,10 +28,10 @@ interface CardWrapperProps {
     | "secondary"
     | "ghost"
     | null
-    | undefined;
-  showSocial?: boolean;
-  icon?: React.ReactNode;
-  className?: string;
+    | undefined
+  showSocial?: boolean
+  icon?: React.ReactNode
+  className?: string
 }
 
 export function CardWrapper({
@@ -47,19 +47,14 @@ export function CardWrapper({
 }: CardWrapperProps) {
   return (
     <Card
-      className={cn(
-        "w-96 grid justify-center items-center border-none shadow-none",
-        className
-      )}
+      className={cn("w-96 grid justify-center items-center border-none shadow-none", className)}
     >
       <CardHeader className="text-center">
         {icon && <div className="mb-2 mx-auto">{icon}</div>}
         <CardTitle className="text-2xl font-bold text-balance text-foreground">
           {headerLabel}
         </CardTitle>
-        {headerDescription && (
-          <CardDescription>{headerDescription}</CardDescription>
-        )}
+        {headerDescription && <CardDescription>{headerDescription}</CardDescription>}
       </CardHeader>
       {showSocial && (
         <CardContent className="pb-0">
@@ -70,15 +65,10 @@ export function CardWrapper({
 
       <CardFooter>
         {/* back button */}
-        <Button
-          variant={backButtonVariant}
-          className="w-full font-normal"
-          size={"sm"}
-          asChild
-        >
+        <Button variant={backButtonVariant} className="w-full font-normal" size={"sm"} asChild>
           <Link href={backButtonHref}>{backButtonLabel}</Link>
         </Button>
       </CardFooter>
     </Card>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import * as z from "zod";
+import * as z from "zod"
 
 export const NewPasswordSchema = z
   .object({
@@ -11,7 +11,7 @@ export const NewPasswordSchema = z
       .nonempty("Password is required")
       .min(6, { message: "Minimum 6 characters required!" }),
   })
-  .refine((data) => data.password === data.confirmPassword, {
+  .refine(data => data.password === data.confirmPassword, {
     message: "Passwords don't match",
     path: ["confirmPassword"],
-  });
+  })

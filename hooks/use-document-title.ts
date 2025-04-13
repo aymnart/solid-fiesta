@@ -1,10 +1,10 @@
-"use client";
-import { useEffect } from "react";
+"use client"
+import { useEffect } from "react"
 
 const useDocumentTitle = (title: string) => {
   useEffect(() => {
-    document.title = title;
-  }, [title]);
-};
+    document.title = title
+  }, [title])
+}
 
-export default useDocumentTitle;
+export default useDocumentTitle

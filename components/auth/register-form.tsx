@@ -1,9 +1,9 @@
-"use client";
-import React, { useState, useTransition } from "react";
-import { CardWrapper } from "@/components/auth/card-wrapper";
-import * as z from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+"use client"
+import { register } from "@/actions/auth/register"
+import { CardWrapper } from "@/components/auth/card-wrapper"
+import FormError from "@/components/general/form-error"
+import FormSuccess from "@/components/general/form-success"
+import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
@@ -11,30 +11,26 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { RegisterSchema } from "@/schemas/auth/register";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { EyeIcon, EyeOffIcon, Loader } from "lucide-react";
-import FormError from "@/components/general/form-error";
-import FormSuccess from "@/components/general/form-success";
-import { register } from "@/actions/auth/register";
-import { useSearchParams } from "next/navigation";
-import { authErrorMessages } from "@/lib/error-messages";
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { authErrorMessages } from "@/lib/error-messages"
+import { RegisterSchema } from "@/schemas/auth/register"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { EyeIcon, EyeOffIcon, Loader } from "lucide-react"
+import { useSearchParams } from "next/navigation"
+import React, { useState, useTransition } from "react"
+import { useForm } from "react-hook-form"
+import type * as z from "zod"
 
 export function RegisterForm() {
-  const searchParams = useSearchParams();
-  const authError = searchParams?.get("error") as
-    | keyof typeof authErrorMessages
-    | null;
+  const searchParams = useSearchParams()
+  const authError = searchParams?.get("error") as keyof typeof authErrorMessages | null
 
-  const urlError = authError
-    ? authErrorMessages[authError] || authErrorMessages.Default
-    : "";
-  const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [isPending, startTransition] = useTransition();
-  const [error, setError] = useState<string | undefined>("");
-  const [success, setSuccess] = useState<string | undefined>("");
+  const urlError = authError ? authErrorMessages[authError] || authErrorMessages.Default : ""
+  const [showPassword, setShowPassword] = useState<boolean>(false)
+  const [isPending, startTransition] = useTransition()
+  const [error, setError] = useState<string | undefined>("")
+  const [success, setSuccess] = useState<string | undefined>("")
   const form = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
     mode: "onChange",
@@ -44,18 +40,18 @@ export function RegisterForm() {
       password: "",
       confirmPassword: "",
     },
-  });
+  })
 
   const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
-    setError("");
-    setSuccess("");
+    setError("")
+    setSuccess("")
     startTransition(() => {
-      register(values).then((data) => {
-        setError(data.error);
-        setSuccess(data.success);
-      });
-    });
-  };
+      register(values).then(data => {
+        setError(data.error)
+        setSuccess(data.success)
+      })
+    })
+  }
 
   return (
     <CardWrapper
@@ -138,9 +134,7 @@ export function RegisterForm() {
                         disabled={isPending}
                         minLength={6}
                         error={form.formState.errors.password?.message}
-                        isValid={
-                          !form.formState.errors.password && !!field.value
-                        }
+                        isValid={!form.formState.errors.password && !!field.value}
                         className="pr-10"
                       />
                       <Button
@@ -171,9 +165,7 @@ export function RegisterForm() {
               name="confirmPassword"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel htmlFor="confirmPassword">
-                    Confirm Password
-                  </FormLabel>
+                  <FormLabel htmlFor="confirmPassword">Confirm Password</FormLabel>
                   <FormControl>
                     <div className="relative">
                       <Input
@@ -186,10 +178,7 @@ export function RegisterForm() {
                         disabled={isPending}
                         minLength={6}
                         error={form.formState.errors.confirmPassword?.message}
-                        isValid={
-                          !form.formState.errors.confirmPassword &&
-                          !!field.value
-                        }
+                        isValid={!form.formState.errors.confirmPassword && !!field.value}
                         className="pr-10"
                       />
                     </div>
@@ -213,5 +202,5 @@ export function RegisterForm() {
         </form>
       </Form>
     </CardWrapper>
-  );
+  )
 }

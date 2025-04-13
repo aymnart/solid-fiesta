@@ -1,11 +1,11 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion"
+import Image from "next/image"
+import { useEffect, useState } from "react"
 
-import { RegisterForm } from "@/components/auth/register-form";
-import useDocumentTitle from "@/hooks/use-document-title";
+import { RegisterForm } from "@/components/auth/register-form"
+import useDocumentTitle from "@/hooks/use-document-title"
 
 const marketingPhrases = [
   "Revolutionize your workflow with an AI-optimized inbox that learns your priorities and acts on them.",
@@ -28,25 +28,25 @@ const marketingPhrases = [
   "AI-assisted writing: Fix grammar, reduce wordiness, and perfect punctuation in one click.",
   "Auto-create meeting agendas from email threads – let AI extract action items and decisions.",
   "Future-ready AI: The more you use it, the better it adapts to your unique communication style.",
-];
+]
 
 export default function RegisterPage() {
-  useDocumentTitle("Register");
+  useDocumentTitle("Register")
 
-  const [currentQuote, setCurrentQuote] = useState(marketingPhrases[0]);
-  const [quoteIndex, setQuoteIndex] = useState(0);
+  const [currentQuote, setCurrentQuote] = useState(marketingPhrases[0])
+  const [quoteIndex, setQuoteIndex] = useState(0)
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setQuoteIndex((prevIndex) => (prevIndex + 1) % marketingPhrases.length);
-    }, 7000); // Change quote every 8 seconds
+      setQuoteIndex(prevIndex => (prevIndex + 1) % marketingPhrases.length)
+    }, 7000) // Change quote every 8 seconds
 
-    return () => clearInterval(intervalId);
-  }, []);
+    return () => clearInterval(intervalId)
+  }, [])
 
   useEffect(() => {
-    setCurrentQuote(marketingPhrases[quoteIndex]);
-  }, [quoteIndex]);
+    setCurrentQuote(marketingPhrases[quoteIndex])
+  }, [quoteIndex])
 
   return (
     <div className="grid  min-h-svh lg:grid-cols-2">
@@ -81,5 +81,5 @@ export default function RegisterPage() {
         </div>
       </div>
     </div>
-  );
+  )
 }

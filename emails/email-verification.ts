@@ -1,15 +1,13 @@
-import { emailVerificationTokenExpiryString } from "@/tokens.config";
-import { Resend } from "resend";
+import { emailVerificationTokenExpiryString } from "@/tokens.config"
+import { Resend } from "resend"
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY)
 
-export const sendVerificationEmail = async (
-  name: string | null,
-  email: string,
-  token: string
-) => {
-  name = name ? name : "there";
-  const confirmLink = `${process.env.NEXT_PUBLIC_URL}/auth/new-verification?token=${token}`;
+export const sendVerificationEmail = async (name: string | null, email: string, token: string) => {
+  if (!name) {
+    name = "there"
+  }
+  const confirmLink = `${process.env.NEXT_PUBLIC_URL}/auth/new-verification?token=${token}`
   await resend.emails.send({
     from: "onboarding@resend.dev",
     to: email,
@@ -187,5 +185,5 @@ export const sendVerificationEmail = async (
   </body>
 </html>
 `,
-  });
-};
+  })
+}

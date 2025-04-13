@@ -1,37 +1,37 @@
 import {
-  Inter,
-  Poppins,
-  IBM_Plex_Sans,
-  Merriweather,
-  Space_Grotesk,
   Atkinson_Hyperlegible,
   Fira_Code,
+  IBM_Plex_Sans,
+  Inter,
+  Merriweather,
   Outfit,
-} from "next/font/google";
+  Poppins,
+  Space_Grotesk,
+} from "next/font/google"
 
-export const inter = Inter({ subsets: ["latin"], weight: ["400"] });
-export const poppins = Poppins({ subsets: ["latin"], weight: ["400"] });
+export const inter = Inter({ subsets: ["latin"], weight: ["400"] })
+export const poppins = Poppins({ subsets: ["latin"], weight: ["400"] })
 export const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
   weight: ["400"],
-});
+})
 export const merriweather = Merriweather({
   subsets: ["latin"],
   weight: ["400"],
-});
+})
 export const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["400"],
-});
+})
 export const atkinsonHyperlegible = Atkinson_Hyperlegible({
   subsets: ["latin"],
   weight: ["400"],
-});
-export const firaCode = Fira_Code({ subsets: ["latin"], weight: ["400"] });
+})
+export const firaCode = Fira_Code({ subsets: ["latin"], weight: ["400"] })
 
-export const outfit = Outfit({ subsets: ["latin"], weight: ["400"] });
+export const outfit = Outfit({ subsets: ["latin"], weight: ["400"] })
 
-export type Font = keyof typeof fontMap;
+export type Font = keyof typeof fontMap
 
 export const fontMap = {
   Inter: inter.className,
@@ -42,7 +42,7 @@ export const fontMap = {
   AtkinsonHyperlegible: atkinsonHyperlegible.className,
   FiraCode: firaCode.className,
   Outfit: outfit.className,
-};
+}
 
 /**
  * Determines if the given value is a valid font type.
@@ -55,8 +55,8 @@ export const fontMap = {
  * @returns A boolean indicating whether the value is a valid font type.
  */
 export const isFontType = (font: unknown): font is Font => {
-  return typeof font === "string" && font in fontMap;
-};
+  return typeof font === "string" && font in fontMap
+}
 
-export const fontsList: Font[] = Object.keys(fontMap) as Font[];
-export const defaultFont: Font = "Outfit";
+export const fontsList: Font[] = Object.keys(fontMap) as Font[]
+export const defaultFont: Font = "Outfit"

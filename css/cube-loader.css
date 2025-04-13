@@ -10,11 +10,10 @@
   --bg-6: var(--gd) 0px 0px / 4px 4px, var(--gd) 2px 2px / 4px 4px, var(--dark);
   --bg-7: var(--gd) 0px 0px / 4px 4px, var(--dark);
   --bg-8: var(--dark);
-  --drop-shadow: drop-shadow(-1px -1px 0 var(--dark))
-    drop-shadow(0 -1px 0 var(--dark)) drop-shadow(1px -1px 0 var(--dark))
-    drop-shadow(1px 0 0 var(--dark)) drop-shadow(1px 1px 0 var(--dark))
-    drop-shadow(0 1px 0 var(--dark)) drop-shadow(-1px 1px 0 var(--dark))
-    drop-shadow(-1px 0 0 var(--dark));
+  --drop-shadow: drop-shadow(-1px -1px 0 var(--dark)) drop-shadow(0 -1px 0 var(--dark))
+    drop-shadow(1px -1px 0 var(--dark)) drop-shadow(1px 0 0 var(--dark))
+    drop-shadow(1px 1px 0 var(--dark)) drop-shadow(0 1px 0 var(--dark))
+    drop-shadow(-1px 1px 0 var(--dark)) drop-shadow(-1px 0 0 var(--dark));
 }
 @property --light {
   syntax: "<color>";

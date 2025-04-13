@@ -1,10 +1,10 @@
-import { passwordResetTokenExpiryString } from "@/tokens.config";
-import { Resend } from "resend";
+import { passwordResetTokenExpiryString } from "@/tokens.config"
+import { Resend } from "resend"
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 export const sendPasswordResetEmail = async (email: string, token: string) => {
-  const resetLink = `${process.env.NEXT_PUBLIC_URL}/auth/new-password?token=${token}`;
+  const resetLink = `${process.env.NEXT_PUBLIC_URL}/auth/new-password?token=${token}`
 
   await resend.emails.send({
     from: "onboarding@resend.dev",
@@ -182,5 +182,5 @@ export const sendPasswordResetEmail = async (email: string, token: string) => {
   </body>
 </html>
 `,
-  });
-};
+  })
+}

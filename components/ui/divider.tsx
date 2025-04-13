@@ -1,22 +1,21 @@
-"use client";
+"use client"
 
-import { cn } from "@/lib/utils";
-import React, { useMemo, type ReactNode } from "react";
+import { cn } from "@/lib/utils"
+import type React from "react"
+import { type ReactNode, useMemo } from "react"
 
-type Orientation = "horizontal" | "vertical" | "ver" | "hor" | "v" | "h";
-type Variant = "default" | "gradient" | "dashed" | "dotted" | "neon";
-type ThicknessValue =
-  | number
-  | `${number}${"px" | "em" | "rem" | "vh" | "vw" | "%"}`;
+type Orientation = "horizontal" | "vertical" | "ver" | "hor" | "v" | "h"
+type Variant = "default" | "gradient" | "dashed" | "dotted" | "neon"
+type ThicknessValue = number | `${number}${"px" | "em" | "rem" | "vh" | "vw" | "%"}`
 
 interface DividerProps {
-  styleChildren?: boolean;
-  className?: string;
-  orientation?: Orientation;
-  color?: string;
-  children?: ReactNode;
-  variant?: Variant;
-  thickness?: ThicknessValue;
+  styleChildren?: boolean
+  className?: string
+  orientation?: Orientation
+  color?: string
+  children?: ReactNode
+  variant?: Variant
+  thickness?: ThicknessValue
 }
 
 /**
@@ -33,11 +32,10 @@ const Divider = ({
   thickness = "1px",
 }: DividerProps) => {
   // Determine orientation with a simpler check
-  const isVertical = useMemo(() => orientation.startsWith("v"), [orientation]);
+  const isVertical = useMemo(() => orientation.startsWith("v"), [orientation])
 
   // Convert thickness to string format
-  const thicknessValue =
-    typeof thickness === "number" ? `${thickness}px` : thickness;
+  const thicknessValue = typeof thickness === "number" ? `${thickness}px` : thickness
 
   // Generate divider line styles based on variant
   const getLineStyle = (reverse = false): React.CSSProperties => {
@@ -46,7 +44,7 @@ const Divider = ({
       ...(isVertical
         ? { width: thicknessValue, height: "100%" }
         : { height: thicknessValue, width: "100%" }),
-    };
+    }
 
     if (variant === "gradient") {
       const direction = isVertical
@@ -54,13 +52,13 @@ const Divider = ({
           ? "to top"
           : "to bottom"
         : reverse
-        ? "to left"
-        : "to right";
+          ? "to left"
+          : "to right"
 
       return {
         ...baseStyle,
         background: `linear-gradient(${direction}, transparent, ${color})`,
-      };
+      }
     }
 
     if (variant === "dashed" || variant === "dotted") {
@@ -68,15 +66,15 @@ const Divider = ({
         ...baseStyle,
         background: "transparent",
         border: `1px ${variant} ${color}`,
-      };
+      }
     }
 
     return {
       ...baseStyle,
       background: color,
       ...(variant === "neon" && { boxShadow: `0 0 5px ${color}` }),
-    };
-  };
+    }
+  }
 
   return (
     <div
@@ -87,7 +85,7 @@ const Divider = ({
       className={cn(
         "m-2 flex items-center justify-center",
         isVertical ? "h-full flex-col" : "w-full flex-row",
-        className
+        className,
       )}
       style={{
         ...(isVertical
@@ -101,7 +99,7 @@ const Divider = ({
         <div
           className={cn(
             "flex items-center justify-center p-1.5 rounded-full gap-1 ",
-            isVertical && "flex-col"
+            isVertical && "flex-col",
           )}
           style={styleChildren ? { color } : undefined}
         >
@@ -111,7 +109,7 @@ const Divider = ({
 
       <span style={getLineStyle(true)} />
     </div>
-  );
-};
+  )
+}
 
-export default Divider;
+export default Divider

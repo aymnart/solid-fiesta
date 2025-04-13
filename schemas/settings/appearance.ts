@@ -1,6 +1,6 @@
-import * as z from "zod";
-import { Font, fontsList } from "@/font.config";
-import { Theme, themes } from "@/themes.config";
+import { type Font, fontsList } from "@/font.config"
+import { type Theme, themes } from "@/themes.config"
+import * as z from "zod"
 
 export const appearanceFormSchema = z.object({
   theme: z
@@ -15,4 +15,4 @@ export const appearanceFormSchema = z.object({
       required_error: "Please select a font.",
     })
     .optional(),
-});
+})

@@ -1,6 +1,6 @@
-import React from "react";
-import { CardWrapper } from "./card-wrapper";
-import { AlertCircle } from "lucide-react";
+import { AlertCircle } from "lucide-react"
+import React from "react"
+import { CardWrapper } from "./card-wrapper"
 
 export default function ErrorCard() {
   return (
@@ -14,5 +14,5 @@ export default function ErrorCard() {
       backButtonVariant={"default"}
       className="flex items-center justify-center flex-col"
     />
-  );
+  )
 }
