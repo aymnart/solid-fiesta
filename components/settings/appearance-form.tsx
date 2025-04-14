@@ -151,7 +151,7 @@ export function AppearanceForm({ theme, font }: AppearanceFormValues) {
                 className="flex-wrap flex gap-y-12 pt-4 max-w-lg lg:max-w-full"
               >
                 {themes.map(theme => (
-                  <FormItem key={theme} className="flex-1 flex-grow">
+                  <FormItem key={theme} className="flex-1 grow">
                     <FormLabel className="cursor-pointer flex flex-col items-start flex-1 space-x-2">
                       <ModeSkeleton
                         mode={theme}

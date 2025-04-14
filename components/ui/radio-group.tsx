@@ -22,7 +22,7 @@ const RadioGroupItem = React.forwardRef<
     <RadioGroupPrimitive.Item
       ref={ref}
       className={cn(
-        "aspect-square h-4 w-4 rounded-full border border-primary text-primary shadow focus:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
+        "aspect-square h-4 w-4 rounded-full border border-primary text-primary shadow-sm focus:outline-hidden focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
         className,
       )}
       {...props}
@@ -40,7 +40,7 @@ const RadioItemWrapper = React.forwardRef<HTMLDivElement, React.HTMLAttributes<H
     <div
       ref={ref}
       className={cn(
-        "relative w-fit flex items-center gap-3 bg-muted rounded-lg p-3 px-4 cursor-pointer shadow-sm shadow-input transition duration-300 hover:bg-muted/70",
+        "relative w-fit flex items-center gap-3 bg-muted rounded-lg p-3 px-4 cursor-pointer shadow-xs shadow-input transition duration-300 hover:bg-muted/70",
         className,
       )}
       {...props}

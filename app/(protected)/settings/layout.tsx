@@ -41,7 +41,7 @@ export default function SettingsLayout({
         </p>
       </div>
       <Separator className="my-6" />
-      <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-16 lg:space-y-0">
+      <div className="flex flex-col space-y-8 lg:flex-row lg:gap-16 lg:space-y-0">
         <SidebarNav items={sidebarNavItems} />
         <div className="flex-1 lg:max-w-2xl">{children}</div>
       </div>

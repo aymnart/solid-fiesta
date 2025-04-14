@@ -63,7 +63,7 @@ export default function RegisterPage() {
           height={4000}
           priority={true}
         />
-        <div className=" absolute inset-0 bg-gradient-to-t from-foreground/40 via-foreground/20 to-foreground/20 dark:from-background/90 dark:via-background/50 dark:to-background/30" />
+        <div className=" absolute inset-0 bg-linear-to-t from-foreground/40 via-foreground/20 to-foreground/20 dark:from-background/90 dark:via-background/50 dark:to-background/30" />
         <div className="absolute bottom-0 left-0 right-0 text-white p-6 text-center">
           <AnimatePresence mode="wait">
             <motion.div
