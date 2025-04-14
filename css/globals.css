@@ -73,7 +73,6 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-
   *,
   ::after,
   ::before,
@@ -84,7 +83,6 @@
 }
 
 @layer utilities {
-
   html,
   body,
   :root {
@@ -105,12 +103,10 @@
 
   :root {
     --radius: var(--radius-xl);
-
   }
 }
 
 @layer utilities {
-
   /***************** Custom Scrollbar *****************/
   ::-webkit-scrollbar {
     width: 8px;

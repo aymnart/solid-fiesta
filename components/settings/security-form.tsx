@@ -16,10 +16,10 @@ import {
 } from "@/components/ui/form"
 import { Switch } from "@/components/ui/switch"
 import { useCurrentUser } from "@/hooks/use-current-user"
-import { toast } from "sonner"
 import { securityFormSchema } from "@/schemas/settings/security"
 import { Loader } from "lucide-react"
 import { useEffect, useState, useTransition } from "react"
+import { toast } from "sonner"
 
 type SecurityFormValues = z.infer<typeof securityFormSchema>
 

@@ -37,7 +37,7 @@ export default async function RootLayout({
         <Suspense fallback={<Loading />}>
           <TooltipProvider delayDuration={19}>
             {children}
-            <Toaster />
+            <Toaster richColors />
           </TooltipProvider>
         </Suspense>
       </body>

@@ -2,7 +2,6 @@
 
 @import "tailwindcss/preflight" layer(base);
 
-
 @layer base {
   .light {
     --background: 0 0% 100%;

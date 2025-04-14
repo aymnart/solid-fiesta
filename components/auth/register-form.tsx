@@ -18,7 +18,7 @@ import { RegisterSchema } from "@/schemas/auth/register"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { EyeIcon, EyeOffIcon, Loader } from "lucide-react"
 import { useSearchParams } from "next/navigation"
-import React, { useState, useTransition } from "react"
+import { useState, useTransition } from "react"
 import { useForm } from "react-hook-form"
 import type * as z from "zod"
 

@@ -4,7 +4,7 @@ import { LOGIN_DEFAULT_REDIRECT } from "@/routes"
 import { Github, Loader } from "lucide-react"
 import { signIn } from "next-auth/react"
 import Image from "next/image"
-import React, { useTransition } from "react"
+import { useTransition } from "react"
 import Divider from "../ui/divider"
 
 export function Social() {

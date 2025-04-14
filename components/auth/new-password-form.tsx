@@ -17,7 +17,7 @@ import { NewPasswordSchema } from "@/schemas/auth/new-password"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { EyeIcon, EyeOffIcon, KeyRound, Loader } from "lucide-react"
 import { useSearchParams } from "next/navigation"
-import React, { useState, useTransition } from "react"
+import { useState, useTransition } from "react"
 import { useForm } from "react-hook-form"
 import type * as z from "zod"
 

@@ -1,7 +1,7 @@
-import { Separator } from "@/components/ui/separator"
 import { SidebarTrigger } from "@/components/sidebar/sidebar"
-import { Breadcrumb, BreadcrumbItem } from "../ui/breadcrumb"
+import { Separator } from "@/components/ui/separator"
 import Link from "next/link"
+import { Breadcrumb, BreadcrumbItem } from "../ui/breadcrumb"
 
 export function SiteHeader({ items }: { items: { title: string; url: string }[] }) {
   return (

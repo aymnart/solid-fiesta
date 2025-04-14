@@ -1,6 +1,5 @@
 import ErrorCard from "@/components/auth/error-card"
 import type { Metadata } from "next"
-import React from "react"
 
 export const metadata: Metadata = {
   title: "Authentication Error",

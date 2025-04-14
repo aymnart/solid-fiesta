@@ -1,6 +1,6 @@
 import { DataTable } from "@/components/dashboard/data-table"
-import data from "./data.json"
 import { SiteHeader } from "@/components/general/site-header"
+import data from "./data.json"
 function Page() {
   return (
     <div>

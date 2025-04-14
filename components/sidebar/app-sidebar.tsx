@@ -14,8 +14,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/sidebar/sidebar"
-import Link from "next/link"
 import { useSession } from "next-auth/react"
+import Link from "next/link"
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { data: session } = useSession()

@@ -1,5 +1,4 @@
 import { AlertCircle } from "lucide-react"
-import React from "react"
 import { CardWrapper } from "./card-wrapper"
 
 export default function ErrorCard() {

@@ -1,7 +1,6 @@
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { cn } from "@/lib/utils"
 import { CheckCircle2 } from "lucide-react"
-import React from "react"
 
 interface FormSuccessProps {
   message?: string

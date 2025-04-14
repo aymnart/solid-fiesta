@@ -16,7 +16,7 @@ import { Input } from "@/components/ui/input"
 import { ResetPasswordSchema } from "@/schemas/auth/reset-password"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Loader, ShieldCheck } from "lucide-react"
-import React, { useState, useTransition } from "react"
+import { useState, useTransition } from "react"
 import { useForm } from "react-hook-form"
 import type * as z from "zod"
 

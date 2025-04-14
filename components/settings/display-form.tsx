@@ -15,8 +15,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
-import { toast } from "sonner"
 import { displayFormSchema } from "@/schemas/settings/display"
+import { toast } from "sonner"
 
 const items = [
   {

@@ -1,7 +1,6 @@
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { cn } from "@/lib/utils"
 import { AlertCircle } from "lucide-react"
-import React from "react"
 
 interface FormErrorProps {
   message?: string

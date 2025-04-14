@@ -1,6 +1,5 @@
 import NewVerificationForm from "@/components/auth/new-verification-form"
 import type { Metadata } from "next"
-import React from "react"
 
 export const metadata: Metadata = {
   title: "New Verification",

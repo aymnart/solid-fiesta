@@ -1,8 +1,6 @@
 import { LoginButton } from "@/components/auth/login-button"
-import { Button } from "@/components/ui/button"
 import Divider from "@/components/ui/divider"
 import type { Metadata } from "next"
-import React from "react"
 
 export const metadata: Metadata = {
   title: "Home Page",
