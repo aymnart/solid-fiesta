@@ -2,7 +2,7 @@
 import { buttonVariants } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { cn } from "@/lib/utils"
-import { Cuboid, Home, Menu, Settings } from "lucide-react"
+import { Cuboid, Home, Settings } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import * as React from "react"
@@ -34,7 +34,7 @@ export default function Navbar() {
       },
       {
         label: "Dashboard",
-        href: "/dashboard",
+        href: "/dashboard/overview",
         icon: Cuboid,
         isActive: pathname.startsWith("/dashboard"),
       },

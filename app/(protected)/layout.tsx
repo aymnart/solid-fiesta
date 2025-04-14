@@ -11,7 +11,7 @@ export default async function ProtectedLayout({
     <SessionProvider>
       <main>
         <Navbar />
-        <section className="mt-20">{children}</section>
+        <section className="mt-20 md:mt-0">{children}</section>
       </main>
     </SessionProvider>
   )

@@ -47,7 +47,8 @@
         "noShadowRestrictedNames": "off"
       },
       "correctness": {
-        "useExhaustiveDependencies": "off"
+        "useExhaustiveDependencies": "off",
+        "noUnusedImports": "error"
       },
       "security": {
         "noDangerouslySetInnerHtml": "off"
