@@ -2,7 +2,7 @@
 
 import "@/css/globals.css"
 import { auth } from "@/auth"
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "@/components/ui/sonner"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { getUserPreferenceById } from "@/data/user-preference"
 import { fontMap } from "@/font.config"
@@ -35,7 +35,7 @@ export default async function RootLayout({
       </head>
       <body className={cn(fontMap[font], "antialiased min-h-screen")}>
         <Suspense fallback={<Loading />}>
-          <TooltipProvider delayDuration={100}>
+          <TooltipProvider delayDuration={19}>
             {children}
             <Toaster />
           </TooltipProvider>

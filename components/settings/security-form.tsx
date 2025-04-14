@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/form"
 import { Switch } from "@/components/ui/switch"
 import { useCurrentUser } from "@/hooks/use-current-user"
-import { toast } from "@/hooks/use-toast"
+import { toast } from "sonner"
 import { securityFormSchema } from "@/schemas/settings/security"
 import { Loader } from "lucide-react"
 import { useEffect, useState, useTransition } from "react"
@@ -61,15 +61,12 @@ export function SecurityForm({ two_factor, provider }: SecurityFormProps) {
     startTransition(async () => {
       try {
         await updateSecuritySettings(data)
-        toast({
-          title: "Security settings updated!",
-          variant: "success",
+        toast.success("Security settings updated!", {
+          description: "Your security settings have been successfully saved.",
         })
       } catch {
-        toast({
-          title: "Error updating security!",
+        toast.error("Error updating security!", {
           description: "Check your connexion and try again.",
-          variant: "destructive",
         })
       }
     })

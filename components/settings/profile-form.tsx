@@ -28,7 +28,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { toast } from "@/hooks/use-toast"
+import { toast } from "sonner"
 
 import { Button } from "@/components/ui/button"
 import { getUserById } from "@/data/user" // Import the function to fetch user data
@@ -86,8 +86,7 @@ export function ProfileForm() {
   function onSubmit(data: ProfileFormValues) {
     startTransition(async () => {
       try {
-        toast({
-          title: "You submitted the following values:",
+        toast.info("You submitted the following values:", {
           description: (
             <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
               <code className="text-white">{JSON.stringify(data, null, 2)}</code>
@@ -95,10 +94,8 @@ export function ProfileForm() {
           ),
         })
       } catch (error) {
-        toast({
-          title: "Error",
+        toast.error("Error updating profile!", {
           description: (error as Error).message,
-          variant: "destructive",
         })
       }
     })

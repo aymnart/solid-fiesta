@@ -14,7 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { toast } from "@/hooks/use-toast"
+import { toast } from "sonner"
 
 import { updateAppearancePreferences } from "@/actions/settings/preferences"
 import {
@@ -79,19 +79,18 @@ export function AppearanceForm({ theme, font }: AppearanceFormValues) {
   function onSubmit(data: AppearanceFormValues) {
     startTransition(async () => {
       try {
-        await updateAppearancePreferences(data)
-        toast({
-          title: "User preferences updated!",
-          description: "Your appearance settings have been successfully saved.",
-          variant: "success",
+        toast.promise(updateAppearancePreferences(data), {
+          loading: "Updating preferences...",
+          success: "Preferences updated!",
+          error: "Error updating preferences!",
         })
         //reload the window so the user see the changes
-        window.location.reload()
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000)
       } catch {
-        toast({
-          title: "Error updating preferences!",
+        toast.error("Error updating preferences!", {
           description: "Check your connexion and try again.",
-          variant: "destructive",
         })
       }
     })
