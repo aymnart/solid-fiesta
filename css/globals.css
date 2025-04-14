@@ -73,6 +73,7 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+
   *,
   ::after,
   ::before,
@@ -83,6 +84,7 @@
 }
 
 @layer utilities {
+
   html,
   body,
   :root {
@@ -103,15 +105,12 @@
 
   :root {
     --radius: var(--radius-xl);
-    --chart-1: hsl(297, 62%, 32%);
-    --chart-2: hsl(229, 62%, 32%);
-    --chart-3: hsl(0, 62%, 32%);
-    --chart-4: hsl(135, 62%, 32%);
-    --chart-5: hsl(65, 62%, 32%);
+
   }
 }
 
 @layer utilities {
+
   /***************** Custom Scrollbar *****************/
   ::-webkit-scrollbar {
     width: 8px;
@@ -127,14 +126,4 @@
   }
 
   /*---break---*/
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-  }
 }

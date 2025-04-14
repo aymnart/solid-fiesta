@@ -43,7 +43,7 @@ export default function Navbar() {
   )
 
   return (
-    <nav className="z-50 w-max mx-auto flex fixed top-2 left-0 right-0 items-center justify-center space-x-4 rounded-full border bg-background p-2 shadow-lg transition-all duration-300">
+    <nav className="z-50 w-max mx-auto flex fixed top-2 left-0 right-0 items-center justify-center space-x-4 rounded-lg border bg-background p-2 shadow-lg transition-all duration-300">
       {navItems.map((item, index) => (
         <Tooltip key={index}>
           <TooltipTrigger asChild>
@@ -55,7 +55,7 @@ export default function Navbar() {
                   variant: "ghost",
                   size: item.isActive ? "default" : "icon",
                 }),
-                "rounded-full",
+                "rounded-lg",
               )}
             >
               {item.icon && <item.icon />}
