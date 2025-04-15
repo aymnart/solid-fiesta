@@ -5,8 +5,25 @@ import type React from "react"
 import { type ReactNode, useMemo } from "react"
 
 type Orientation = "horizontal" | "vertical" | "ver" | "hor" | "v" | "h"
-type Variant = "default" | "gradient" | "dashed" | "dotted" | "neon"
-type ThicknessValue = number | `${number}${"px" | "em" | "rem" | "vh" | "vw" | "%"}`
+type Variant = "solid" | "gradient" | "dashed" | "dotted" | "neon"
+type Unit =
+  | "px"
+  | "em"
+  | "rem"
+  | "vh"
+  | "vw"
+  | "%"
+  | "cm"
+  | "mm"
+  | "in"
+  | "pt"
+  | "pc"
+  | "ex"
+  | "ch"
+  | "vmin"
+  | "vmax"
+
+type ThicknessValue = number | `${number}${Unit}`
 
 interface DividerProps {
   styleChildren?: boolean
@@ -28,8 +45,9 @@ const Divider = ({
   styleChildren = false,
   orientation = "horizontal",
   color = "currentColor",
-  variant = "default",
+  variant = "solid",
   thickness = "1px",
+  ...props
 }: DividerProps) => {
   // Determine orientation with a simpler check
   const isVertical = useMemo(() => orientation.startsWith("v"), [orientation])
@@ -65,7 +83,7 @@ const Divider = ({
       return {
         ...baseStyle,
         background: "transparent",
-        border: `1px ${variant} ${color}`,
+        border: `${thicknessValue} ${variant} ${color}`,
       }
     }
 
@@ -85,6 +103,7 @@ const Divider = ({
         "m-2 flex items-center justify-center",
         isVertical ? "h-full flex-col" : "w-full flex-row",
         className,
+        { ...props },
       )}
       style={{
         ...(isVertical
