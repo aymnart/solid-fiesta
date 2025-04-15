@@ -2,12 +2,12 @@
 import "@/css/beat-loader.css"
 import NewVerification from "@/actions/auth/new-verification"
 import { CardWrapper } from "@/components/auth/card-wrapper"
+import FormError from "@/components/general/form-error"
+import FormSuccess from "@/components/general/form-success"
 import { MailCheck } from "lucide-react"
 import { useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 import { useCallback } from "react"
-import FormError from "@/components/general/form-error"
-import FormSuccess from "@/components/general/form-success"
 
 export default function NewVerificationForm() {
   const [error, setError] = useState<string | undefined>()

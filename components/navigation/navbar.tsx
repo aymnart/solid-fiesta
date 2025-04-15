@@ -2,7 +2,7 @@
 import { buttonVariants } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { cn } from "@/lib/utils"
-import { Cuboid, Home, Settings } from "lucide-react"
+import { HomeIcon, LayoutDashboardIcon, SettingsIcon } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import * as React from "react"
@@ -23,19 +23,19 @@ export default function Navbar() {
       {
         label: "Home",
         href: "/",
-        icon: Home,
+        icon: HomeIcon,
         isActive: pathname === "/",
       },
       {
         label: "Settings",
         href: "/settings",
-        icon: Settings,
+        icon: SettingsIcon,
         isActive: pathname.startsWith("/settings"),
       },
       {
         label: "Dashboard",
         href: "/dashboard/overview",
-        icon: Cuboid,
+        icon: LayoutDashboardIcon,
         isActive: pathname.startsWith("/dashboard"),
       },
     ],
@@ -53,7 +53,7 @@ export default function Navbar() {
                 item.isActive && "bg-primary text-primary-foreground",
                 buttonVariants({
                   variant: "ghost",
-                  size: item.isActive ? "default" : "icon",
+                  size: item.isActive ? "sm" : "icon_sm",
                 }),
                 "rounded-lg",
               )}

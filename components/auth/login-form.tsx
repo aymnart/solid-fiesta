@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp"
-import { type AuthErrorMessages, authErrorMessages, type AuthErrorType } from "@/lib/error-messages"
+import { type AuthErrorMessages, type AuthErrorType, authErrorMessages } from "@/lib/error-messages"
 import { LoginSchema } from "@/schemas/auth/login"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { EyeIcon, EyeOffIcon, Loader } from "lucide-react"

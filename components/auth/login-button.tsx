@@ -19,7 +19,9 @@ export const LoginButton = ({ children, mode = "redirect" }: LoginButtonProps) =
     return (
       <Dialog>
         <DialogTrigger asChild>
-          <span>{children}</span>
+          <Button className="capitalize w-[39%]" variant={"default"} size={"default"} tabIndex={0}>
+            {children}
+          </Button>
         </DialogTrigger>
         <DialogContent className="grid place-items-center">
           <DialogTitle />
@@ -30,9 +32,9 @@ export const LoginButton = ({ children, mode = "redirect" }: LoginButtonProps) =
   }
   return (
     <Button
-      className="capitalize"
+      className="capitalize w-[39%]"
       variant={"default"}
-      size={"lg"}
+      size={"default"}
       onClick={onClick}
       onKeyDown={e => {
         if (e.key === "Enter" || e.key === " ") {

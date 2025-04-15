@@ -73,6 +73,7 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+
   *,
   ::after,
   ::before,
@@ -83,6 +84,7 @@
 }
 
 @layer utilities {
+
   html,
   body,
   :root {
@@ -94,7 +96,7 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border outline-ring/50 selection:bg-primary selection:text-primary-foreground;
   }
 
   body {
@@ -107,6 +109,7 @@
 }
 
 @layer utilities {
+
   /***************** Custom Scrollbar *****************/
   ::-webkit-scrollbar {
     width: 8px;

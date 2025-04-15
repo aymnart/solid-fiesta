@@ -13,7 +13,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { type AuthErrorMessages, authErrorMessages, type AuthErrorType } from "@/lib/error-messages"
+import { type AuthErrorMessages, type AuthErrorType, authErrorMessages } from "@/lib/error-messages"
 import { RegisterSchema } from "@/schemas/auth/register"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { EyeIcon, EyeOffIcon, Loader } from "lucide-react"
