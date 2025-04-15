@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp"
-import { authErrorMessages } from "@/lib/error-messages"
+import { type AuthErrorMessages, authErrorMessages, type AuthErrorType } from "@/lib/error-messages"
 import { LoginSchema } from "@/schemas/auth/login"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { EyeIcon, EyeOffIcon, Loader } from "lucide-react"
@@ -27,9 +27,11 @@ import FormInfo from "../general/form-info"
 
 export function LoginForm() {
   const searchParams = useSearchParams()
-  const authError = searchParams?.get("error") as keyof typeof authErrorMessages | null
+  const authError = searchParams?.get("error") as AuthErrorType | null
 
-  const urlError = authError ? authErrorMessages[authError] || authErrorMessages.Default : ""
+  const urlError: AuthErrorMessages | undefined = authError
+    ? authErrorMessages[authError] || authErrorMessages.Default
+    : undefined
   const [showTwoFactor, setShowTwoFactor] = useState<boolean>(false)
   const [showPassword, setShowPassword] = useState<boolean>(false)
   const [isPending, startTransition] = useTransition()
@@ -185,8 +187,9 @@ export function LoginForm() {
             )}
             {/* ------------ */}
           </div>
-          <FormError message={error || urlError} />
-          <FormSuccess message={success} />
+          {error && <FormError message={error} />}
+          {urlError && <FormError message={urlError} />}
+          {success && <FormSuccess message={success} />}
           {showTwoFactor && (
             <FormInfo message="A 2FA code has been sent to your email. Please enter it below to proceed." />
           )}

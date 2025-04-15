@@ -84,8 +84,10 @@ export function ResetForm() {
             />
             {/* --------------------- */}
           </div>
-          <FormError message={error} />
-          <FormSuccess message={success} />
+          {/* Error and Success Messages */}
+          {error && <FormError message={error} />}
+          {success && <FormSuccess message={success} />}
+          {/* Submit Button */}
           <Button className="w-full capitalize" type="submit" disabled={isPending}>
             {isPending ? (
               <span className="flex gap-2 items-center justify-center transition-all">

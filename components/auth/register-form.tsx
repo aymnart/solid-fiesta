@@ -13,7 +13,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { authErrorMessages } from "@/lib/error-messages"
+import { type AuthErrorMessages, authErrorMessages, type AuthErrorType } from "@/lib/error-messages"
 import { RegisterSchema } from "@/schemas/auth/register"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { EyeIcon, EyeOffIcon, Loader } from "lucide-react"
@@ -24,9 +24,11 @@ import type * as z from "zod"
 
 export function RegisterForm() {
   const searchParams = useSearchParams()
-  const authError = searchParams?.get("error") as keyof typeof authErrorMessages | null
+  const authError = searchParams?.get("error") as AuthErrorType | null
 
-  const urlError = authError ? authErrorMessages[authError] || authErrorMessages.Default : ""
+  const urlError: AuthErrorMessages | undefined = authError
+    ? authErrorMessages[authError] || authErrorMessages.Default
+    : undefined
   const [showPassword, setShowPassword] = useState<boolean>(false)
   const [isPending, startTransition] = useTransition()
   const [error, setError] = useState<string | undefined>("")
@@ -46,10 +48,14 @@ export function RegisterForm() {
     setError("")
     setSuccess("")
     startTransition(() => {
-      register(values).then(data => {
-        setError(data.error)
-        setSuccess(data.success)
-      })
+      register(values)
+        .then(data => {
+          setError(data.error)
+          setSuccess(data.success)
+        })
+        .catch(error => {
+          setError(error.message)
+        })
     })
   }
 
@@ -188,12 +194,16 @@ export function RegisterForm() {
               )}
             />
           </div>
-          <FormError message={error || urlError} />
-          <FormSuccess message={success} />
+          {/* Error and Success Messages */}
+          {error && <FormError message={error} />}
+          {urlError && <FormError message={urlError} />}
+          {success && <FormSuccess message={success} />}
+          {/* Submit Button */}
           <Button className="w-full " type="submit" disabled={isPending}>
             {isPending ? (
               <span className="flex gap-2 items-center justify-center transition-all">
                 <Loader className="animate-spin" />
+                Submitting...
               </span>
             ) : (
               "Create an account"

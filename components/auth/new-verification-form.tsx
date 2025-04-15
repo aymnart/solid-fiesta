@@ -6,8 +6,8 @@ import { MailCheck } from "lucide-react"
 import { useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 import { useCallback } from "react"
-import FormError from "../general/form-error"
-import FormSuccess from "../general/form-success"
+import FormError from "@/components/general/form-error"
+import FormSuccess from "@/components/general/form-success"
 
 export default function NewVerificationForm() {
   const [error, setError] = useState<string | undefined>()
@@ -46,8 +46,8 @@ export default function NewVerificationForm() {
     >
       <div className="flex items-center justify-center w-full">
         {!success && !error && <div className="loader" />}
-        <FormSuccess className="w-fit" message={success} />
-        <FormError className="w-fit" message={error} />
+        {success && <FormSuccess className="w-fit" message={success} />}
+        {error && <FormError className="w-fit" message={error} />}
       </div>
     </CardWrapper>
   )

@@ -46,24 +46,21 @@ const themes: Theme[] = [
 export function AppearanceForm({ theme, font }: AppearanceFormValues) {
   const [isPending, startTransition] = useTransition()
   const user = useCurrentUser()
-  const [defaultValues, setDefaultValues] = useState<AppearanceFormValues | null>(null)
+  const [defaultValues, setDefaultValues] = useState<AppearanceFormValues | undefined>(undefined)
 
-  // Fetch user preferences when component mounts
+  // set user preferences when component mounts
   useEffect(() => {
-    async function fetchPreferences() {
-      if (user?.id) {
-        setDefaultValues({
-          theme: theme,
-          font: font,
-        })
-      }
+    if (user?.id) {
+      setDefaultValues({
+        theme: theme,
+        font: font,
+      })
     }
-    fetchPreferences()
   }, [user?.id, theme, font])
 
   const form = useForm<AppearanceFormValues>({
     resolver: zodResolver(appearanceFormSchema),
-    defaultValues: defaultValues || {},
+    defaultValues: defaultValues,
   })
 
   // Prevent rendering until default values are set (fixes hydration issue)

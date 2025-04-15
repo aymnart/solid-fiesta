@@ -145,8 +145,8 @@ export function NewPasswordForm() {
             />
           </div>
           {/* Error and Success Messages */}
-          <FormError message={error} />
-          <FormSuccess message={success} />
+          {error && <FormError message={error} />}
+          {success && <FormSuccess message={success} />}
           {/* Submit Button */}
           <Button className="w-full capitalize" type="submit" disabled={isPending}>
             {isPending ? (

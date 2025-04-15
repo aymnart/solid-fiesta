@@ -41,3 +41,4 @@ export const authErrorMessages = {
 } as const
 
 export type AuthErrorType = keyof typeof authErrorMessages
+export type AuthErrorMessages = (typeof authErrorMessages)[AuthErrorType]
