@@ -11,7 +11,7 @@ export function SiteHeader({ items }: { items: { title: string; url: string }[] 
         <Separator orientation="vertical" className="mx-2 data-[orientation=vertical]:h-4" />
         <Breadcrumb>
           {items.map(item => (
-            <BreadcrumbItem key={item.title}>
+            <BreadcrumbItem className="text-sm" key={item.title}>
               <Link href={item.url}>{item.title}</Link>
             </BreadcrumbItem>
           ))}
