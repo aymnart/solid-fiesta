@@ -1,3 +1,5 @@
+import type { ValueOf } from "@/types/common"
+
 export const authErrorMessages = {
   AccessDenied: "Access denied. You do not have permission to access this resource.",
   AccountNotLinked: "Email already in use with a different provider!",
@@ -41,4 +43,4 @@ export const authErrorMessages = {
 } as const
 
 export type AuthErrorType = keyof typeof authErrorMessages
-export type AuthErrorMessages = (typeof authErrorMessages)[AuthErrorType]
+export type AuthErrorMessages = ValueOf<typeof authErrorMessages>
