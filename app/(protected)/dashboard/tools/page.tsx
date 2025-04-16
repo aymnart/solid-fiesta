@@ -37,7 +37,7 @@ export default async function TaskPage() {
         ]}
       />
       <div className="md:hidden">Please use a desktop browser to view this page.</div>
-      <div className="hidden h-full flex-1 flex-col space-y-8 p-8 md:flex">
+      <div className="hidden h-full flex-1 flex-col space-y-8 p-4 lg:p-6 md:flex">
         <div className="flex items-center justify-between space-y-2">
           <div>
             <h2 className="text-2xl font-bold tracking-tight">Welcome back!</h2>
