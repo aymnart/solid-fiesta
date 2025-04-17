@@ -22,14 +22,17 @@ export default function NotFound() {
         </div>
         <div className="four">4</div>
         <div className="four">4</div>
-        <div className="btn">
-          <button type="button" onClick={() => window.history.back()}>
-            <ArrowLeft className="opacity-70" /> Back to previous page
-          </button>
-          <Link href={"/"}>
-            {" "}
-            <Home className="opacity-70" /> Home
-          </Link>
+        <div className="btn-container">
+          <div className="btn">
+            <button type="button" onClick={() => window.history.back()}>
+              <ArrowLeft className="opacity-70 size-3 sm:size-5 mr-1.5" /> Previous page
+            </button>
+          </div>
+          <div className="btn">
+            <Link href="/">
+              <Home className="opacity-70 size-3 sm:size-5 mr-1.5" /> Home
+            </Link>
+          </div>
         </div>
       </div>
     </section>

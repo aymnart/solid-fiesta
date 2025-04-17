@@ -1,14 +1,27 @@
 :root {
-  --c0: hsl(6 81% 64%); /* Lighter */
-  --c1: hsl(6 81% 54%); /* Slightly lighter */
-  --c2: hsl(6 81% 49%); /* Slightly lighter */
-  --c3: hsl(6 81% 44%); /* Original */
-  --c4: hsl(6 81% 39%); /* Slightly darker */
-  --c5: hsl(6 81% 34%); /* Darker */
-  --c6: hsl(6 81% 29%); /* Darkest */
+  /* Color Palette */
+  --c-1: hsl(6 81% 77%);
+  /* Lighter */
+  --c0: hsl(6 81% 64%);
+  /* Slightly lighter */
+  --c1: hsl(6 81% 54%);
+  /* Slightly lighter */
+  --c2: hsl(6 81% 49%);
+  /* Original */
+  --c3: hsl(6 81% 44%);
+  /* Slightly darker */
+  --c4: hsl(6 81% 39%);
+  /* Darker */
+  --c5: hsl(6 81% 34%);
+  /* Darkest */
+  --c6: hsl(6 81% 16%);
+
+  /* Hue and Color Adjustment */
   --hue: calc(30deg - (30deg * var(--clr)));
   --clr: 1;
+  /* Color adjustment factor */
 }
+
 
 .room {
   width: 100vw;
@@ -73,10 +86,12 @@
   top: 10%;
   position: absolute;
   left: 0;
+  letter-spacing: 0.1rem;
+
 }
 
 .oops h2 {
-  color: #fff2;
+  color: #ffffff;
   float: left;
   transform-origin: 100% 50%;
   transform: rotateY(-60deg) scaleX(1.5);
@@ -84,7 +99,7 @@
   font-size: 14vmin;
   width: 50%;
   text-shadow:
-    0px 2px 1px #94b5ff, -1px 1px 2px #94b5ff80,
+    0px 2px 1px #ffffff, -1px 1px 2px var(--c-1),
     -1px -1px 2px var(--c4), -2px -2px 2px var(--c4), -3px -3px 2px var(--c4),
     -4px -4px 2px var(--c4), -5px -5px 2px var(--c4), -6px -6px 2px var(--c4),
     -7px -7px 2px var(--c4), -8px -8px 2px var(--c4), -9px -9px 2px var(--c4),
@@ -97,7 +112,7 @@
 
 .oops p {
   float: right;
-  color: #fff4;
+  color: #fff;
   transform-origin: 0% 50%;
   transform: rotateY(60deg) scaleX(1.5);
   margin-top: -4vmin;
@@ -106,7 +121,7 @@
   max-width: 50vmin;
   width: 50%;
   text-shadow:
-    0px 2px 1px #94b5ff, -1px 1px 2px #94b5ff80,
+    0px 2px 1px var(--c-1), -1px 1px 2px var(--c-1),
     1px -1px 2px var(--c4), 2px -2px 2px var(--c4), 3px -3px 2px var(--c4),
     4px -4px 2px var(--c4), 5px -5px 2px var(--c4), 6px -6px 2px var(--c4),
     7px -7px 2px var(--c4), 8px -8px 2px var(--c4), 6px -6px 7px var(--c6),
@@ -125,7 +140,7 @@
   width: 28vmin;
   height: 20vmin;
   background: radial-gradient(circle at 50% 0%, var(--c2), #fff0 45%),
-    radial-gradient(circle at 30% 100%, #061b43, #fff0 77%),
+    radial-gradient(circle at 30% 100%, var(--c6), #fff0 77%),
     radial-gradient(circle at 20% 100%, var(--c3), var(--c2), var(--c2));
   border-radius: 100%;
   box-shadow: 0 -2px 4px -2px #fffc, 0 2px 3px -3px #fffc inset, 0 2px 6px -4px #000;
@@ -163,12 +178,10 @@
 .ladder:after {
   content: "";
   position: absolute;
-  background: linear-gradient(
-    210deg,
-    #fff0 0.4vmin,
-    #e7dbcf calc(0.35vmin + 1px) 1.45vmin,
-    #b3aba2 calc(1.4vmin + 1px) 100%
-  );
+  background: linear-gradient(210deg,
+      #fff0 0.4vmin,
+      #e7dbcf calc(0.35vmin + 1px) 1.45vmin,
+      #b3aba2 calc(1.4vmin + 1px) 100%);
   width: 0.85vmin;
   height: 1.75vmin;
   transform-origin: 0 1%;
@@ -189,7 +202,7 @@
   margin-top: 27vmin;
   transform: rotate(22deg) scale(0.8, 0.85) rotateX(40deg) rotateY(-10deg) rotateZ(-5deg);
   text-shadow:
-    0px 2px 1px #94b5ff, -1px 1px 2px #94b5ff80,
+    0px 2px 1px var(--c-1), -1px 1px 2px var(--c0),
     1px 2px 2px var(--c3), 2px 4px 2px var(--c3), 4px 6px 2px var(--c3),
     5px 8px 2px var(--c3), 6px 10px 2px var(--c3), 7px 12px 2px var(--c3),
     8px 14px 2px var(--c3), 9px 16px 2px var(--c3), 10px 18px 2px var(--c3),
@@ -199,12 +212,12 @@
   filter: drop-shadow(10px -4px 10px var(--c4));
 }
 
-.four + .four {
+.four+.four {
   margin-left: 43vmin;
   margin-top: 15vmin;
   transform: scale(0.95, 0.75) rotateX(5deg) rotateY(35deg) rotateZ(30deg) translateZ(18vmin);
   text-shadow:
-    1px 0px 2px #94b5ff, 3px 0px 2px #94b5ff80, 1px 0px 0px var(--c3),
+    1px 0px 2px var(--c-1), 3px 0px 2px var(--c0), 1px 0px 0px var(--c3),
     2px 0px 2px var(--c3), 4px 0px 2px var(--c3), 5px 0px 2px var(--c3),
     6px 0px 2px var(--c3), 7px 0px 2px var(--c3), 8px 0px 2px var(--c3),
     9px 0px 2px var(--c3), 10px 0px 2px var(--c3), 11px 0px 3px var(--c3),
@@ -212,8 +225,8 @@
     18px -6px 15px var(--c6);
 }
 
-.four + .four:before,
-.four + .four:after {
+.four+.four:before,
+.four+.four:after {
   content: "4";
   color: var(--c6);
   position: absolute;
@@ -227,23 +240,32 @@
   opacity: 0.4;
 }
 
-.four + .four:after {
+.four+.four:after {
   transform-origin: 50% 100%;
-  transform: rotatex(12deg) rotate(-13deg) translate(-27.5vmin, -5.5vmin) skew(-32deg, 6deg)
-    scaleX(1.1);
+  transform: rotatex(12deg) rotate(-13deg) translate(-27.5vmin, -5.5vmin) skew(-32deg, 6deg) scaleX(1.1);
   clip-path: polygon(0 39.75%, 100% 49.25%, 100% 100%, 0 100%, 0 50%);
 }
 
-.btn {
+.btn-container {
   position: absolute;
+  bottom: -150;
+  margin: 1.618rem 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
   display: flex;
   gap: 1rem;
-  bottom: -15vmin;
   transform-origin: 50% 0%;
   transform: rotateX(15deg);
 }
 
-.btn > * {
+.btn>* {
   border-radius: 0.2vmin;
   display: flex;
   align-items: center;
@@ -251,26 +273,29 @@
   padding: 1.5vmin 2.5vmin;
   background: var(--destructive);
   text-decoration: none;
-  color: rgb(255, 255, 255);
+  cursor: pointer;
+  color: #ffffff;
   top: 0;
   font-size: 3vmin;
   text-shadow: 0px -2px 2px var(--c0), 0px 1px 3px var(--c6);
   position: relative;
   transition: all 0.25s linear 0s;
   box-shadow:
-    1px 0px 1px #94b5ff, 0px 2px 2px #94b5ff80, 0px 1px 2px var(--c3),
+    1px 0px 1px var(--c0), 0px 2px 2px var(--c1), 0px 1px 2px var(--c3),
     0px 4px 2px var(--c3), 0px 6px 2px var(--c3), 0px 8px 2px var(--c3),
     0px 10px 2px var(--c3), 0px 12px 2px var(--c3), 0px 14px 2px var(--c3),
     0px 16px 2px var(--c3), 0px 18px 2px var(--c3), 0px 20px 3px var(--c3),
     2px 22px 3px var(--c3), 0px 23px 3px var(--c6), 0px 3px 15px var(--c6);
 }
-.btn > *:hover {
+
+.btn>*:hover {
   filter: brightness(0.9);
 }
-.btn > *:active {
+
+.btn>*:active {
   top: 16px;
   box-shadow:
-    1px 0px 1px #94b5ff, 0px 2px 2px #94b5ff80, 0px 1px 2px var(--c3),
+    1px 0px 1px var(--c0), 0px 2px 2px var(--c1), 0px 1px 2px var(--c3),
     0px 1px 2px var(--c3), 0px 2px 2px var(--c3), 0px 2px 2px var(--c3),
     0px 2px 2px var(--c3), 0px 2px 2px var(--c3), 0px 2px 3px var(--c3),
     0px 2px 3px var(--c3), 0px 2px 2px var(--c3), 0px 2px 3px var(--c3),
@@ -280,21 +305,21 @@
 .btn::after {
   content: "";
   position: absolute;
-  background: var(--c4);
+  background: var(--c6);
   width: 100%;
-  height: 300%;
+  height: 44%;
   left: 0;
-  top: 0;
+  top: 5;
   transform: translateZ(-2vmin) skew(-10deg, 0deg) translateY(-4.5vmin) translateX(1vmin);
-  filter: blur(5px);
+  filter: blur(7px);
   transition: all 0.5s ease 0s;
   opacity: 0.35;
 }
 
 .btn:active::after {
-  background: #0000;
+  background: var(--c6);
   width: 100%;
-  height: 20%;
+  height: 0%;
   left: 0;
   top: 0;
   transform: translateZ(-2vmin) skew(-0deg, 0deg) translateY(0vmin) translateX(0vmin);
@@ -303,6 +328,7 @@
 @media screen and (orientation: portrait) {
   .oops p {
     line-height: 10vmin;
-    font-size: 6.5vmin;
+    font-size: 5vmin;
+    margin-left: 1rem;
   }
 }
