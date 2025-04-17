@@ -89,6 +89,7 @@
   body,
   :root {
     height: 100%;
+    scroll-behavior: smooth;
   }
 
   /*********************************/
@@ -111,18 +112,36 @@
 @layer utilities {
 
   /***************** Custom Scrollbar *****************/
+
+  /* Works on WebKit (Chrome, Safari, Edge) */
   ::-webkit-scrollbar {
     width: 8px;
+    height: 8px;
   }
 
   ::-webkit-scrollbar-track {
-    background: hsl(var(--background));
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: hsl(var(--border));
+    background-color: hsl(var(--background));
     border-radius: 1rem;
   }
 
-  /*---break---*/
+  ::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--muted-foreground));
+    border-radius: 1rem;
+    transition: background-color 0.3s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--muted-foreground) / 0.8);
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background-color: hsl(var(--muted-foreground) / 0.6);
+  }
+
+  /* Firefox scrollbar support */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground)) hsl(var(--background));
+  }
+
 }
