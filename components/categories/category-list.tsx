@@ -19,11 +19,14 @@ const CategoryList = ({ categories, className, ...props }: CategoryListProps) =>
 
   return (
     <div
-      className={cn("columns-3xs -mt-8 gap-6 md:gap-8 md:-mt-12 lg:gap-10", className)}
+      className={cn("columns-3xs -mt-8 gap-6 md:gap-8 md:-mt-12 lg:gap-14", className)}
       {...props}
     >
       {categories.map(({ name, slug, fullPath, subcategories }) => (
-        <div key={slug} className="inline-flex flex-col gap-4 w-full mt-8 md:mt-12">
+        <div
+          key={slug}
+          className="inline-flex flex-col gap-4 w-full mt-8 md:mt-12 hover:text-primary"
+        >
           <H size="h4" className="text-lg">
             <Link href={`/categories/${fullPath}`} prefetch={false}>
               {name}
@@ -31,7 +34,7 @@ const CategoryList = ({ categories, className, ...props }: CategoryListProps) =>
           </H>
 
           {subcategories?.length > 0 &&
-            subcategories.map(({ name, slug, fullPath, subsubcategories }) => (
+            subcategories.map(({ name, slug, fullPath, subcategories }) => (
               <div key={slug} className="flex flex-col gap-3 pl-3">
                 <H size="h5" className="text-sm">
                   <Link href={`/categories/${fullPath}`} prefetch={false}>
@@ -39,9 +42,9 @@ const CategoryList = ({ categories, className, ...props }: CategoryListProps) =>
                   </Link>
                 </H>
 
-                {subsubcategories?.length > 0 && (
+                {subcategories?.length > 0 && (
                   <div className="contents">
-                    {subsubcategories.map(({ name, slug, fullPath, _count }) => (
+                    {subcategories.map(({ name, slug, fullPath, tools }) => (
                       <Tile key={slug} className="pl-3" asChild>
                         <Link href={`/categories/${fullPath}`} prefetch={false}>
                           <TileTitle className="text-xs font-normal text-muted-foreground group-hover:text-foreground">
@@ -52,7 +55,7 @@ const CategoryList = ({ categories, className, ...props }: CategoryListProps) =>
 
                           <TileCaption className="tabular-nums">
                             <span className="text-[10px] mr-0.5 opacity-50">#</span>
-                            {_count.tools}
+                            {tools}
                           </TileCaption>
                         </Link>
                       </Tile>
@@ -76,12 +79,12 @@ const CategoryListSkeleton = () => {
       return {
         id: `categ-${categoryIndex}`,
         subcategories: Array.from({ length: subCategoryCount }, (_, subIndex) => {
-          const itemCount = Math.floor(Math.random() * 3) + 2
+          const subsubcategoryCount = Math.floor(Math.random() * 3) + 2
 
           return {
             id: `subcateg-${categoryIndex}-${subIndex}`,
-            items: Array.from({ length: itemCount }, (_, itemIndex) => ({
-              id: `item-${categoryIndex}-${subIndex}-${itemIndex}`,
+            subsubcategories: Array.from({ length: subsubcategoryCount }, (_, subsubIndex) => ({
+              id: `subsubcategories-${categoryIndex}-${subIndex}-${subsubIndex}`,
             })),
           }
         }),
@@ -104,8 +107,8 @@ const CategoryListSkeleton = () => {
               </H>
 
               <div className="contents">
-                {subcategory.items.map(item => (
-                  <Tile key={item.id} className="pl-2">
+                {subcategory.subsubcategories.map(subsubcategory => (
+                  <Tile key={subsubcategory.id} className="pl-2">
                     <TileTitle className="text-xs font-normal text-muted-foreground group-hover:text-foreground">
                       <Skeleton className="w-20">&nbsp;</Skeleton>
                     </TileTitle>

@@ -11,6 +11,11 @@ datasource db {
 ///////////////////////////////////////////////////////////////////////////
 /////////////////////////////// User models ///////////////////////////////
 
+enum UserRole {
+  ADMIN
+  USER
+}
+
 model User {
   id                 String    @id @default(uuid())
   name               String?
@@ -46,14 +51,6 @@ model UserPreference {
   @@map("user_preferences")
 }
 
-enum UserRole {
-  ADMIN
-  USER
-}
-
-///////////////////////////////////////////////////////////////////////////
-/////////////////////////////// Auth models ///////////////////////////////
-
 model Account {
   id                String   @id @default(uuid())
   userId            String   @map("user_id")
@@ -80,6 +77,9 @@ model Account {
   @@index([userId])
   @@map("accounts")
 }
+
+///////////////////////////////////////////////////////////////////////////
+/////////////////////////////// Verification models ///////////////////////
 
 model VerificationToken {
   id      String   @id @default(uuid())
@@ -127,4 +127,42 @@ model TwoFactorConfirmation {
 
   @@index([expires])
   @@map("two_factor_confirmations")
+}
+
+///////////////////////////////////////////////////////////////////////////
+/////////////////////////////// Tool models ///////////////////////////////
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String   @db.Text
+  slug        String   @unique
+  fullPath    String   @unique @default("")
+  label       String?
+  description String?  @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Hierarchical relations
+  parent        Category?  @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  parentId      String?
+  subcategories Category[] @relation("CategoryHierarchy")
+
+  // Implicit relation
+  tools Tool[]
+
+  // Indexes
+  @@index([slug])
+  @@index([parentId])
+}
+
+model Tool {
+  id          String     @id @default(cuid())
+  name        String     @db.Text
+  description String?    @db.Text
+  url         String?
+  image       String?
+  categories  Category[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

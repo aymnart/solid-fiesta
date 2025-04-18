@@ -2,19 +2,8 @@ export type CategoryManyNested = {
   name: string
   slug: string
   fullPath: string
-  subcategories: {
-    name: string
-    slug: string
-    fullPath: string
-    subsubcategories: {
-      name: string
-      slug: string
-      fullPath: string
-      _count: {
-        tools: number
-      }
-    }[]
-  }[]
+  tools: number
+  subcategories: CategoryManyNested[]
 }
 
 export const mockCategories: CategoryManyNested[] = [
@@ -22,29 +11,34 @@ export const mockCategories: CategoryManyNested[] = [
     name: "Development",
     slug: "development",
     fullPath: "development",
+    tools: 0,
     subcategories: [
       {
         name: "Web Development",
         slug: "web-development",
         fullPath: "development/web-development",
-        subsubcategories: [
+        tools: 0,
+        subcategories: [
           {
             name: "Frontend",
             slug: "frontend",
             fullPath: "development/web-development/frontend",
-            _count: { tools: 32 },
+            tools: 0,
+            subcategories: [],
           },
           {
             name: "Backend",
             slug: "backend",
             fullPath: "development/web-development/backend",
-            _count: { tools: 28 },
+            tools: 28,
+            subcategories: [],
           },
           {
             name: "Full Stack",
             slug: "full-stack",
             fullPath: "development/web-development/full-stack",
-            _count: { tools: 15 },
+            tools: 15,
+            subcategories: [],
           },
         ],
       },
@@ -52,24 +46,28 @@ export const mockCategories: CategoryManyNested[] = [
         name: "Mobile Development",
         slug: "mobile-development",
         fullPath: "development/mobile-development",
-        subsubcategories: [
+        tools: 0,
+        subcategories: [
           {
             name: "iOS",
             slug: "ios",
             fullPath: "development/mobile-development/ios",
-            _count: { tools: 18 },
+            tools: 0,
+            subcategories: [],
           },
           {
             name: "Android",
             slug: "android",
             fullPath: "development/mobile-development/android",
-            _count: { tools: 21 },
+            tools: 21,
+            subcategories: [],
           },
           {
             name: "Cross-Platform",
             slug: "cross-platform",
             fullPath: "development/mobile-development/cross-platform",
-            _count: { tools: 14 },
+            tools: 14,
+            subcategories: [],
           },
         ],
       },
@@ -79,23 +77,27 @@ export const mockCategories: CategoryManyNested[] = [
     name: "Design",
     slug: "design",
     fullPath: "design",
+    tools: 0,
     subcategories: [
       {
         name: "UI Design",
         slug: "ui-design",
         fullPath: "design/ui-design",
-        subsubcategories: [
+        tools: 0,
+        subcategories: [
           {
             name: "Wireframing",
             slug: "wireframing",
             fullPath: "design/ui-design/wireframing",
-            _count: { tools: 9 },
+            tools: 9,
+            subcategories: [],
           },
           {
             name: "Prototyping",
             slug: "prototyping",
             fullPath: "design/ui-design/prototyping",
-            _count: { tools: 12 },
+            tools: 12,
+            subcategories: [],
           },
         ],
       },
@@ -103,18 +105,21 @@ export const mockCategories: CategoryManyNested[] = [
         name: "Graphic Design",
         slug: "graphic-design",
         fullPath: "design/graphic-design",
-        subsubcategories: [
+        tools: 0,
+        subcategories: [
           {
             name: "Logo Design",
             slug: "logo-design",
             fullPath: "design/graphic-design/logo-design",
-            _count: { tools: 8 },
+            tools: 8,
+            subcategories: [],
           },
           {
             name: "Illustration",
             slug: "illustration",
             fullPath: "design/graphic-design/illustration",
-            _count: { tools: 11 },
+            tools: 11,
+            subcategories: [],
           },
         ],
       },
@@ -124,29 +129,34 @@ export const mockCategories: CategoryManyNested[] = [
     name: "Marketing",
     slug: "marketing",
     fullPath: "marketing",
+    tools: 0,
     subcategories: [
       {
         name: "Digital Marketing",
         slug: "digital-marketing",
         fullPath: "marketing/digital-marketing",
-        subsubcategories: [
+        tools: 0,
+        subcategories: [
           {
             name: "SEO",
             slug: "seo",
             fullPath: "marketing/digital-marketing/seo",
-            _count: { tools: 16 },
+            tools: 16,
+            subcategories: [],
           },
           {
             name: "Social Media",
             slug: "social-media",
             fullPath: "marketing/digital-marketing/social-media",
-            _count: { tools: 24 },
+            tools: 24,
+            subcategories: [],
           },
           {
             name: "Email Marketing",
             slug: "email-marketing",
             fullPath: "marketing/digital-marketing/email-marketing",
-            _count: { tools: 13 },
+            tools: 13,
+            subcategories: [],
           },
         ],
       },
@@ -154,18 +164,21 @@ export const mockCategories: CategoryManyNested[] = [
         name: "Content Marketing",
         slug: "content-marketing",
         fullPath: "marketing/content-marketing",
-        subsubcategories: [
+        tools: 0,
+        subcategories: [
           {
             name: "Blogging",
             slug: "blogging",
             fullPath: "marketing/content-marketing/blogging",
-            _count: { tools: 7 },
+            tools: 7,
+            subcategories: [],
           },
           {
             name: "Video Marketing",
             slug: "video-marketing",
             fullPath: "marketing/content-marketing/video-marketing",
-            _count: { tools: 19 },
+            tools: 19,
+            subcategories: [],
           },
         ],
       },
@@ -175,23 +188,27 @@ export const mockCategories: CategoryManyNested[] = [
     name: "Analytics",
     slug: "analytics",
     fullPath: "analytics",
+    tools: 0,
     subcategories: [
       {
         name: "Business Intelligence",
         slug: "business-intelligence",
         fullPath: "analytics/business-intelligence",
-        subsubcategories: [
+        tools: 0,
+        subcategories: [
           {
             name: "Dashboards",
             slug: "dashboards",
             fullPath: "analytics/business-intelligence/dashboards",
-            _count: { tools: 14 },
+            tools: 14,
+            subcategories: [],
           },
           {
             name: "Reporting",
             slug: "reporting",
             fullPath: "analytics/business-intelligence/reporting",
-            _count: { tools: 11 },
+            tools: 11,
+            subcategories: [],
           },
         ],
       },
@@ -199,18 +216,21 @@ export const mockCategories: CategoryManyNested[] = [
         name: "Data Science",
         slug: "data-science",
         fullPath: "analytics/data-science",
-        subsubcategories: [
+        tools: 0,
+        subcategories: [
           {
             name: "Machine Learning",
             slug: "machine-learning",
             fullPath: "analytics/data-science/machine-learning",
-            _count: { tools: 22 },
+            tools: 22,
+            subcategories: [],
           },
           {
             name: "Data Visualization",
             slug: "data-visualization",
             fullPath: "analytics/data-science/data-visualization",
-            _count: { tools: 17 },
+            tools: 17,
+            subcategories: [],
           },
         ],
       },
@@ -220,23 +240,27 @@ export const mockCategories: CategoryManyNested[] = [
     name: "Productivity",
     slug: "productivity",
     fullPath: "productivity",
+    tools: 0,
     subcategories: [
       {
         name: "Project Management",
         slug: "project-management",
         fullPath: "productivity/project-management",
-        subsubcategories: [
+        tools: 0,
+        subcategories: [
           {
             name: "Task Management",
             slug: "task-management",
             fullPath: "productivity/project-management/task-management",
-            _count: { tools: 25 },
+            tools: 25,
+            subcategories: [],
           },
           {
             name: "Team Collaboration",
             slug: "team-collaboration",
             fullPath: "productivity/project-management/team-collaboration",
-            _count: { tools: 18 },
+            tools: 18,
+            subcategories: [],
           },
         ],
       },
@@ -244,18 +268,21 @@ export const mockCategories: CategoryManyNested[] = [
         name: "Note Taking",
         slug: "note-taking",
         fullPath: "productivity/note-taking",
-        subsubcategories: [
+        tools: 0,
+        subcategories: [
           {
             name: "Personal Notes",
             slug: "personal-notes",
             fullPath: "productivity/note-taking/personal-notes",
-            _count: { tools: 10 },
+            tools: 10,
+            subcategories: [],
           },
           {
             name: "Team Documentation",
             slug: "team-documentation",
             fullPath: "productivity/note-taking/team-documentation",
-            _count: { tools: 12 },
+            tools: 12,
+            subcategories: [],
           },
         ],
       },
@@ -265,23 +292,27 @@ export const mockCategories: CategoryManyNested[] = [
     name: "Security",
     slug: "security",
     fullPath: "security",
+    tools: 0,
     subcategories: [
       {
         name: "Network Security",
         slug: "network-security",
         fullPath: "security/network-security",
-        subsubcategories: [
+        tools: 0,
+        subcategories: [
           {
             name: "Firewalls",
             slug: "firewalls",
             fullPath: "security/network-security/firewalls",
-            _count: { tools: 8 },
+            tools: 8,
+            subcategories: [],
           },
           {
             name: "VPN",
             slug: "vpn",
             fullPath: "security/network-security/vpn",
-            _count: { tools: 13 },
+            tools: 13,
+            subcategories: [],
           },
         ],
       },
@@ -289,18 +320,21 @@ export const mockCategories: CategoryManyNested[] = [
         name: "Data Security",
         slug: "data-security",
         fullPath: "security/data-security",
-        subsubcategories: [
+        tools: 0,
+        subcategories: [
           {
             name: "Encryption",
             slug: "encryption",
             fullPath: "security/data-security/encryption",
-            _count: { tools: 15 },
+            tools: 15,
+            subcategories: [],
           },
           {
             name: "Backup & Recovery",
             slug: "backup-recovery",
             fullPath: "security/data-security/backup-recovery",
-            _count: { tools: 9 },
+            tools: 9,
+            subcategories: [],
           },
         ],
       },
