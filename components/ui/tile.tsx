@@ -21,7 +21,7 @@ const Tile = ({ className, asChild, ...props }: TileProps) => {
   return <Comp className={cn(tileVariants({ className }))} {...props} />
 }
 
-const TileTitle = ({ className, ...props }: ComponentProps<"h2">) => {
+const TileTitle = ({ className, ...props }: ComponentProps<"h5">) => {
   return <H size="h5" className={cn("truncate", className)} {...props} />
 }
 
