@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils"
 import type React from "react"
-import { type ReactNode, useMemo } from "react"
+import { type ComponentProps, type ReactNode, useMemo } from "react"
 
 type Orientation = "horizontal" | "vertical" | "ver" | "hor" | "v" | "h"
 type Variant = "solid" | "gradient" | "dashed" | "dotted" | "neon"
@@ -48,7 +48,7 @@ const Divider = ({
   variant = "solid",
   thickness = "1px",
   ...props
-}: DividerProps) => {
+}: DividerProps & ComponentProps<"div">) => {
   // Determine orientation with a simpler check
   const isVertical = useMemo(() => orientation.startsWith("v"), [orientation])
 
