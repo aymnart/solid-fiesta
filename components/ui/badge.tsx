@@ -5,16 +5,19 @@ import { Slottable } from "@/components/general/slottable"
 import { type VariantProps, cva, cx } from "class-variance-authority"
 
 const badgeVariants = cva(
-  "inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 hover:text-foreground",
+  "inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2",
   {
     variants: {
       variant: {
-        default: "border-primary/40 bg-primary/15 text-primary shadow-sm hover:bg-primary/80",
-        secondary: "border-secondary/40 bg-secondary/15 text-secondary hover:bg-secondary/80",
-        success: "border-success/40 bg-success/15 text-success hover:bg-success/80",
+        default:
+          "border-primary/40 bg-primary/15 text-primary shadow-sm hover:bg-primary/80 hover:text-primary-foreground",
+        secondary:
+          "border-secondary/40 bg-secondary/15 text-secondary hover:bg-secondary/80 hover:text-secondary-foreground",
+        success:
+          "border-success/40 bg-success/15 text-success hover:bg-success/80 hover:text-success-foreground",
         destructive:
-          "border-destructive/40 bg-destructive/15 text-destructive shadow-sm hover:bg-destructive/80",
-        outline: "text-foreground hover:bg-foreground/10",
+          "border-destructive/40 bg-destructive/15 text-destructive shadow-sm hover:bg-destructive/80 hover:text-destructive-foreground",
+        outline: "text-muted-foreground bg-muted/15 hover:bg-muted",
       },
 
       size: {

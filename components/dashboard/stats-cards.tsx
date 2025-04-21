@@ -8,8 +8,8 @@ import {
   WrenchIcon,
 } from "lucide-react"
 import { subDays } from "date-fns"
-import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card"
-import { Badge } from "../ui/badge"
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 import type { Prisma } from "@prisma/client"
@@ -57,8 +57,8 @@ export const StatsCards = async () => {
     },
   ]
 
-  // const countsNow = await db.$transaction(cards.map(card => card.queryNow()))
   // const countsLastMonth = await db.$transaction(cards.map(card => card.queryLastMonth()))
+  // const countsNow = await db.$transaction(cards.map(card => card.queryNow()))
   const countsNow = [585, 40, 20]
   const countsLastMonth = [400, 70, 20]
   const Trend = (
@@ -69,6 +69,7 @@ export const StatsCards = async () => {
     percentage: Percentage
     count: number
     color: string
+    difference: number
   } => {
     const count: number = (countsNow[index] * 100) / countsLastMonth[index] - 100
     const percentage: Percentage = `${Number.isInteger(count) ? count : count.toFixed(2)}%`
@@ -80,6 +81,7 @@ export const StatsCards = async () => {
           percentage,
           count,
           color: "text-success",
+          difference: countsNow[index] - countsLastMonth[index],
         }
       : count < 0
         ? {
@@ -88,6 +90,7 @@ export const StatsCards = async () => {
             percentage,
             count,
             color: "text-destructive",
+            difference: countsNow[index] - countsLastMonth[index],
           }
         : {
             label: "Stable",
@@ -95,6 +98,7 @@ export const StatsCards = async () => {
             percentage,
             count,
             color: "text-foreground",
+            difference: countsNow[index] - countsLastMonth[index],
           }
   }
 
@@ -131,10 +135,16 @@ export const StatsCards = async () => {
               </div>
             </CardHeader>
             <CardFooter className="flex-col items-start gap-1 text-sm">
-              <div className="line-clamp-1 flex items-center gap-2 font-medium">
+              <div className="font-medium flex items-center gap-1.5">
+                <span className={cn(Trend(index).color, "font-semibold")}>
+                  {Trend(index).difference >= 0 ? "+" : "-"}
+                  {Math.abs(Trend(index).difference)}{" "}
+                </span>
+                {card.label}
+              </div>
+              <div className="line-clamp-1 flex items-center gap-2 text-muted-foreground">
                 {Trend(index).label} this month {Trend(index).icon}
               </div>
-              <div className="text-muted-foreground">{card.label} for the last month</div>
             </CardFooter>
           </Card>
         </Link>
