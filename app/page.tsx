@@ -1,5 +1,5 @@
 import { auth } from "@/auth"
-import { LoginButton } from "@/components/auth/login-button"
+import { AuthButton } from "@/components/auth/auth-button"
 import Divider from "@/components/ui/divider"
 import { Heart } from "lucide-react"
 import type { Metadata } from "next"
@@ -15,10 +15,22 @@ export default async function Home() {
   return (
     <main className="flex flex-col justify-center items-center h-full">
       <div className="space-y-6 text-center">
-        <h1 className={"text-6xl drop-shadow-md font-semibold text-foreground"}>Auth</h1>
+        <h1 className="text-6xl drop-shadow-md font-semibold text-foreground">Auth</h1>
         <p className="text-foreground capitalize text-lg">simple authentication service</p>
 
-        <LoginButton mode={session ? "redirect" : "modal"}>sign in</LoginButton>
+        <div className="flex justify-center items-center gap-4 mx-auto w-2/4">
+          <AuthButton
+            variant="primary"
+            mode={session ? "redirect" : "modal"}
+            type="login"
+            className="w-2/4"
+          >
+            sign in
+          </AuthButton>
+          <AuthButton variant="secondary" mode="redirect" type="register" className="w-2/4">
+            sign up
+          </AuthButton>
+        </div>
         <div className="mx-auto flex flex-col text-balance gap-4 h-96 w-[61ch] items-center justify-center">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia dolorum deleniti
           perferendis sunt perspiciatis, mollitia vel illum sapiente voluptates architecto
