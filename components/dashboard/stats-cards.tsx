@@ -13,6 +13,8 @@ import {
   WrenchIcon,
 } from "lucide-react"
 import Link from "next/link"
+import type { JSX } from "react"
+import { boxVariants } from "@/components/ui/box"
 
 type CardType = {
   label: string
@@ -23,7 +25,7 @@ type CardType = {
 }
 type Percentage = `${string}%`
 
-export const StatsCards = async () => {
+export const StatsCards: React.FC = async (): Promise<JSX.Element> => {
   const cards: CardType[] = [
     {
       label: "Tools",
@@ -57,10 +59,10 @@ export const StatsCards = async () => {
     },
   ]
 
-  // const countsLastMonth = await db.$transaction(cards.map(card => card.queryLastMonth()))
-  // const countsNow = await db.$transaction(cards.map(card => card.queryNow()))
-  const countsNow = [585, 40, 20]
-  const countsLastMonth = [400, 70, 20]
+  const countsLastMonth = await db.$transaction(cards.map(card => card.queryLastMonth()))
+  const countsNow = await db.$transaction(cards.map(card => card.queryNow()))
+  // const countsNow = [585, 40, 20]
+  // const countsLastMonth = [400, 70, 20]
   const Trend = (
     index: number,
   ): {
@@ -105,12 +107,8 @@ export const StatsCards = async () => {
   return (
     <div className="data-[slot=card]:*:shadow-2xs @xl/main:grid-cols-2 @5xl/main:grid-cols-4 grid grid-cols-1 gap-4 px-4 data-[slot=card]:*:bg-linear-to-t data-[slot=card]:*:from-primary/5 data-[slot=card]:*:to-card dark:data-[slot=card]:*:bg-card lg:px-6">
       {cards.map((card, index) => (
-        <Link
-          href={card.href}
-          key={card.label}
-          className="hover:ring-2 hover:ring-border/60 transition-colors rounded-lg"
-        >
-          <Card className="@container/card">
+        <Link href={card.href} key={card.label}>
+          <Card className={cn("@container/card", boxVariants({ hover: true }))}>
             <CardHeader className="relative">
               <CardDescription className="flex items-center gap-2">
                 {card.icon} {card.label}
