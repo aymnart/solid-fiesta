@@ -165,15 +165,8 @@ export function AppearanceForm({ theme, font }: AppearanceFormValues) {
           )}
         />
 
-        <Button disabled={isPending} type="submit">
-          {isPending ? (
-            <div className="flex items-center">
-              <Loader className="animate-spin mr-2" />
-              Updating preferences
-            </div>
-          ) : (
-            "Update Preferences"
-          )}
+        <Button isPending={isPending} type="submit">
+          {isPending ? "Updating preferences" : "Update Preferences"}
         </Button>
       </form>
     </Form>

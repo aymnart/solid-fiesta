@@ -15,7 +15,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { ResetPasswordSchema } from "@/schemas/auth/reset-password"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Loader, ShieldCheck } from "lucide-react"
+import { ShieldCheck } from "lucide-react"
 import { useState, useTransition } from "react"
 import { useForm } from "react-hook-form"
 import type * as z from "zod"
@@ -60,9 +60,7 @@ export function ResetForm() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>
-                    Email <span className="text-destructive">*</span>
-                  </FormLabel>
+                  <FormLabel>Email</FormLabel>
                   <FormControl>
                     <div className="relative">
                       <Input
@@ -88,14 +86,8 @@ export function ResetForm() {
           {error && <FormError message={error} />}
           {success && <FormSuccess message={success} />}
           {/* Submit Button */}
-          <Button className="w-full capitalize" type="submit" disabled={isPending}>
-            {isPending ? (
-              <span className="flex gap-2 items-center justify-center transition-all">
-                <Loader className="animate-spin" />
-              </span>
-            ) : (
-              "Send reset email"
-            )}
+          <Button className="w-full capitalize" type="submit" isPending={isPending}>
+            {isPending ? "Sending..." : "Send reset email"}
           </Button>
         </form>
       </Form>

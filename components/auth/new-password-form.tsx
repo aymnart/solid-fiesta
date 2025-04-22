@@ -15,7 +15,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { NewPasswordSchema } from "@/schemas/auth/new-password"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { EyeIcon, EyeOffIcon, KeyRound, Loader } from "lucide-react"
+import { EyeIcon, EyeOffIcon, KeyRound } from "lucide-react"
 import { useSearchParams } from "next/navigation"
 import { useState, useTransition } from "react"
 import { useForm } from "react-hook-form"
@@ -95,15 +95,17 @@ export function NewPasswordForm() {
                       />
                       <Button
                         type="button"
-                        variant="ghost"
-                        size="sm"
-                        className="absolute right-2 top-1/2 -translate-y-1/2"
+                        variant="link"
+                        size="icon"
+                        hover={false}
+                        focus={false}
+                        className="absolute right-1 top-1/2 -translate-y-1/2 border-none"
                         onClick={() => setShowPassword(!showPassword)}
                       >
                         {showPassword ? (
-                          <EyeOffIcon className="h-4 w-4" aria-hidden="true" />
+                          <EyeOffIcon size={16} aria-hidden="true" />
                         ) : (
-                          <EyeIcon className="h-4 w-4" aria-hidden="true" />
+                          <EyeIcon size={16} aria-hidden="true" />
                         )}
                         <span className="sr-only">
                           {showPassword ? "Hide password" : "Show password"}
@@ -148,15 +150,8 @@ export function NewPasswordForm() {
           {error && <FormError message={error} />}
           {success && <FormSuccess message={success} />}
           {/* Submit Button */}
-          <Button className="w-full capitalize" type="submit" disabled={isPending}>
-            {isPending ? (
-              <span className="flex gap-2 items-center justify-center transition-all">
-                <Loader className="animate-spin" />
-                Submitting...
-              </span>
-            ) : (
-              "Reset Password"
-            )}
+          <Button className="w-full capitalize" type="submit" isPending={isPending}>
+            {isPending ? "Submitting..." : "Reset Password"}
           </Button>
         </form>
       </Form>

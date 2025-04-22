@@ -17,7 +17,7 @@ import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp
 import { type AuthErrorMessages, type AuthErrorType, authErrorMessages } from "@/lib/error-messages"
 import { LoginSchema } from "@/schemas/auth/login"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { EyeIcon, EyeOffIcon, Loader } from "lucide-react"
+import { EyeIcon, EyeOffIcon } from "lucide-react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { useState, useTransition } from "react"
@@ -165,13 +165,15 @@ export function LoginForm() {
                             type="button"
                             variant="link"
                             size="icon"
-                            className="absolute right-1.5 top-1/2 -translate-y-1/2"
+                            hover={false}
+                            focus={false}
+                            className="absolute right-1.5 top-1/2 -translate-y-1/2 border-none"
                             onClick={() => setShowPassword(!showPassword)}
                           >
                             {showPassword ? (
-                              <EyeOffIcon className="h-4 w-4" aria-hidden="true" />
+                              <EyeOffIcon size={16} aria-hidden="true" />
                             ) : (
-                              <EyeIcon className="h-4 w-4" aria-hidden="true" />
+                              <EyeIcon size={16} aria-hidden="true" />
                             )}
                             <span className="sr-only">
                               {showPassword ? "Hide password" : "Show password"}
@@ -194,16 +196,8 @@ export function LoginForm() {
             <FormInfo message="A 2FA code has been sent to your email. Please enter it below to proceed." />
           )}
 
-          <Button className="w-full capitalize" type="submit" disabled={isPending}>
-            {isPending ? (
-              <span className="flex gap-2 items-center justify-center transition-all">
-                <Loader className="animate-spin" />
-              </span>
-            ) : showTwoFactor ? (
-              "Confirm"
-            ) : (
-              "Login"
-            )}
+          <Button className="w-full capitalize" type="submit" isPending={isPending}>
+            {showTwoFactor ? "Confirm" : "Login"}
           </Button>
         </form>
       </Form>

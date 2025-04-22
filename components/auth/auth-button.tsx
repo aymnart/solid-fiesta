@@ -5,6 +5,7 @@ import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/
 import { LoginForm } from "./login-form"
 import { RegisterForm } from "./register-form"
 import { cn } from "@/lib/utils"
+import type { BoxProps } from "../ui/box"
 
 interface AuthButtonProps {
   children?: React.ReactNode
@@ -21,7 +22,9 @@ export const AuthButton = ({
   type,
   className,
   variant = "primary",
-}: AuthButtonProps) => {
+  hover = true,
+  focus = true,
+}: AuthButtonProps & BoxProps) => {
   const router = useRouter()
   const onClick = () => {
     router.push(`/auth/${type}`)
@@ -35,6 +38,8 @@ export const AuthButton = ({
           variant={variant}
           size={"default"}
           tabIndex={0}
+          hover={hover}
+          focus={focus}
         >
           {children}
         </Button>
@@ -46,6 +51,8 @@ export const AuthButton = ({
     </Dialog>
   ) : (
     <Button
+      hover={hover}
+      focus={focus}
       className={cn("capitalize", className)}
       variant={variant}
       size={"default"}

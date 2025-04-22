@@ -165,7 +165,7 @@ export function ProfileForm() {
                       )}
                     >
                       {field.value ? format(field.value, "PPP") : <span>Pick a date</span>}
-                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                      <CalendarIcon className="ml-auto size-4 opacity-50" />
                     </Button>
                   </FormControl>
                 </PopoverTrigger>
@@ -203,7 +203,7 @@ export function ProfileForm() {
                       {field.value
                         ? languages.find(language => language.value === field.value)?.label
                         : "Select language"}
-                      <ChevronsUpDown className="opacity-50" />
+                      <ChevronsUpDown className="ml-auto size-4 opacity-50" />
                     </Button>
                   </FormControl>
                 </PopoverTrigger>

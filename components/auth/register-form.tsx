@@ -16,7 +16,7 @@ import { Input } from "@/components/ui/input"
 import { type AuthErrorMessages, type AuthErrorType, authErrorMessages } from "@/lib/error-messages"
 import { RegisterSchema } from "@/schemas/auth/register"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { EyeIcon, EyeOffIcon, Loader } from "lucide-react"
+import { EyeIcon, EyeOffIcon } from "lucide-react"
 import { useSearchParams } from "next/navigation"
 import { useState, useTransition } from "react"
 import { useForm } from "react-hook-form"
@@ -147,13 +147,15 @@ export function RegisterForm() {
                         type="button"
                         variant="link"
                         size="icon"
-                        className="absolute right-1.5 top-1/2 -translate-y-1/2"
+                        hover={false}
+                        focus={false}
+                        className="absolute right-1 top-1/2 -translate-y-1/2 border-none"
                         onClick={() => setShowPassword(!showPassword)}
                       >
                         {showPassword ? (
-                          <EyeOffIcon className="h-4 w-4" aria-hidden="true" />
+                          <EyeOffIcon size={16} aria-hidden="true" />
                         ) : (
-                          <EyeIcon className="h-4 w-4" aria-hidden="true" />
+                          <EyeIcon size={16} aria-hidden="true" />
                         )}
                         <span className="sr-only">
                           {showPassword ? "Hide password" : "Show password"}
@@ -199,15 +201,8 @@ export function RegisterForm() {
           {urlError && <FormError message={urlError} />}
           {success && <FormSuccess message={success} />}
           {/* Submit Button */}
-          <Button className="w-full " type="submit" disabled={isPending}>
-            {isPending ? (
-              <span className="flex gap-2 items-center justify-center transition-all">
-                <Loader className="animate-spin" />
-                Submitting...
-              </span>
-            ) : (
-              "Create an account"
-            )}
+          <Button className="w-full " type="submit" isPending={isPending}>
+            {isPending ? "Submitting..." : "Create an account"}
           </Button>
         </form>
       </Form>

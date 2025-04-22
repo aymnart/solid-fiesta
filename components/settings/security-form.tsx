@@ -99,15 +99,8 @@ export function SecurityForm({ two_factor, provider }: SecurityFormProps) {
               )}
             />
           ))}
-        <Button disabled={isPending} type="submit">
-          {isPending ? (
-            <div className="flex items-center">
-              <Loader className="animate-spin mr-2" />
-              Updating Security
-            </div>
-          ) : (
-            "Update Security"
-          )}
+        <Button isPending={isPending} type="submit">
+          Update Security
         </Button>
       </form>
     </Form>

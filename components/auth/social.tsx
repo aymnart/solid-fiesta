@@ -1,7 +1,7 @@
 "use client"
 import { Button } from "@/components/ui/button"
 import { LOGIN_DEFAULT_REDIRECT } from "@/routes"
-import { Github, Loader } from "lucide-react"
+import { Github } from "lucide-react"
 import { signIn } from "next-auth/react"
 import Image from "next/image"
 import { useTransition } from "react"
@@ -27,16 +27,10 @@ export function Social() {
           }}
           variant="outline"
           className="w-full"
-          disabled={isPending}
+          isPending={isPending}
+          prefix={<Github size={16} />}
         >
-          {isPending ? (
-            <Loader className="animate-spin h-5 w-5" />
-          ) : (
-            <div className="flex items-center justify-center gap-2">
-              <Github />
-              Github Login
-            </div>
-          )}
+          Github login
         </Button>
         <Button
           onClick={() => {
@@ -44,16 +38,10 @@ export function Social() {
           }}
           variant="outline"
           className="w-full"
-          disabled={isPending}
+          isPending={isPending}
+          prefix={<Image src="/google.svg" width={16} height={16} alt={"google logo"} />}
         >
-          {isPending ? (
-            <Loader className="animate-spin h-5 w-5" />
-          ) : (
-            <div className="flex items-center justify-center gap-2">
-              <Image src="/google.svg" width={16} height={16} alt={"google logo"} />
-              Google Login
-            </div>
-          )}
+          Google login
         </Button>
       </div>
       <Divider color="hsl(var(--border))">

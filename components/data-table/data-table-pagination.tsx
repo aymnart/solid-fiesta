@@ -47,8 +47,10 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
         </div>
         <div className="flex items-center space-x-2">
           <Button
+            hover={false}
             variant="outline"
-            className="hidden h-8 w-8 p-0 lg:flex"
+            size={"icon_sm"}
+            className="hidden lg:flex"
             onClick={() => table.setPageIndex(0)}
             disabled={!table.getCanPreviousPage()}
           >
@@ -56,8 +58,9 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
             <ChevronsLeft />
           </Button>
           <Button
+            hover={false}
             variant="outline"
-            className="h-8 w-8 p-0"
+            size={"icon_sm"}
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
@@ -65,8 +68,9 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
             <ChevronLeft />
           </Button>
           <Button
+            hover={false}
             variant="outline"
-            className="h-8 w-8 p-0"
+            size={"icon_sm"}
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
@@ -74,8 +78,10 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
             <ChevronRight />
           </Button>
           <Button
+            hover={false}
             variant="outline"
-            className="hidden h-8 w-8 p-0 lg:flex"
+            size={"icon_sm"}
+            className="hidden lg:flex"
             onClick={() => table.setPageIndex(table.getPageCount() - 1)}
             disabled={!table.getCanNextPage()}
           >

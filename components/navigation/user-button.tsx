@@ -55,7 +55,14 @@ export default function UserButton() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" className="rounded-full cursor-pointer" asChild>
+        <Button
+          hover={false}
+          focus={false}
+          variant="ghost"
+          size="icon"
+          className="rounded-full"
+          asChild
+        >
           <Avatar className="h-8 w-8 rounded-lg ">
             <AvatarImage
               src={user?.image || undefined}

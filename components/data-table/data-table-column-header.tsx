@@ -1,5 +1,5 @@
 import type { Column } from "@tanstack/react-table"
-import { ArrowDown, ArrowUp, ChevronsUpDown, EyeOff } from "lucide-react"
+import { ArrowDown, ArrowUp, ChevronsUpDownIcon, EyeOff } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -29,15 +29,23 @@ export function DataTableColumnHeader<TData, TValue>({
     <div className={cn("flex items-center space-x-2", className)}>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="sm" className="-ml-3 h-8 data-[state=open]:bg-accent">
+          <Button
+            hover={false}
+            focus={false}
+            suffix={
+              column.getIsSorted() === "desc" ? (
+                <ArrowDown />
+              ) : column.getIsSorted() === "asc" ? (
+                <ArrowUp />
+              ) : (
+                <ChevronsUpDownIcon />
+              )
+            }
+            variant="ghost"
+            size="sm"
+            className="-ml-3 h-8 data-[state=open]:bg-accent"
+          >
             <span>{title}</span>
-            {column.getIsSorted() === "desc" ? (
-              <ArrowDown />
-            ) : column.getIsSorted() === "asc" ? (
-              <ArrowUp />
-            ) : (
-              <ChevronsUpDown />
-            )}
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start">

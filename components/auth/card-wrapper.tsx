@@ -11,7 +11,7 @@ import {
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 import type React from "react"
-import { Button } from "../ui/button"
+import { Button, type ButtonProps } from "@/components/ui/button"
 
 interface CardWrapperProps {
   children?: React.ReactNode
@@ -19,16 +19,7 @@ interface CardWrapperProps {
   headerDescription?: string
   backButtonLabel: string
   backButtonHref: string
-  backButtonVariant?:
-    | "link"
-    | "default"
-    | "success"
-    | "destructive"
-    | "outline"
-    | "secondary"
-    | "ghost"
-    | null
-    | undefined
+  backButtonVariant?: ButtonProps["variant"]
   showSocial?: boolean
   icon?: React.ReactNode
   className?: string
@@ -65,7 +56,13 @@ export function CardWrapper({
 
       <CardFooter>
         {/* back button */}
-        <Button variant={backButtonVariant} className="w-full font-normal" size={"sm"} asChild>
+        <Button
+          variant={backButtonVariant}
+          hover={false}
+          className="w-full font-normal"
+          size={"sm"}
+          asChild
+        >
           <Link href={backButtonHref}>{backButtonLabel}</Link>
         </Button>
       </CardFooter>
