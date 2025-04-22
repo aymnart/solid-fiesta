@@ -1,5 +1,5 @@
-import { faker } from "@faker-js/faker"
 import { db } from "@/lib/db"
+import { faker } from "@faker-js/faker"
 
 // Configuration: adjust these numbers to control the amount of data generated
 const CONFIG = {

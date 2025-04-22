@@ -73,7 +73,6 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-
   *,
   ::after,
   ::before,
@@ -84,7 +83,6 @@
 }
 
 @layer utilities {
-
   html,
   body,
   :root {
@@ -110,7 +108,6 @@
 }
 
 @layer utilities {
-
   /***************** Custom Scrollbar *****************/
 
   /* Works on WebKit (Chrome, Safari, Edge) */
@@ -143,5 +140,4 @@
     scrollbar-width: thin;
     scrollbar-color: hsl(var(--muted-foreground)) hsl(var(--background));
   }
-
 }

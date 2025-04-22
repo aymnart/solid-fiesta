@@ -5,10 +5,10 @@ import type { ColumnDef } from "@tanstack/react-table"
 import { Badge } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
 
+import { labels, priorities, statuses } from "@/components/data-table/data"
 import type { Task } from "@/schemas/Dashboard/tools"
 import { DataTableColumnHeader } from "./data-table-column-header"
 import { DataTableRowActions } from "./data-table-row-actions"
-import { labels, priorities, statuses } from "@/components/data-table/data"
 
 export const columns: ColumnDef<Task>[] = [
   {

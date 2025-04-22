@@ -1,4 +1,9 @@
+import { Badge } from "@/components/ui/badge"
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { db } from "@/lib/db"
+import { cn } from "@/lib/utils"
+import type { Prisma } from "@prisma/client"
+import { subDays } from "date-fns"
 import {
   MinusIcon,
   TagsIcon,
@@ -7,12 +12,7 @@ import {
   UsersIcon,
   WrenchIcon,
 } from "lucide-react"
-import { subDays } from "date-fns"
-import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { cn } from "@/lib/utils"
 import Link from "next/link"
-import type { Prisma } from "@prisma/client"
 
 type CardType = {
   label: string

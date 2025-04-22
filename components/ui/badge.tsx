@@ -1,8 +1,8 @@
 "use client"
-import { Slot } from "@radix-ui/react-slot"
-import { type ComponentProps, type ReactNode, isValidElement } from "react"
 import { Slottable } from "@/components/general/slottable"
+import { Slot } from "@radix-ui/react-slot"
 import { type VariantProps, cva, cx } from "class-variance-authority"
+import { type ComponentProps, type ReactNode, isValidElement } from "react"
 
 const badgeVariants = cva(
   "inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2",

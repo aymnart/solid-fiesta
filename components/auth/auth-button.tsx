@@ -1,11 +1,11 @@
 "use client"
-import { useRouter } from "next/navigation"
 import { Button, type ButtonProps } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { cn } from "@/lib/utils"
+import { useRouter } from "next/navigation"
+import type { BoxProps } from "../ui/box"
 import { LoginForm } from "./login-form"
 import { RegisterForm } from "./register-form"
-import { cn } from "@/lib/utils"
-import type { BoxProps } from "../ui/box"
 
 interface AuthButtonProps {
   children?: React.ReactNode

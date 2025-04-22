@@ -1,5 +1,6 @@
 "use client"
 import { Social } from "@/components/auth/social"
+import { Button, type ButtonProps } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -11,7 +12,6 @@ import {
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 import type React from "react"
-import { Button, type ButtonProps } from "@/components/ui/button"
 
 interface CardWrapperProps {
   children?: React.ReactNode

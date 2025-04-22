@@ -1,11 +1,11 @@
-import { Tile, TileCaption, TileDivider, TileTitle } from "@/components/ui/tile"
-import { cn } from "@/lib/utils"
-import Link from "next/link"
-import type { ComponentProps } from "react"
 import { EmptyList } from "@/components/general/empty-list"
 import { H } from "@/components/general/heading"
 import { Skeleton } from "@/components/ui/skeleton"
+import { Tile, TileCaption, TileDivider, TileTitle } from "@/components/ui/tile"
 import { getCategoriesWithSubcategories } from "@/data/categories"
+import { cn } from "@/lib/utils"
+import Link from "next/link"
+import type { ComponentProps } from "react"
 
 export type CategoryManyNested = {
   name: string

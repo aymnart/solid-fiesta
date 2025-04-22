@@ -22,7 +22,6 @@
   /* Color adjustment factor */
 }
 
-
 .room {
   width: 100vw;
   height: 100vh;
@@ -87,7 +86,6 @@
   position: absolute;
   left: 0;
   letter-spacing: 0.1rem;
-
 }
 
 .oops h2 {
@@ -178,10 +176,12 @@
 .ladder:after {
   content: "";
   position: absolute;
-  background: linear-gradient(210deg,
-      #fff0 0.4vmin,
-      #e7dbcf calc(0.35vmin + 1px) 1.45vmin,
-      #b3aba2 calc(1.4vmin + 1px) 100%);
+  background: linear-gradient(
+    210deg,
+    #fff0 0.4vmin,
+    #e7dbcf calc(0.35vmin + 1px) 1.45vmin,
+    #b3aba2 calc(1.4vmin + 1px) 100%
+  );
   width: 0.85vmin;
   height: 1.75vmin;
   transform-origin: 0 1%;
@@ -212,7 +212,7 @@
   filter: drop-shadow(10px -4px 10px var(--c4));
 }
 
-.four+.four {
+.four + .four {
   margin-left: 43vmin;
   margin-top: 15vmin;
   transform: scale(0.95, 0.75) rotateX(5deg) rotateY(35deg) rotateZ(30deg) translateZ(18vmin);
@@ -225,8 +225,8 @@
     18px -6px 15px var(--c6);
 }
 
-.four+.four:before,
-.four+.four:after {
+.four + .four:before,
+.four + .four:after {
   content: "4";
   color: var(--c6);
   position: absolute;
@@ -240,9 +240,10 @@
   opacity: 0.4;
 }
 
-.four+.four:after {
+.four + .four:after {
   transform-origin: 50% 100%;
-  transform: rotatex(12deg) rotate(-13deg) translate(-27.5vmin, -5.5vmin) skew(-32deg, 6deg) scaleX(1.1);
+  transform: rotatex(12deg) rotate(-13deg) translate(-27.5vmin, -5.5vmin) skew(-32deg, 6deg)
+    scaleX(1.1);
   clip-path: polygon(0 39.75%, 100% 49.25%, 100% 100%, 0 100%, 0 50%);
 }
 
@@ -265,7 +266,7 @@
   transform: rotateX(15deg);
 }
 
-.btn>* {
+.btn > * {
   border-radius: 0.2vmin;
   display: flex;
   align-items: center;
@@ -288,11 +289,11 @@
     2px 22px 3px var(--c3), 0px 23px 3px var(--c6), 0px 3px 15px var(--c6);
 }
 
-.btn>*:hover {
+.btn > *:hover {
   filter: brightness(0.9);
 }
 
-.btn>*:active {
+.btn > *:active {
   top: 16px;
   box-shadow:
     1px 0px 1px var(--c0), 0px 2px 2px var(--c1), 0px 1px 2px var(--c3),

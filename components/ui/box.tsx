@@ -1,6 +1,6 @@
 import { Slot } from "@radix-ui/react-slot"
 
-import { cva, cx, type VariantProps } from "class-variance-authority"
+import { type VariantProps, cva, cx } from "class-variance-authority"
 import type { ComponentProps } from "react"
 
 const boxVariants = cva("border duration-100 ease-out", {

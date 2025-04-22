@@ -1,8 +1,8 @@
+import { H } from "@/components/general/heading"
 import { cn } from "@/lib/utils"
+import { Slot } from "@radix-ui/react-slot"
 import { cva } from "class-variance-authority"
 import { type ComponentProps, isValidElement } from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { H } from "@/components/general/heading"
 
 const tileVariants = cva("group flex justify-between items-center gap-4 min-w-0 -my-2 py-2")
 type TileProps = ComponentProps<"div"> &

@@ -42,7 +42,7 @@ export default function NewVerificationForm() {
       headerDescription="We're verifying your email address"
       backButtonLabel="Back to login"
       backButtonHref="/auth/login"
-      backButtonVariant={"default"}
+      backButtonVariant="primary"
     >
       <div className="flex items-center justify-center w-full">
         {!success && !error && <div className="loader" />}

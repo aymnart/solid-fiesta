@@ -10,7 +10,7 @@ export default function ErrorCard() {
           credentials."
       backButtonHref="/auth/login"
       backButtonLabel="Back to login"
-      backButtonVariant={"default"}
+      backButtonVariant={"primary"}
       className="flex items-center justify-center flex-col"
     />
   )
