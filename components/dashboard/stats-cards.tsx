@@ -1,7 +1,8 @@
-import { Badge } from "@/components/ui/badge"
-import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { db } from "@/lib/db"
-import { cn } from "@/lib/utils"
+import { Badge } from "@components/ui/badge"
+import { boxVariants } from "@components/ui/box"
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@components/ui/card"
+import { db } from "@lib/db"
+import { cn } from "@lib/utils"
 import type { Prisma } from "@prisma/client"
 import { subDays } from "date-fns"
 import {
@@ -14,7 +15,6 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 import type { JSX } from "react"
-import { boxVariants } from "@/components/ui/box"
 
 type CardType = {
   label: string

@@ -1,6 +1,6 @@
-import { logout } from "@/actions/auth/logout"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+import { logout } from "@actions/auth/logout"
+import { Avatar, AvatarFallback, AvatarImage } from "@components/ui/avatar"
+import { Button } from "@components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,8 +8,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { useCurrentUser } from "@/hooks/use-current-user"
+} from "@components/ui/dropdown-menu"
+import { useCurrentUser } from "@hooks/use-current-user"
 import { Bell, CreditCard, LogOut, Sparkles, UserCircle } from "lucide-react"
 import Link from "next/link"
 import React from "react"
@@ -59,7 +59,7 @@ export default function UserButton() {
           hover={false}
           focus={false}
           variant="ghost"
-          size="icon"
+          size="icon_sm"
           className="rounded-full"
           asChild
         >

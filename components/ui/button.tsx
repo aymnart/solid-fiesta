@@ -1,7 +1,7 @@
 "use client"
-import { Slottable } from "@/components/general/slottable"
-import { boxVariants } from "@/components/ui/box"
-import { cn } from "@/lib/utils"
+import { Slottable } from "@components/general/slottable"
+import { boxVariants } from "@components/ui/box"
+import { cn } from "@lib/utils"
 import { Slot } from "@radix-ui/react-slot"
 import { type VariantProps, cva } from "class-variance-authority"
 import { Loader2Icon } from "lucide-react"
@@ -23,7 +23,7 @@ const buttonVariants = cva(
           "border border-input bg-background shadow-xs hover:bg-accent hover:text-accent-foreground",
         secondary:
           "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80 hover:text-secondary-foreground",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
+        ghost: "border-none hover:bg-accent hover:text-accent-foreground",
         link: "border-none text-primary underline-offset-4 hover:underline",
       },
       size: {
