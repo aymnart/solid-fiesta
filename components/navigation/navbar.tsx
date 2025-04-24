@@ -1,24 +1,24 @@
 "use client"
-import { buttonVariants } from "@/components/ui/button"
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
-import { cn } from "@/lib/utils"
+import UserButton from "@components/navigation/user-button"
+import { buttonVariants } from "@components/ui/button"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@components/ui/tooltip"
+import { cn } from "@lib/utils"
 import { HomeIcon, LayoutDashboardIcon, SettingsIcon } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import * as React from "react"
-import UserButton from "./user-button"
+import { type ComponentType, type SVGProps, useMemo } from "react"
 
 interface NavItem {
   label: string
   href: string
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
+  icon: ComponentType<SVGProps<SVGSVGElement>>
   isActive: boolean
 }
 
 export default function Navbar() {
   const pathname = usePathname()
 
-  const navItems: NavItem[] = React.useMemo(
+  const navItems: NavItem[] = useMemo(
     () => [
       {
         label: "Home",

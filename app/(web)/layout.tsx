@@ -1,8 +1,8 @@
-import Navbar from "@/components/web/navbar"
 import { auth } from "@/auth"
-import type React from "react"
+import Navbar from "@/components/web/navbar"
+import type { ReactNode } from "react"
 
-async function WebLayout({ children }: { children: React.ReactNode }) {
+async function WebLayout({ children }: { children: ReactNode }) {
   const session = await auth()
   return (
     <>

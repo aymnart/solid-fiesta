@@ -1,6 +1,6 @@
 import { type Font, fontsList } from "@/font.config"
 import { type Theme, themes } from "@/themes.config"
-import * as z from "zod"
+import { z } from "zod"
 
 export const appearanceFormSchema = z.object({
   theme: z

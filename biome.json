@@ -55,12 +55,13 @@
         "noDangerouslySetInnerHtml": "off"
       },
       "style": {
-        "noNonNullAssertion": "off"
+        "noNonNullAssertion": "off",
+        "noNamespaceImport": "error"
       },
       "a11y": {
         "useAnchorContent": "off",
         "useValidAnchor": "off",
-        "useAltText": "off"
+        "useAltText": "error"
       }
     }
   }

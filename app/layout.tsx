@@ -1,19 +1,19 @@
 "use server"
 
-import "@/css/globals.css"
+import "@css/globals.css"
 import { auth } from "@/auth"
-import { Toaster } from "@/components/ui/sonner"
-import { TooltipProvider } from "@/components/ui/tooltip"
-import { getUserPreferenceById } from "@/data/user-preference"
 import { fontMap } from "@/font.config"
-import { cn } from "@/lib/utils"
-import { Suspense, cache } from "react"
-import Loading from "./loading"
+import Loading from "@app/loading"
+import { Toaster } from "@components/ui/sonner"
+import { TooltipProvider } from "@components/ui/tooltip"
+import { getUserPreferenceById } from "@data/user-preference"
+import { cn } from "@lib/utils"
+import { type ReactNode, Suspense, cache } from "react"
 
 export default async function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: ReactNode
 }) {
   // Cache the auth result to prevent duplicate calls
   const getAuthSession = cache(async () => await auth())
