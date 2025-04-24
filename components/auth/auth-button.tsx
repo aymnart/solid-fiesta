@@ -1,42 +1,40 @@
 "use client"
-import { Button, type ButtonProps } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { cn } from "@/lib/utils"
-import { useRouter } from "next/navigation"
-import type { BoxProps } from "../ui/box"
-import { LoginForm } from "./login-form"
-import { RegisterForm } from "./register-form"
+import { LoginForm } from "@components/auth/login-form"
+import { RegisterForm } from "@components/auth/register-form"
+import { Button, type ButtonProps } from "@components/ui/button"
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@components/ui/dialog"
+import { useNavigation } from "@hooks/useNavigation"
+import type { Session } from "next-auth"
+import Image from "next/image"
+import type React from "react"
 
-interface AuthButtonProps {
+interface AuthButtonProps extends ButtonProps {
   children?: React.ReactNode
-  type: "login" | "register"
+  authType: "login" | "register"
   mode?: "modal" | "redirect"
-  asChild?: boolean
-  className?: string
-  variant?: ButtonProps["variant"]
+  session?: Session | null
 }
 
 export const AuthButton = ({
+  session,
   children,
+  authType,
   mode = "redirect",
-  type,
   className,
   variant = "primary",
+  size,
   hover = true,
   focus = true,
-}: AuthButtonProps & BoxProps) => {
-  const router = useRouter()
-  const onClick = () => {
-    router.push(`/auth/${type}`)
-  }
+}: AuthButtonProps) => {
+  const { navigateTo, handleKeyboardNavigation } = useNavigation()
 
   return mode === "modal" ? (
     <Dialog>
       <DialogTrigger asChild>
         <Button
-          className={cn("capitalize w-[39%]", className)}
+          className={className}
           variant={variant}
-          size={"default"}
+          size={size}
           tabIndex={0}
           hover={hover}
           focus={focus}
@@ -46,25 +44,33 @@ export const AuthButton = ({
       </DialogTrigger>
       <DialogContent className="grid place-items-center">
         <DialogTitle />
-        {type === "login" ? <LoginForm /> : <RegisterForm />}
+        {authType === "login" ? <LoginForm /> : <RegisterForm />}
       </DialogContent>
     </Dialog>
   ) : (
     <Button
       hover={hover}
       focus={focus}
-      className={cn("capitalize", className)}
+      className={className}
       variant={variant}
-      size={"default"}
-      onClick={onClick}
-      onKeyDown={e => {
-        if (e.key === "Enter" || e.key === " ") {
-          onClick()
-        }
-      }}
+      size={size}
+      onClick={() => navigateTo(`/auth/${authType}`)}
+      onKeyDown={handleKeyboardNavigation(`/auth/${authType}`)}
       tabIndex={0}
+      prefix={
+        session?.user.image && (
+          <Image
+            src={session?.user.image}
+            alt="User Image"
+            width={20}
+            height={20}
+            className="rounded-full"
+          />
+        )
+      }
     >
       {children}
+      {session && ` (${session.user.name})`}
     </Button>
   )
 }
