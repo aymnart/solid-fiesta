@@ -65,7 +65,7 @@ function Navbar({ session }: { session: Session | null }) {
                   session={session}
                   mode={session ? "redirect" : "modal"}
                   authType="login"
-                  className="w-2/4"
+                  className="w-2/4 lg:w-fit"
                 >
                   Sign in
                 </AuthButton>

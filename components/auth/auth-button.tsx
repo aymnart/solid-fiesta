@@ -6,10 +6,10 @@ import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@components/u
 import { useNavigation } from "@hooks/useNavigation"
 import type { Session } from "next-auth"
 import Image from "next/image"
-import type React from "react"
+import type { ReactNode } from "react"
 
 interface AuthButtonProps extends ButtonProps {
-  children?: React.ReactNode
+  children?: ReactNode
   authType: "login" | "register"
   mode?: "modal" | "redirect"
   session?: Session | null
@@ -70,7 +70,7 @@ export const AuthButton = ({
       }
     >
       {children}
-      {session && ` (${session.user.name})`}
+      {!session?.user.image && session?.user.name && ` (${session?.user.name})`}
     </Button>
   )
 }
