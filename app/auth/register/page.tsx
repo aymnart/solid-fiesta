@@ -1,6 +1,5 @@
 "use client"
 
-import { AnimatePresence, motion } from "framer-motion"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 
@@ -39,7 +38,7 @@ export default function RegisterPage() {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setQuoteIndex(prevIndex => (prevIndex + 1) % marketingPhrases.length)
-    }, 7000) // Change quote every 8 seconds
+    }, 7000) // Change quote every 7 seconds
 
     return () => clearInterval(intervalId)
   }, [])
@@ -65,19 +64,9 @@ export default function RegisterPage() {
         />
         <div className=" absolute inset-0 bg-linear-to-t from-foreground/40 via-foreground/20 to-foreground/20 dark:from-background/90 dark:via-background/50 dark:to-background/30" />
         <div className="absolute bottom-0 left-0 right-0 text-white p-6 text-center">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentQuote}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-            >
-              <blockquote className="text-lg font-medium italic max-w-lg text-balance mx-auto">
-                {currentQuote}
-              </blockquote>
-            </motion.div>
-          </AnimatePresence>
+          <blockquote className="text-lg font-medium italic max-w-lg text-balance mx-auto">
+            {currentQuote}
+          </blockquote>
         </div>
       </div>
     </div>
