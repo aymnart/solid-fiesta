@@ -1,11 +1,11 @@
 import { cn } from "@/lib/utils"
-import { cva } from "class-variance-authority"
+import { cva, type VariantProps } from "class-variance-authority"
 import type { ComponentProps } from "react"
 
-const headingVariants = cva("font-display font-semibold", {
+const headingVariants = cva("font-display font-semibold text-foreground", {
   variants: {
     size: {
-      h1: "text-3xl tracking-tight text-pretty bg-linear-to-b from-foreground to-foreground/75 bg-clip-text text-transparent md:text-4xl",
+      h1: "text-5xl tracking-tight text-pretty bg-linear-to-b from-foreground to-foreground/75 bg-clip-text text-transparent md:text-6xl",
       h2: "text-2xl tracking-tight md:text-3xl",
       h3: "text-2xl tracking-tight",
       h4: "text-xl tracking-tight",
@@ -23,7 +23,7 @@ const H = ({
   size,
   className,
   ...props
-}: ComponentProps<"h1"> & { size: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" }) => {
+}: ComponentProps<"h1"> & VariantProps<typeof headingVariants>) => {
   return <h1 className={cn(headingVariants({ size, className }))} {...props} />
 }
 

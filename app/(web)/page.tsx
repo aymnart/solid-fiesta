@@ -1,7 +1,7 @@
 import Footer from "@/components/web/footer"
 import HeroSection from "@/components/web/hero-section"
 import Divider from "@components/ui/divider"
-import { Heart } from "lucide-react"
+import { Circle, X } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -11,10 +11,18 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   return (
-    <main className="flex flex-col justify-center items-center w-full mt-20">
+    <main className="flex flex-col gap-10 justify-center items-center w-full mt-20">
       <HeroSection />
-      <Divider variant="gradient" color="hsl(var(--primary))" thickness="0.2rem">
-        <Heart color="hsl(var(--primary))" fill="hsl(var(--primary))" />
+      <Divider
+        styleChildren
+        className="w-[39%]"
+        variant="gradient"
+        color="hsl(var(--primary))"
+        thickness="0.2rem"
+      >
+        <X fill="hsl(var(--primary))" size={20} strokeWidth={2.5} />
+        <Circle fill="hsl(var(--primary))" size={16} />
+        <X fill="hsl(var(--primary))" size={20} strokeWidth={2.5} />
       </Divider>
       <Footer />
     </main>
