@@ -1,8 +1,9 @@
 "use client"
 
 import { cn } from "@/lib/utils"
-import type React from "react"
-import { type ComponentProps, type ReactNode, useMemo } from "react"
+import { type HTMLMotionProps, motion } from "framer-motion"
+import type { ReactNode } from "react"
+import { useMemo } from "react"
 
 type Orientation = "horizontal" | "vertical" | "ver" | "hor" | "v" | "h"
 type Variant = "solid" | "gradient" | "dashed" | "dotted" | "neon"
@@ -25,7 +26,7 @@ type Unit =
 
 type ThicknessValue = number | `${number}${Unit}`
 
-interface DividerProps {
+interface DividerProps extends HTMLMotionProps<"div"> {
   styleChildren?: boolean
   className?: string
   orientation?: Orientation
@@ -36,8 +37,7 @@ interface DividerProps {
 }
 
 /**
- * A versatile `Divider` component for creating horizontal or vertical dividers
- * with customizable styles, colors, thickness, and optional children content.
+ * A versatile `Divider` component with Framer Motion animation.
  */
 const Divider = ({
   className,
@@ -48,14 +48,10 @@ const Divider = ({
   variant = "solid",
   thickness = "1px",
   ...props
-}: DividerProps & ComponentProps<"div">) => {
-  // Determine orientation with a simpler check
+}: DividerProps) => {
   const isVertical = useMemo(() => orientation.startsWith("v"), [orientation])
-
-  // Convert thickness to string format
   const thicknessValue = typeof thickness === "number" ? `${thickness}px` : thickness
 
-  // Generate divider line styles based on variant
   const getLineStyle = (reverse = false): React.CSSProperties => {
     const baseStyle: React.CSSProperties = {
       borderRadius: "2px",
@@ -95,38 +91,53 @@ const Divider = ({
   }
 
   return (
-    <div
-      aria-hidden={!children}
-      aria-label={`${variant} divider`}
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
       aria-orientation={isVertical ? "vertical" : "horizontal"}
+      aria-label={`${variant} divider`}
       className={cn(
         "m-2 flex items-center justify-center",
         isVertical ? "h-full flex-col" : "w-full flex-row",
         className,
-        { ...props },
       )}
       style={{
         ...(isVertical
           ? { width: `calc(${thicknessValue} + 8px)` }
           : { height: `calc(${thicknessValue} + 8px)` }),
       }}
+      {...props}
     >
-      <span style={getLineStyle()} />
+      <motion.span
+        initial={isVertical ? { scaleY: 0, opacity: 0 } : { scaleX: 0, opacity: 0 }}
+        animate={isVertical ? { scaleY: 1, opacity: 1 } : { scaleX: 1, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        style={getLineStyle()}
+      />
 
       {children && (
-        <div
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.6, delay: 0.2 }}
           className={cn(
-            "flex items-center justify-center p-1.5 rounded-full gap-1 ",
+            "flex items-center justify-center p-1.5 rounded-full gap-1",
             isVertical && "flex-col",
           )}
           style={styleChildren ? { color } : undefined}
         >
           {children}
-        </div>
+        </motion.div>
       )}
 
-      <span style={getLineStyle(true)} />
-    </div>
+      <motion.span
+        initial={isVertical ? { scaleY: 0, opacity: 0 } : { scaleX: 0, opacity: 0 }}
+        animate={isVertical ? { scaleY: 1, opacity: 1 } : { scaleX: 1, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        style={getLineStyle(true)}
+      />
+    </motion.div>
   )
 }
 
