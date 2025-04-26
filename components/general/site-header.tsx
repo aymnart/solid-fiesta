@@ -1,7 +1,14 @@
+"use client"
 import { SidebarTrigger } from "@/components/sidebar/sidebar"
 import { Separator } from "@/components/ui/separator"
-import Link from "next/link"
-import { Breadcrumb, BreadcrumbItem } from "../ui/breadcrumb"
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
+import { Fragment } from "react"
 
 export function SiteHeader({ items }: { items: { title: string; url: string }[] }) {
   return (
@@ -10,11 +17,16 @@ export function SiteHeader({ items }: { items: { title: string; url: string }[] 
         <SidebarTrigger className="-ml-1" />
         <Separator orientation="vertical" className="mx-2 data-[orientation=vertical]:h-4" />
         <Breadcrumb>
-          {items.map(item => (
-            <BreadcrumbItem className="text-sm" key={item.title}>
-              <Link href={item.url}>{item.title}</Link>
-            </BreadcrumbItem>
-          ))}
+          <BreadcrumbList>
+            {items.map((item, index) => (
+              <Fragment key={item.title}>
+                <BreadcrumbItem className="text-sm">
+                  <BreadcrumbLink href={item.url}>{item.title}</BreadcrumbLink>
+                </BreadcrumbItem>
+                {index !== items.length - 1 && <BreadcrumbSeparator className="mr-1" />}
+              </Fragment>
+            ))}
+          </BreadcrumbList>
         </Breadcrumb>
       </div>
     </header>
