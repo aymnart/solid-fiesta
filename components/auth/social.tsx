@@ -39,7 +39,9 @@ export function Social() {
           variant="outline"
           className="w-full"
           isPending={isPending}
-          prefix={<Image src="/google.svg" width={16} height={16} alt={"google logo"} />}
+          prefix={
+            <Image src="/brand-icons/google.svg" width={16} height={16} alt={"google logo"} />
+          }
         >
           Google login
         </Button>
