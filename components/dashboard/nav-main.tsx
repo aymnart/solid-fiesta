@@ -10,6 +10,7 @@ import {
   SidebarMenuItem,
 } from "@/components/sidebar/sidebar"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 export function NavMain({
   items,
@@ -20,6 +21,7 @@ export function NavMain({
     icon?: LucideIcon
   }[]
 }) {
+  const pathname = usePathname()
   return (
     <SidebarGroup>
       <SidebarGroupContent className="space-y-2">
@@ -42,8 +44,8 @@ export function NavMain({
           {items.map(item => (
             <SidebarMenuItem key={item.title}>
               <Link href={item.url}>
-                <SidebarMenuButton tooltip={item.title}>
-                  {item.icon && <item.icon />}
+                <SidebarMenuButton tooltip={item.title} isActive={item.url === pathname}>
+                  {item.icon && <item.icon className="opacity-75" />}
                   {item.title}
                 </SidebarMenuButton>
               </Link>

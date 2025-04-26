@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowUpCircleIcon, LayoutDashboardIcon, ListIcon } from "lucide-react"
+import { ArrowUpCircleIcon, DollarSign, LayoutDashboardIcon, ListIcon } from "lucide-react"
 import type * as React from "react"
 
 import { NavMain } from "@/components/dashboard/nav-main"
@@ -37,6 +37,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         title: "Tools",
         url: "/dashboard/tools",
         icon: ListIcon,
+      },
+      {
+        title: "Cost Calculator",
+        url: "/dashboard/cost-calc",
+        icon: DollarSign,
       },
     ],
   }
