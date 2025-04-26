@@ -96,7 +96,7 @@ const HeroSection = memo(function HeroSection() {
                 speedSegment={0.3}
                 delay={0.5}
                 as="p"
-                className="mx-auto mt-4 max-w-[75ch] text-balance text-lg text-muted-foreground"
+                className="mx-auto mt-4 max-w-[75ch] text-balance text-md md:text-lg text-muted-foreground"
               >
                 Discover top Web3 tools, dApps, and services — curated to help you build, explore,
                 and thrive in the decentralized ecosystem.

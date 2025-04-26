@@ -5,7 +5,7 @@ import type { ComponentProps } from "react"
 const headingVariants = cva("font-display font-semibold text-foreground", {
   variants: {
     size: {
-      h1: "text-5xl tracking-tight text-pretty bg-linear-to-b from-foreground to-foreground/75 bg-clip-text text-transparent md:text-6xl",
+      h1: "text-4xl tracking-tight text-pretty bg-linear-to-b from-foreground to-foreground/75 bg-clip-text text-transparent md:text-6xl",
       h2: "text-2xl tracking-tight md:text-3xl",
       h3: "text-2xl tracking-tight",
       h4: "text-xl tracking-tight",
