@@ -26,7 +26,7 @@ import { useCallback, useMemo, useState } from "react"
  * - `AuthButton` determines redirect/modal behavior based on session
  * - Accessible with `aria-label`s and semantic HTML
  */
-function Navbar({ session }: { session: Session | null }) {
+function WebNavbar({ session }: { session: Session | null }) {
   const pathname = usePathname()
 
   /**
@@ -55,7 +55,7 @@ function Navbar({ session }: { session: Session | null }) {
     <header className="w-full fixed top-0 left-0 z-20">
       <nav
         data-state={menuState && "active"}
-        className="fixed z-20 w-full mx-auto border-b border-dashed bg-white backdrop-blur md:relative dark:bg-zinc-950/50 lg:dark:bg-transparent"
+        className="fixed z-20 w-full mx-auto border-b border-dashed backdrop-blur md:relative lg:dark:bg-transparent"
       >
         <div className="flex flex-wrap items-center max-w-5xl mx-auto justify-between gap-6 py-3 px-4 md:px-6 lg:px-0 lg:gap-0 lg:py-4">
           {/* Logo and Mobile Toggle Button */}
@@ -125,4 +125,4 @@ function Navbar({ session }: { session: Session | null }) {
   )
 }
 
-export default Navbar
+export default WebNavbar
