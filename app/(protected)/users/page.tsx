@@ -21,7 +21,7 @@ export default function UsersPage() {
   return (
     <div className="p-8">
       <div className="mb-6">
-        <H size={"h3"} className="text-3xl font-bold ">
+        <H as={"h3"} className="text-3xl font-bold ">
           Users List
         </H>
         <p className="text-muted-foreground font-light">(Testing self healing API)</p>

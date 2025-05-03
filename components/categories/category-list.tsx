@@ -30,7 +30,7 @@ const CategoryList = async ({ className, ...props }: ComponentProps<"div">) => {
     >
       {categories.map(({ name, slug, fullPath, subcategories }) => (
         <div key={slug} className="inline-flex flex-col gap-6 w-full mt-8 md:mt-20">
-          <H size="h4" className="hover:text-primary">
+          <H as="h4" className="hover:text-primary">
             <Link href={`/categories/${fullPath}`} prefetch={false}>
               {name}
             </Link>
@@ -39,7 +39,7 @@ const CategoryList = async ({ className, ...props }: ComponentProps<"div">) => {
           {subcategories?.length > 0 &&
             subcategories.map(({ name, slug, fullPath, subcategories }) => (
               <div key={slug} className={cn("flex flex-col gap-3 pl-4 relative pb-2")}>
-                <H size="h6" className="z-10 hover:underline">
+                <H as="h6" className="z-10 hover:underline">
                   <Link href={`/categories/${fullPath}`} prefetch={false}>
                     {name}
                   </Link>
@@ -78,13 +78,13 @@ const CategoryListSkeleton = () => {
     <div className="columns-3xs -mt-8 gap-6 md:gap-8 md:-mt-12 lg:gap-10">
       {Array.from({ length: 6 }, (_, categoryIndex) => (
         <div key={categoryIndex} className="inline-flex flex-col gap-4 w-full mt-8 md:mt-12">
-          <H size="h4" className="text-lg">
+          <H as="h4" className="text-lg">
             <Skeleton className="w-1/2">&nbsp;</Skeleton>
           </H>
 
           {Array.from({ length: Math.floor(Math.random() * 3) + 2 }, (_, subcategoryIndex) => (
             <div key={subcategoryIndex} className="flex flex-col gap-2 pl-2">
-              <H size="h5" className="text-sm">
+              <H as="h5" className="text-sm">
                 <Skeleton className="w-2/3">&nbsp;</Skeleton>
               </H>
 

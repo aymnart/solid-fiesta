@@ -1,10 +1,10 @@
 import { AnimatedGroup } from "@/components/ui/animated-group"
 import { TextEffect } from "@/components/ui/text-effect"
+import { cn } from "@/lib/utils"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
-import { H, headingVariants } from "../general/heading"
-import { cn } from "@/lib/utils"
 import { memo, useMemo } from "react"
+import { H, headingVariants } from "../general/heading"
 
 /**
  * HeroSection component displays the top section of the page with
@@ -61,7 +61,7 @@ const HeroSection = memo(function HeroSection() {
                   href="#link"
                   className="hover:bg-background dark:hover:border-t-border bg-muted group mx-auto flex w-fit items-center gap-4 rounded-full border p-0 pl-4 shadow-md shadow-zinc-950/5 transition-colors duration-300 dark:border-t-white/5 dark:shadow-zinc-950"
                 >
-                  <H size="h6" className="text-muted-foreground text-xs">
+                  <H as="h6" className="text-muted-foreground text-xs">
                     New to Web3?
                   </H>
                   <span className="dark:border-background block h-4 w-0.5 border-l bg-white dark:bg-zinc-700" />

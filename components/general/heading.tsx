@@ -1,30 +1,65 @@
 import { cn } from "@/lib/utils"
-import { cva, type VariantProps } from "class-variance-authority"
-import type { ComponentProps } from "react"
+import { type VariantProps, cva } from "class-variance-authority"
+import type { ComponentPropsWithoutRef } from "react"
 
-const headingVariants = cva("font-display font-semibold text-foreground", {
+const headingVariants = cva("font-display", {
   variants: {
     size: {
-      h1: "text-4xl tracking-tight text-pretty bg-linear-to-b from-foreground to-foreground/75 bg-clip-text text-transparent md:text-6xl",
-      h2: "text-2xl tracking-tight md:text-3xl",
-      h3: "text-2xl tracking-tight",
-      h4: "text-xl tracking-tight",
-      h5: "text-base font-medium tracking-micro",
-      h6: "text-sm font-medium",
+      h1: "text-4xl md:text-6xl font-bold tracking-tight leading-tight",
+      h2: "text-3xl md:text-5xl font-semibold tracking-tight leading-snug",
+      h3: "text-2xl md:text-3xl font-semibold leading-snug",
+      h4: "text-xl md:text-2xl font-medium leading-normal",
+      h5: "text-lg font-medium leading-normal",
+      h6: "text-base font-medium leading-snug",
+    },
+    align: {
+      start: "text-left",
+      center: "text-center",
+      end: "text-right",
+    },
+    weight: {
+      light: "font-light",
+      normal: "font-normal",
+      medium: "font-medium",
+      semibold: "font-semibold",
+      bold: "font-bold",
+    },
+    variant: {
+      default: "text-foreground",
+      subtle: "text-muted-foreground",
+      gradient:
+        "bg-gradient-to-b from-foreground to-muted-foreground bg-clip-text text-transparent",
     },
   },
-
   defaultVariants: {
     size: "h3",
+    align: "start",
+    variant: "default",
   },
 })
 
-const H = ({
-  size,
+type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
+
+type HProps<T extends HeadingTag = "h3"> = {
+  as?: T
+  className?: string
+} & ComponentPropsWithoutRef<T> &
+  Omit<VariantProps<typeof headingVariants>, "size">
+
+const H = <T extends HeadingTag = "h3">({
+  as,
   className,
+  align,
+  weight,
+  variant,
   ...props
-}: ComponentProps<"h1"> & VariantProps<typeof headingVariants>) => {
-  return <h1 className={cn(headingVariants({ size, className }))} {...props} />
+}: HProps<T>) => {
+  const Tag = as || "h3"
+  const size = Tag
+
+  return (
+    <Tag className={cn(headingVariants({ size, align, weight, variant }), className)} {...props} />
+  )
 }
 
 export { H, headingVariants }

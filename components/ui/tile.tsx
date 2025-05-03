@@ -22,7 +22,7 @@ const Tile = ({ className, asChild, ...props }: TileProps) => {
 }
 
 const TileTitle = ({ className, ...props }: ComponentProps<"h5">) => {
-  return <H size="h5" className={cn("truncate", className)} {...props} />
+  return <H as="h5" className={cn("truncate", className)} {...props} />
 }
 
 const TileDivider = ({ className, ...props }: ComponentProps<"hr">) => {
