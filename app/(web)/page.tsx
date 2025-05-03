@@ -14,14 +14,15 @@ export default async function Home() {
     <main className="flex flex-col gap-10 justify-center items-center w-full mt-20">
       <HeroSection />
       <Divider
+        styleChildren
         className="w-[70%] sm:w-[60%] md:w-[39%]"
         variant="gradient"
         color="hsl(var(--primary))"
         thickness="0.2rem"
       >
-        <X fill="hsl(var(--primary))" className="size-4 md:size-5" strokeWidth={2.5} />
-        <Circle fill="hsl(var(--primary))" className="size-3.5 md:size-4" />
-        <X fill="hsl(var(--primary))" className="size-4 md:size-5" strokeWidth={2.5} />
+        <X className="size-4 md:size-5" strokeWidth={2.5} />
+        <Circle className="size-3.5 md:size-4" />
+        <X className="size-4 md:size-5" strokeWidth={2.5} />
       </Divider>
       <div className="h-screen w-full" />
       <Footer />
