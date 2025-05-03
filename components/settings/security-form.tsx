@@ -34,12 +34,7 @@ export function SecurityForm({ two_factor, provider }: SecurityFormProps) {
   const [defaultValues, setDefaultValues] = useState<SecurityFormValues | undefined>(undefined)
 
   useEffect(() => {
-    async function fetchSecuritySettings() {
-      if (user?.id) {
-        setDefaultValues({ two_factor: two_factor })
-      }
-    }
-    fetchSecuritySettings()
+    user?.id && setDefaultValues({ two_factor: two_factor })
   }, [user?.id, two_factor])
 
   const form = useForm<SecurityFormValues>({

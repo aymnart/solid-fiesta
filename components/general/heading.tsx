@@ -28,7 +28,7 @@ const headingVariants = cva("font-display", {
       default: "text-foreground",
       subtle: "text-muted-foreground",
       gradient:
-        "bg-gradient-to-b from-foreground to-muted-foreground bg-clip-text text-transparent",
+        "bg-gradient-to-b from-foreground via-foreground to-primary bg-clip-text text-transparent",
     },
   },
   defaultVariants: {
@@ -38,7 +38,8 @@ const headingVariants = cva("font-display", {
   },
 })
 
-type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
+const validHeadingTags = ["h1", "h2", "h3", "h4", "h5", "h6"] as const
+type HeadingTag = (typeof validHeadingTags)[number]
 
 type HProps<T extends HeadingTag = "h3"> = {
   as?: T
@@ -54,7 +55,7 @@ const H = <T extends HeadingTag = "h3">({
   variant,
   ...props
 }: HProps<T>) => {
-  const Tag = as || "h3"
+  const Tag = validHeadingTags.includes(as as HeadingTag) ? (as as HeadingTag) : "h3"
   const size = Tag
 
   return (
