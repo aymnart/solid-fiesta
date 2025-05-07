@@ -4,7 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { Loader } from "lucide-react"
 import { useEffect, useState, useTransition } from "react"
 import { useForm } from "react-hook-form"
-import type { z } from "zod"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -29,11 +28,9 @@ import {
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { fontMap, fontsList } from "@/font.config"
 import { useCurrentUser } from "@/hooks/use-current-user"
-import { appearanceFormSchema } from "@/schemas/settings/appearance"
+import { type AppearanceFormValues, appearanceFormSchema } from "@/schemas/settings/appearance"
 import type { Theme } from "@/themes.config"
 import ModeSkeleton from "./mode-skeleton"
-
-type AppearanceFormValues = z.infer<typeof appearanceFormSchema>
 
 const themes: Theme[] = [
   "light",

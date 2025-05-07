@@ -16,3 +16,5 @@ export const appearanceFormSchema = z.object({
     })
     .optional(),
 })
+
+export type AppearanceFormValues = z.infer<typeof appearanceFormSchema>

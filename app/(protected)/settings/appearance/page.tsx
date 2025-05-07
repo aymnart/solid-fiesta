@@ -4,8 +4,6 @@ import { auth } from "@/auth"
 import { AppearanceForm } from "@/components/settings/appearance-form"
 import { Separator } from "@/components/ui/separator"
 import { getUserPreferenceById } from "@/data/user-preference"
-import { defaultFont, isFontType } from "@/font.config"
-import { defaultTheme, isThemeType } from "@/themes.config"
 
 export default async function SettingsAppearancePage() {
   const userId = (await auth())?.user?.id
@@ -14,12 +12,10 @@ export default async function SettingsAppearancePage() {
     return <p>You need to be logged in to edit preferences.</p>
   }
 
-  const userPreference = await getUserPreferenceById(userId, {
+  const { theme, font } = await getUserPreferenceById(userId, {
     theme: true,
     font: true,
   })
-  const theme = isThemeType(userPreference?.theme) ? userPreference?.theme : defaultTheme
-  const font = isFontType(userPreference?.font) ? userPreference?.font : defaultFont
 
   return (
     <section className="space-y-6">

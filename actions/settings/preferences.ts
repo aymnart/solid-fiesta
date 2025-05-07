@@ -1,10 +1,9 @@
 "use server"
 import { auth } from "@/auth"
 import { db } from "@/lib/db"
-import { appearanceFormSchema } from "@/schemas/settings/appearance"
-import type { z } from "zod"
+import { type AppearanceFormValues, appearanceFormSchema } from "@/schemas/settings/appearance"
 
-export async function updateAppearancePreferences(data: z.infer<typeof appearanceFormSchema>) {
+export async function updateAppearancePreferences(data: AppearanceFormValues) {
   const validatedFields = appearanceFormSchema.safeParse(data)
 
   if (!validatedFields.success) {
