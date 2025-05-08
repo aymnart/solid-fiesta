@@ -62,7 +62,7 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
       } catch (error) {
         if (error instanceof AuthError) {
           const errorMsg =
-            authErrorMessages[error.type as AuthErrorType] || authErrorMessages.Default
+            authErrorMessages[error.name as AuthErrorType] || authErrorMessages.Default
           return { error: errorMsg }
         }
         throw error
@@ -115,7 +115,7 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
       } catch (error) {
         if (error instanceof AuthError) {
           const errorMsg =
-            authErrorMessages[error.type as AuthErrorType] || authErrorMessages.Default
+            authErrorMessages[error.name as AuthErrorType] || authErrorMessages.Default
           return { error: errorMsg }
         }
         throw error
@@ -138,7 +138,7 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
     return { success: "Login successful!" }
   } catch (error) {
     if (error instanceof AuthError) {
-      const errorMsg = authErrorMessages[error.type as AuthErrorType] || authErrorMessages.Default
+      const errorMsg = authErrorMessages[error.name as AuthErrorType] || authErrorMessages.Default
       return { error: errorMsg }
     }
     throw error
