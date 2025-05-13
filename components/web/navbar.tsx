@@ -34,10 +34,7 @@ function WebNavbar({ session }: { session: Session | null }) {
    * useMemo to avoid recomputation on re-render
    */
   const menuItems = useMemo(
-    () => [
-      { name: "Home", href: "/", isActive: pathname === "/" },
-      { name: "Categories", href: "/categories", isActive: pathname === "/categories" },
-    ],
+    () => [{ name: "Home", href: "/", isActive: pathname === "/" }],
     [pathname],
   )
 

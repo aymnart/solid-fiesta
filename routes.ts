@@ -6,7 +6,6 @@
  */
 
 export const PUBLIC_ROUTES = [
-  "/categories",
   "/auth/new-verification", // Public for email verification
   "/legal/privacy-policy",
   "/legal/terms-of-service",

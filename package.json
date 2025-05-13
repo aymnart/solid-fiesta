@@ -12,7 +12,6 @@
     "fix": "biome check --fix --unsafe",
     "format": "biome format --write .",
     "typecheck": "tsc --noEmit",
-    "seed": "tsx prisma/seed.ts",
     "prepare": "husky"
   },
   "dependencies": {

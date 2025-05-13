@@ -33,17 +33,17 @@ export const StatsCards = async () => {
       label: "Tools",
       icon: WrenchIcon,
       href: "/dashboard/tools",
-      queryNow: () => db.tool.count(),
+      queryNow: () => db.user.count(),
       queryLastMonth: () =>
-        db.tool.count({ where: { createdAt: { gte: subDays(new Date(), 30) } } }),
+        db.user.count({ where: { createdAt: { gte: subDays(new Date(), 30) } } }),
     },
     {
       label: "Categories",
       icon: TagsIcon,
       href: "/dashboard/categories",
-      queryNow: () => db.category.count(),
+      queryNow: () => db.user.count(),
       queryLastMonth: () =>
-        db.category.count({ where: { createdAt: { gte: subDays(new Date(), 30) } } }),
+        db.user.count({ where: { createdAt: { gte: subDays(new Date(), 30) } } }),
     },
     {
       label: "Users",
@@ -59,7 +59,7 @@ export const StatsCards = async () => {
   //   db.$transaction(cards.map(card => card.queryNow())),
   //   db.$transaction(cards.map(card => card.queryLastMonth())),
   // ])
-  const countsNow = [100, 200, 4500]
+  const countsNow = [100, 200, 45]
   const countsLastMonth = [20, 200, 150]
 
   return (
