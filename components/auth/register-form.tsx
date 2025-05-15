@@ -1,6 +1,6 @@
 "use client"
 import { register } from "@/actions/auth/register"
-import { CardWrapper } from "@/components/auth/card-wrapper"
+import { AuthCard } from "@/components/auth/auth-card"
 import FormError from "@/components/general/form-error"
 import FormSuccess from "@/components/general/form-success"
 import { Button } from "@/components/ui/button"
@@ -60,7 +60,7 @@ export function RegisterForm() {
   }
 
   return (
-    <CardWrapper
+    <AuthCard
       headerLabel="Create an account"
       backButtonLabel="Already have an account? Sign in"
       backButtonHref="/auth/login"
@@ -206,6 +206,6 @@ export function RegisterForm() {
           </Button>
         </form>
       </Form>
-    </CardWrapper>
+    </AuthCard>
   )
 }

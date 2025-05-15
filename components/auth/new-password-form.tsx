@@ -1,6 +1,6 @@
 "use client"
 import { newPassword } from "@/actions/auth/new-password"
-import { CardWrapper } from "@/components/auth/card-wrapper"
+import { AuthCard } from "@/components/auth/auth-card"
 import FormError from "@/components/general/form-error"
 import FormSuccess from "@/components/general/form-success"
 import { Button } from "@/components/ui/button"
@@ -61,7 +61,7 @@ export function NewPasswordForm() {
   }
 
   return (
-    <CardWrapper
+    <AuthCard
       icon={<KeyRound size={36} />}
       headerLabel="Reset Your Password"
       headerDescription="Please enter and confirm your new password below."
@@ -155,6 +155,6 @@ export function NewPasswordForm() {
           </Button>
         </form>
       </Form>
-    </CardWrapper>
+    </AuthCard>
   )
 }

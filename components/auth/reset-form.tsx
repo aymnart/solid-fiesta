@@ -1,6 +1,6 @@
 "use client"
 import { reset } from "@/actions/auth/reset-password"
-import { CardWrapper } from "@/components/auth/card-wrapper"
+import { AuthCard } from "@/components/auth/auth-card"
 import FormError from "@/components/general/form-error"
 import FormSuccess from "@/components/general/form-success"
 import { Button } from "@/components/ui/button"
@@ -44,7 +44,7 @@ export function ResetForm() {
   }
 
   return (
-    <CardWrapper
+    <AuthCard
       icon={<ShieldCheck size={36} />}
       headerLabel="Forgot your password?"
       headerDescription="Type your email and we will send you a link to reset your password."
@@ -91,6 +91,6 @@ export function ResetForm() {
           </Button>
         </form>
       </Form>
-    </CardWrapper>
+    </AuthCard>
   )
 }

@@ -1,6 +1,6 @@
 "use client"
 import { login } from "@/actions/auth/login"
-import { CardWrapper } from "@/components/auth/card-wrapper"
+import { AuthCard } from "@/components/auth/auth-card"
 import FormError from "@/components/general/form-error"
 import FormSuccess from "@/components/general/form-success"
 import { Button } from "@/components/ui/button"
@@ -69,7 +69,7 @@ export function LoginForm() {
   }
 
   return (
-    <CardWrapper
+    <AuthCard
       headerLabel={showTwoFactor ? "" : "Welcome back!"}
       headerDescription={showTwoFactor ? "" : "Login using your Google or Github account."}
       backButtonLabel={showTwoFactor ? "" : "Don't have an account? Sign up"}
@@ -201,6 +201,6 @@ export function LoginForm() {
           </Button>
         </form>
       </Form>
-    </CardWrapper>
+    </AuthCard>
   )
 }

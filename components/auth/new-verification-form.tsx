@@ -1,7 +1,7 @@
 "use client"
 import "@/css/beat-loader.css"
 import NewVerification from "@/actions/auth/new-verification"
-import { CardWrapper } from "@/components/auth/card-wrapper"
+import { AuthCard } from "@/components/auth/auth-card"
 import FormError from "@/components/general/form-error"
 import FormSuccess from "@/components/general/form-success"
 import { MailCheck } from "lucide-react"
@@ -36,7 +36,7 @@ export default function NewVerificationForm() {
   }, [onSubmit])
 
   return (
-    <CardWrapper
+    <AuthCard
       icon={<MailCheck size={36} />}
       headerLabel="Confirming your verification"
       headerDescription="We're verifying your email address"
@@ -49,6 +49,6 @@ export default function NewVerificationForm() {
         {success && <FormSuccess className="w-fit" message={success} />}
         {error && <FormError className="w-fit" message={error} />}
       </div>
-    </CardWrapper>
+    </AuthCard>
   )
 }
