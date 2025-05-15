@@ -1,11 +1,11 @@
 //add themes variables in css/themes.css
 export const themes = [
   "light",
-  "modern-sage",
   "dark",
-  "moonlit",
-  "obsidian-dark",
+  "graphite",
   "lavender-dusk",
+  "tangerine",
+  "perpetuity",
 ] as const
 
 export type Theme = (typeof themes)[number]

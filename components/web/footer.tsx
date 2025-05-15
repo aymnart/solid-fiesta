@@ -33,7 +33,7 @@ export default function FooterSection() {
     <footer className="py-4">
       <div className="mx-auto max-w-5xl px-6">
         <Link href="/" aria-label="go home" className="mx-auto block size-fit">
-          <Image src="/logo.png" alt="logo" width={100} height={100} />
+          <Image src="/road3.png" alt="logo" width={100} height={100} />
         </Link>
 
         <div className="my-8 flex flex-wrap justify-center gap-6 text-sm">
@@ -144,7 +144,7 @@ export default function FooterSection() {
           </Link>
         </div>
         <span className="text-muted-foreground block text-center text-sm">
-          © {new Date().getFullYear()} Tailark, All rights reserved
+          © {new Date().getFullYear()} Road3, All rights reserved
         </span>
       </div>
     </footer>

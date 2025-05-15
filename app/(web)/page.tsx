@@ -1,7 +1,6 @@
 import Footer from "@/components/web/footer"
 import HeroSection from "@/components/web/hero-section"
 import Divider from "@components/ui/divider"
-import { Circle, X } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -17,12 +16,10 @@ export default async function Home() {
         styleChildren
         className="w-[70%] sm:w-[60%] md:w-[39%]"
         variant="gradient"
-        color="hsl(var(--primary))"
+        color="hsl(var(--muted-foreground))"
         thickness="0.2rem"
       >
-        <X className="size-4 md:size-5" strokeWidth={2.5} />
-        <Circle className="size-3.5 md:size-4" />
-        <X className="size-4 md:size-5" strokeWidth={2.5} />
+        <span className="w-6 h-2 bg-muted-foreground rounded-xl" />
       </Divider>
       <div className="h-screen w-full" />
       <Footer />

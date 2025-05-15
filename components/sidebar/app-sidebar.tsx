@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowUpCircleIcon, LayoutDashboardIcon, ListIcon } from "lucide-react"
+import { LayoutDashboardIcon, ListIcon } from "lucide-react"
 
 import { NavMain } from "@/components/dashboard/nav-main"
 import { NavUser } from "@/components/dashboard/nav-user"
@@ -10,10 +10,10 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarMenu,
-  SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/sidebar/sidebar"
 import { useSession } from "next-auth/react"
+import Image from "next/image"
 import Link from "next/link"
 import type { ComponentProps } from "react"
 
@@ -45,12 +45,9 @@ export function AppSidebar({ ...props }: ComponentProps<typeof Sidebar>) {
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild className="data-[slot=sidebar-menu-button]:p-1.5!">
-              <Link href="/">
-                <ArrowUpCircleIcon className="h-5 w-5" />
-                <span className="text-base font-semibold">Acme Inc.</span>
-              </Link>
-            </SidebarMenuButton>
+            <Link href="/">
+              <Image src="/road3.png" alt="logo" width={100} height={100} />
+            </Link>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>

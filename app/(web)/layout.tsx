@@ -1,5 +1,5 @@
 import { auth } from "@/auth"
-import WebNavbar from "@/components/web/navbar"
+import WebNavbar from "@/components/web/web-navbar"
 import type { ReactNode } from "react"
 
 async function WebLayout({ children }: { children: ReactNode }) {

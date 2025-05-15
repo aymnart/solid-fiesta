@@ -88,7 +88,7 @@ export const StatsCards = async () => {
 
         return (
           <Link href={card.href} key={card.label} aria-label={card.label}>
-            <Card className={cn("@container/card", boxVariants({ hover: true }))}>
+            <Card className={cn("@container/card group", boxVariants({ hover: true }))}>
               <CardHeader className="relative">
                 <CardDescription className="flex items-center gap-2">
                   <card.icon className="size-4" /> {card.label}
@@ -102,7 +102,7 @@ export const StatsCards = async () => {
                       trend.count > 0 ? "success" : trend.count < 0 ? "destructive" : "outline"
                     }
                     prefix={<trend.icon className="size-3" />}
-                    className="flex items-center gap-1.5 rounded-lg text-xs"
+                    className="flex items-center gap-1.5 rounded-lg text-xs group-hover:"
                   >
                     {trend.percentage}
                   </Badge>

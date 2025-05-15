@@ -1,7 +1,7 @@
 import {
   Atkinson_Hyperlegible,
   Fira_Code,
-  IBM_Plex_Sans,
+  IBM_Plex_Mono,
   Inter,
   Merriweather,
   Outfit,
@@ -11,7 +11,7 @@ import {
 
 export const inter = Inter({ subsets: ["latin"], weight: ["400"] })
 export const poppins = Poppins({ subsets: ["latin"], weight: ["400"] })
-export const ibmPlexSans = IBM_Plex_Sans({
+export const ibmPlexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400"],
 })
@@ -36,7 +36,7 @@ export type Font = keyof typeof fontMap
 export const fontMap = {
   Inter: inter.className,
   Poppins: poppins.className,
-  IBMPlexSans: ibmPlexSans.className,
+  IBMPlexMono: ibmPlexMono.className,
   Merriweather: merriweather.className,
   SpaceGrotesk: spaceGrotesk.className,
   AtkinsonHyperlegible: atkinsonHyperlegible.className,

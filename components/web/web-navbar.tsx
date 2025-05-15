@@ -3,8 +3,9 @@
 import { AuthButton } from "@components/auth/auth-button"
 import { Button } from "@components/ui/button"
 import { cn } from "@lib/utils"
-import { LogInIcon, Menu, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import type { Session } from "next-auth"
+import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useCallback, useMemo, useState } from "react"
@@ -58,7 +59,7 @@ function WebNavbar({ session }: { session: Session | null }) {
           {/* Logo and Mobile Toggle Button */}
           <div className="flex w-full justify-between lg:w-auto">
             <Link href="/" aria-label="home" className="flex items-center space-x-2">
-              <LogInIcon />
+              <Image src="/road3.png" alt="logo" width={100} height={10} />
             </Link>
 
             <Button
@@ -101,7 +102,7 @@ function WebNavbar({ session }: { session: Session | null }) {
                 authType="login"
                 className="w-2/4 only:w-full only:md:w-sm only:lg:w-fit"
               >
-                Sign in
+                {session ? "Dashboard" : "Sign in"}
               </AuthButton>
               {!session && (
                 <AuthButton

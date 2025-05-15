@@ -61,8 +61,8 @@ const HeroSection = memo(function HeroSection() {
                   href="#link"
                   className="hover:bg-background dark:hover:border-t-border bg-muted group mx-auto flex w-fit items-center gap-4 rounded-full border p-0 pl-4 shadow-md shadow-zinc-950/5 transition-colors duration-300 dark:border-t-white/5 dark:shadow-zinc-950"
                 >
-                  <H as="h6" className="text-muted-foreground text-xs">
-                    New to Web3?
+                  <H as="h6" className="text-muted-foreground text-xs capitalize">
+                    Explore Web3 Tools
                   </H>
                   <span className="dark:border-background block h-4 w-0.5 border-l bg-white dark:bg-zinc-700" />
 
@@ -85,10 +85,10 @@ const HeroSection = memo(function HeroSection() {
                 as="h3"
                 className={cn(
                   headingVariants({ size: "h1" }),
-                  "text-foreground text-center mt-4 text-balance tracking-normal",
+                  "text-foreground text-center mt-4 text-balance tracking-tight",
                 )}
               >
-                Your Gateway to the Decentralized Web
+                Your Roadmap to the Decentralized Web
               </TextEffect>
               <TextEffect
                 per="line"

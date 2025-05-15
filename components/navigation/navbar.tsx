@@ -3,7 +3,7 @@ import UserButton from "@components/navigation/user-button"
 import { buttonVariants } from "@components/ui/button"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@components/ui/tooltip"
 import { cn } from "@lib/utils"
-import { HomeIcon, LayoutDashboardIcon, SettingsIcon } from "lucide-react"
+import { LayoutDashboardIcon, SettingsIcon } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { type ComponentType, type SVGProps, useMemo } from "react"
@@ -20,12 +20,6 @@ export default function Navbar() {
 
   const navItems: NavItem[] = useMemo(
     () => [
-      {
-        label: "Home",
-        href: "/",
-        icon: HomeIcon,
-        isActive: pathname === "/",
-      },
       {
         label: "Settings",
         href: "/settings",

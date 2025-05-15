@@ -29,17 +29,9 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { fontMap, fontsList } from "@/font.config"
 import { useCurrentUser } from "@/hooks/use-current-user"
 import { type AppearanceFormValues, appearanceFormSchema } from "@/schemas/settings/appearance"
-import type { Theme } from "@/themes.config"
+import { themes } from "@/themes.config"
 import ModeSkeleton from "./mode-skeleton"
 
-const themes: Theme[] = [
-  "light",
-  "modern-sage",
-  "lavender-dusk",
-  "dark",
-  "moonlit",
-  "obsidian-dark",
-]
 export function AppearanceForm({ theme, font }: AppearanceFormValues) {
   const [isPending, startTransition] = useTransition()
   const user = useCurrentUser()
