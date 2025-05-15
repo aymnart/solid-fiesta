@@ -1,10 +1,11 @@
+"use client"
 import { AnimatedGroup } from "@/components/ui/animated-group"
-import { TextEffect } from "@/components/ui/text-effect"
 import { cn } from "@/lib/utils"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { memo, useMemo } from "react"
 import { H, headingVariants } from "../general/heading"
+import DecryptedText from "./decrypted-text"
 
 /**
  * HeroSection component displays the top section of the page with
@@ -78,29 +79,24 @@ const HeroSection = memo(function HeroSection() {
                   </div>
                 </Link>
               </AnimatedGroup>
-
-              <TextEffect
-                preset="fade-in-blur"
-                speedSegment={0.3}
-                as="h3"
-                className={cn(
-                  headingVariants({ size: "h1" }),
-                  "text-foreground text-center mt-4 text-balance tracking-tight",
-                )}
-              >
-                Your Roadmap to the Decentralized Web
-              </TextEffect>
-              <TextEffect
-                per="line"
-                preset="fade-in-blur"
-                speedSegment={0.3}
-                delay={0.5}
-                as="p"
-                className="mx-auto mt-4 max-w-[75ch] text-balance text-md md:text-lg text-muted-foreground"
-              >
-                Discover top Web3 tools, dApps, and services — curated to help you build, explore,
-                and thrive in the decentralized ecosystem.
-              </TextEffect>
+              <div className="w-[61%] mx-auto">
+                <DecryptedText
+                  className={cn(headingVariants({ size: "h1" }), "text-foreground")}
+                  text="Your Roadmap to the Decentralized Web"
+                  animateOn="view"
+                  encryptedClassName={cn(headingVariants({ size: "h1" }), "text-primary")}
+                  speed={35}
+                  revealDirection="start"
+                  sequential
+                  useOriginalCharsOnly
+                />
+              </div>
+              <div className="w-[61%] mx-auto mt-4">
+                <H as="h5" variant={"subtle"} align={"center"}>
+                  Discover top Web3 tools, dApps, and services — curated to help you build, explore,
+                  and thrive in the decentralized ecosystem.
+                </H>
+              </div>
             </div>
           </div>
         </div>
