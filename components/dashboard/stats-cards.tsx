@@ -1,10 +1,3 @@
-/**
- * Dashboard StatsCards Component
- * Displays key metric cards with real-time trend analysis.
- *
- * Server Component — fetches data via Prisma.
- */
-
 import { calculateTrend } from "@/lib/analytics"
 import { Badge } from "@components/ui/badge"
 import { boxVariants } from "@components/ui/box"
@@ -26,6 +19,32 @@ type CardType = {
 
 /**
  * Dashboard metric cards with trending data visualization
+ */
+/**
+ * A React component that renders a grid of statistical cards for a dashboard.
+ * Each card displays a label, an icon, the current count, and a trend indicator
+ * based on the difference between the current count and the count from the last month.
+ *
+ * @async
+ * @function StatsCards
+ * @returns {JSX.Element} A section element containing a grid of cards.
+ *
+ * @remarks
+ * - The component has mock data (`countsNow` and `countsLastMonth`) for demonstration purposes.
+ * - The `calculateTrend` function is used to compute the trend data (difference, percentage, and icon).
+ * - Each card is clickable and navigates to a specific dashboard route defined in the `href` property.
+ *
+ * @example
+ * ```tsx
+ * import { StatsCards } from './stats-cards';
+ *
+ * const Dashboard = () => (
+ *   <div>
+ *     <h1>Dashboard</h1>
+ *     <StatsCards />
+ *   </div>
+ * );
+ * ```
  */
 export const StatsCards = async () => {
   const cards: CardType[] = [
