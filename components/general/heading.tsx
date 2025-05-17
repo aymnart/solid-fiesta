@@ -5,12 +5,12 @@ import type { ComponentPropsWithoutRef } from "react"
 const headingVariants = cva("font-display", {
   variants: {
     size: {
-      h1: "text-4xl md:text-6xl font-bold tracking-tight leading-tight",
-      h2: "text-3xl md:text-5xl font-semibold tracking-tight leading-snug",
-      h3: "text-2xl md:text-3xl font-semibold leading-snug",
-      h4: "text-xl md:text-2xl font-medium leading-normal",
-      h5: "text-lg font-medium leading-normal",
-      h6: "text-base font-medium leading-snug",
+      h1: "text-5xl tracking-tight text-pretty md:text-6xl",
+      h2: "text-4xl tracking-tight md:text-5xl",
+      h3: "text-4xl tracking-tight",
+      h4: "text-3xl tracking-tight",
+      h5: "text-lg font-medium tracking-micro",
+      h6: "text-base font-medium",
     },
     align: {
       start: "text-left",
