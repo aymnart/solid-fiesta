@@ -150,7 +150,28 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@utility screen-line-before {
+  @apply relative before:absolute before:top-0 before:-left-[100vw] before:-z-1 before:h-[1.618px] before:w-[200vw] before:bg-border;
+}
+
+@utility screen-line-after {
+  @apply relative after:absolute after:bottom-0 after:-left-[100vw] after:-z-1 after:h-[1.618px] after:w-[200vw] after:bg-border;
+}
+
+.edge-pattern {
+  opacity: 0.8;
+  background: transparent
+    repeating-linear-gradient(
+      -45deg,
+      var(--color-border),
+      var(--color-border) 1px,
+      transparent 1.618px,
+      transparent 7px
+    );
 }

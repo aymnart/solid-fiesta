@@ -50,12 +50,12 @@ function WebNavbar({ session }: { session: Session | null }) {
   const toggleMenu = useCallback(() => setMenuState(prev => !prev), [])
 
   return (
-    <header className="w-full fixed top-0 left-0 z-20">
+    <header className="w-full fixed top-0 inset-x-0 z-20">
       <nav
         data-state={menuState && "active"}
-        className="fixed z-20 w-full mx-auto border-b border-dashed backdrop-blur md:relative lg:dark:bg-transparent"
+        className="z-20 w-full bg-background border-b backdrop-blur md:relative lg:dark:bg-transparent"
       >
-        <div className="flex flex-wrap items-center max-w-5xl mx-auto justify-between gap-6 py-3 px-4 md:px-6 lg:px-0 lg:gap-0 lg:py-4">
+        <div className="flex flex-wrap items-center lg:border-x max-w-5xl mx-auto justify-between gap-6 py-3 px-4 md:px-6 lg:px-4 lg:gap-0 lg:py-4">
           {/* Logo and Mobile Toggle Button */}
           <div className="flex w-full justify-between lg:w-auto">
             <Link href="/" aria-label="home" className="flex items-center space-x-2">
@@ -96,7 +96,7 @@ function WebNavbar({ session }: { session: Session | null }) {
             <div className="flex w-full gap-3 lg:border-l lg:pl-6">
               <AuthButton
                 size="sm"
-                variant="primary"
+                variant="outline"
                 session={session}
                 mode={session ? "redirect" : "modal"}
                 authType="login"
@@ -107,7 +107,7 @@ function WebNavbar({ session }: { session: Session | null }) {
               {!session && (
                 <AuthButton
                   size="sm"
-                  variant="secondary"
+                  variant="primary"
                   mode="redirect"
                   authType="register"
                   className="w-2/4"

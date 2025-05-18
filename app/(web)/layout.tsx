@@ -5,9 +5,9 @@ import type { ReactNode } from "react"
 async function WebLayout({ children }: { children: ReactNode }) {
   const session = await auth()
   return (
-    <div className="max-w-5xl mx-auto">
+    <div className="max-w-screen overflow-x-hidden">
       <WebNavbar session={session} />
-      <main>{children}</main>
+      <main className="max-w-5xl mx-auto border-x bg-background">{children}</main>
     </div>
   )
 }
