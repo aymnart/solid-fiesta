@@ -7,7 +7,7 @@ async function WebLayout({ children }: { children: ReactNode }) {
   return (
     <div className="max-w-screen overflow-x-hidden">
       <WebNavbar session={session} />
-      <main className="max-w-5xl mx-auto border-x bg-background">{children}</main>
+      <main className="max-w-[61%] mx-auto border-x bg-background">{children}</main>
     </div>
   )
 }

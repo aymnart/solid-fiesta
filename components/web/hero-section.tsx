@@ -36,11 +36,11 @@ const HeroSection = function HeroSection({ className, ...props }: HeroSectionPro
     <section className={cn("overflow-hidden relative", className)} {...props}>
       {/* <Spotlight /> */}
 
-      <BackgroundPattern type="grid" />
+      <BackgroundPattern type="dots" />
       <section>
         <div className="relative mt-4">
           <div className="mx-auto max-w-7xl px-6">
-            <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
+            <div className="text-center sm:mx-auto lg:mr-auto lg:mt-12">
               <AnimatedGroup variants={transitionVariants}>
                 <Link
                   href="#link"
@@ -68,7 +68,7 @@ const HeroSection = function HeroSection({ className, ...props }: HeroSectionPro
               </AnimatedGroup>
               <div className="w-[61%] mx-auto mt-1.5">
                 <DecryptedText
-                  className={cn(headingVariants({ size: "h2" }), "text-foreground")}
+                  className={cn(headingVariants({ size: "h1" }), "text-foreground")}
                   text="Your Roadmap to the Decentralized Web"
                   animateOn="view"
                   encryptedClassName={cn(headingVariants({ size: "h2" }), "text-primary")}

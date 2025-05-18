@@ -156,6 +156,7 @@
   }
 }
 
+/********** Pattern gap styles ***********/
 @utility screen-line-before {
   @apply relative before:absolute before:top-0 before:-left-[100vw] before:-z-1 before:h-[1.618px] before:w-[200vw] before:bg-border;
 }

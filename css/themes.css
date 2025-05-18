@@ -65,13 +65,13 @@
     --muted-foreground: 210 3.39% 46.27%;
     --accent: 205.71 70% 7.84%;
     --accent-foreground: 203.77 87.60% 52.55%;
-    --destructive: 6 81% 44%;
+    --destructive: 0 85% 53%;
     --destructive-foreground: 0 0% 100%;
-    --success: 99 81% 44%;
+    --success: 142 65% 45%;
     --success-foreground: 0 0% 100%;
-    --warning: 40 82% 62%;
-    --warning-foreground: 40 82% 2%;
-    --info: 225 81% 44%;
+    --warning: 38 100% 56%;
+    --warning-foreground: 0 0% 10%;
+    --info: 204 94% 48%;
     --info-foreground: 0 0% 100%;
     --border: 210 5.26% 14.90%;
     --input: 207.69 27.66% 18.43%;

@@ -1,9 +1,9 @@
 "use client"
 
-import { LayoutDashboardIcon, ListIcon } from "lucide-react"
+import { LayoutDashboardIcon, ListIcon, Settings2Icon } from "lucide-react"
 
-import { NavMain } from "@/components/dashboard/nav-main"
 import { NavUser } from "@/components/dashboard/nav-user"
+import Logo from "@/components/general/logo"
 import {
   Sidebar,
   SidebarContent,
@@ -13,9 +13,9 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/sidebar/sidebar"
+import { SidebarNavGroup } from "@/components/sidebar/sidebar-nav-group"
 import { useSession } from "next-auth/react"
 import type { ComponentProps } from "react"
-import Logo from "../general/logo"
 
 export function AppSidebar({ ...props }: ComponentProps<typeof Sidebar>) {
   const { data: session } = useSession()
@@ -40,6 +40,13 @@ export function AppSidebar({ ...props }: ComponentProps<typeof Sidebar>) {
         icon: ListIcon,
       },
     ],
+    navSec: [
+      {
+        title: "Settings",
+        url: "/settings",
+        icon: Settings2Icon,
+      },
+    ],
   }
   return (
     <Sidebar collapsible="icon" {...props}>
@@ -50,11 +57,12 @@ export function AppSidebar({ ...props }: ComponentProps<typeof Sidebar>) {
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent>
-        <NavMain items={data.navMain} />
+      <SidebarContent className="justify-between">
+        <SidebarNavGroup items={data.navMain} />
+        <SidebarNavGroup items={data.navSec} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser />
       </SidebarFooter>
     </Sidebar>
   )
