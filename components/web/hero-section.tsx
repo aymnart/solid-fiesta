@@ -8,7 +8,6 @@ import BackgroundPattern from "../general/background-pattern"
 import { H, headingVariants } from "../general/heading"
 import { Separator } from "../ui/separator"
 import DecryptedText from "./decrypted-text"
-import Spotlight from "./spotlight"
 
 const HeroSection = memo(function HeroSection() {
   const transitionVariants = useMemo(
@@ -36,7 +35,7 @@ const HeroSection = memo(function HeroSection() {
 
   return (
     <section className="overflow-hidden relative">
-      <Spotlight />
+      {/* <Spotlight /> */}
 
       <BackgroundPattern type="grid" />
       <section>
@@ -74,10 +73,9 @@ const HeroSection = memo(function HeroSection() {
                   text="Your Roadmap to the Decentralized Web"
                   animateOn="view"
                   encryptedClassName={cn(headingVariants({ size: "h2" }), "text-primary")}
-                  speed={35}
+                  speed={30}
                   revealDirection="center"
                   sequential
-                  useOriginalCharsOnly
                 />
               </div>
               <div className="w-[61%] mx-auto mt-4">
