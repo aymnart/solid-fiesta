@@ -13,9 +13,8 @@ import {
   SidebarMenuItem,
 } from "@/components/sidebar/sidebar"
 import { useSession } from "next-auth/react"
-import Image from "next/image"
-import Link from "next/link"
 import type { ComponentProps } from "react"
+import Logo from "../general/logo"
 
 export function AppSidebar({ ...props }: ComponentProps<typeof Sidebar>) {
   const { data: session } = useSession()
@@ -45,9 +44,7 @@ export function AppSidebar({ ...props }: ComponentProps<typeof Sidebar>) {
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <Link href="/">
-              <Image src="/road3.png" alt="logo" width={100} height={100} />
-            </Link>
+            <Logo />
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>

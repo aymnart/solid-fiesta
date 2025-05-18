@@ -1,5 +1,5 @@
-import Image from "next/image"
 import Link from "next/link"
+import Logo from "../general/logo"
 
 const links = [
   {
@@ -32,9 +32,7 @@ export default function FooterSection() {
   return (
     <footer className="py-4">
       <div className="mx-auto max-w-5xl px-6">
-        <Link href="/" aria-label="go home" className="mx-auto block size-fit">
-          <Image src="/road3.png" alt="logo" width={100} height={100} />
-        </Link>
+        <Logo className="mx-auto" />
 
         <div className="my-8 flex flex-wrap justify-center gap-6 text-sm">
           {links.map((link, index) => (
