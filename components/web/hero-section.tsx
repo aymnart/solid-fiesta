@@ -3,38 +3,37 @@ import { AnimatedGroup } from "@/components/ui/animated-group"
 import { cn } from "@/lib/utils"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
-import { memo, useMemo } from "react"
+import type { ComponentProps } from "react"
 import BackgroundPattern from "../general/background-pattern"
 import { H, headingVariants } from "../general/heading"
 import { Separator } from "../ui/separator"
 import DecryptedText from "./decrypted-text"
 
-const HeroSection = memo(function HeroSection() {
-  const transitionVariants = useMemo(
-    () => ({
-      item: {
-        hidden: {
-          opacity: 0,
-          filter: "blur(12px)",
-          y: 12,
-        },
-        visible: {
-          opacity: 1,
-          filter: "blur(0px)",
-          y: 0,
-          transition: {
-            type: "spring",
-            bounce: 0.3,
-            duration: 1.5,
-          },
+type HeroSectionProps = ComponentProps<"section">
+
+const HeroSection = function HeroSection({ className, ...props }: HeroSectionProps) {
+  const transitionVariants = {
+    item: {
+      hidden: {
+        opacity: 0,
+        filter: "blur(12px)",
+        y: 12,
+      },
+      visible: {
+        opacity: 1,
+        filter: "blur(0px)",
+        y: 0,
+        transition: {
+          type: "spring",
+          bounce: 0.3,
+          duration: 1.5,
         },
       },
-    }),
-    [],
-  )
+    },
+  }
 
   return (
-    <section className="overflow-hidden relative">
+    <section className={cn("overflow-hidden relative", className)} {...props}>
       {/* <Spotlight /> */}
 
       <BackgroundPattern type="grid" />
@@ -90,6 +89,6 @@ const HeroSection = memo(function HeroSection() {
       </section>
     </section>
   )
-})
+}
 
 export default HeroSection

@@ -8,7 +8,7 @@ import type { Session } from "next-auth"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useCallback, useMemo, useState } from "react"
+import { useCallback, useState } from "react"
 
 /**
  * Navbar component responsible for rendering the main navigation.
@@ -34,10 +34,14 @@ function WebNavbar({ session }: { session: Session | null }) {
    * Navigation menu items with active route detection
    * useMemo to avoid recomputation on re-render
    */
-  const menuItems = useMemo(
-    () => [{ name: "Home", href: "/", isActive: pathname === "/" }],
-    [pathname],
-  )
+  const menuItems = [
+    { name: "Home", href: "/", isActive: pathname === "/" },
+    { name: "Categories", href: "/categories", isActive: pathname.startsWith("/categories") },
+    { name: "Advertise", href: "/advertise", isActive: pathname.startsWith("/advertise") },
+    { name: "Books", href: "/books", isActive: pathname.startsWith("/books") },
+    { name: "Learn", href: "/learn", isActive: pathname.startsWith("/learn") },
+    { name: "Submit", href: "/submit", isActive: pathname.startsWith("/advertise") },
+  ]
 
   /**
    * Tracks visibility of the mobile menu
@@ -53,9 +57,9 @@ function WebNavbar({ session }: { session: Session | null }) {
     <header className="w-full fixed top-0 inset-x-0 z-20">
       <nav
         data-state={menuState && "active"}
-        className="z-20 w-full bg-background border-b backdrop-blur md:relative lg:dark:bg-transparent"
+        className="z-20 w-full bg-background/15 border-b backdrop-blur md:relative lg:dark:bg-transparent"
       >
-        <div className="flex flex-wrap items-center lg:border-x max-w-5xl mx-auto justify-between gap-6 py-3 px-4 md:px-6 lg:px-4 lg:gap-0 lg:py-4">
+        <div className="flex flex-wrap items-center lg:border-x max-w-5xl mx-auto justify-between gap-6 py-3 px-4 md:px-6 lg:px-4 lg:gap-0">
           {/* Logo and Mobile Toggle Button */}
           <div className="flex w-full justify-between lg:w-auto">
             <Link href="/" aria-label="home" className="flex items-center space-x-2">

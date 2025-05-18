@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   return (
-    <main className="flex flex-col gap-10 justify-center items-center w-full mt-16">
+    <main className="flex flex-col gap-10 justify-center items-center w-full mt-14">
       <HeroSection />
 
       <PatternGap fullwidth className="h-5" />
