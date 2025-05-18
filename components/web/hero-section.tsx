@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { memo, useMemo } from "react"
+import BackgroundPattern from "../general/background-pattern"
 import { H, headingVariants } from "../general/heading"
 import { Separator } from "../ui/separator"
 import DecryptedText from "./decrypted-text"
@@ -34,8 +35,10 @@ const HeroSection = memo(function HeroSection() {
   )
 
   return (
-    <section className="overflow-hidden">
+    <section className="overflow-hidden relative">
       <Spotlight />
+
+      <BackgroundPattern type="grid" />
       <section>
         <div className="relative mt-4">
           <div className="mx-auto max-w-7xl px-6">
