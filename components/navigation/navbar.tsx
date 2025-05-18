@@ -44,7 +44,7 @@ export default function Navbar() {
             <Link
               href={item.href}
               className={cn(
-                item.isActive && "bg-secondary text-secondary-foreground",
+                item.isActive && "bg-accent text-accent-foreground",
                 buttonVariants({
                   variant: "ghost",
                   size: item.isActive ? "sm" : "icon_sm",
